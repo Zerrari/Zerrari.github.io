@@ -178,10 +178,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2021-02-05 21:15:58 / Modified: 21:16:53" itemprop="dateCreated datePublished" datetime="2021-02-05T21:15:58+08:00">2021-02-05</time>
+              <time title="Created: 2021-02-05 21:15:58" itemprop="dateCreated datePublished" datetime="2021-02-05T21:15:58+08:00">2021-02-05</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-02-06 19:47:41" itemprop="dateModified" datetime="2021-02-06T19:47:41+08:00">2021-02-06</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -203,7 +209,50 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="day4-in-python"><a href="#day4-in-python" class="headerlink" title="day4 in python"></a>day4 in python</h1>
+          <h1 id="day4-in-python"><a href="#day4-in-python" class="headerlink" title="day4 in python"></a>day4 in python</h1><h1 id="高级特性"><a href="#高级特性" class="headerlink" title="高级特性"></a>高级特性</h1><h2 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h2><p>通过切片可以取出list和tuple或是字符串中的部分元素<br>索引从0开始<br>倒数第一个元素的索引为-1</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">s&#x3D;[&#39;john&#39;,&#39;mike&#39;,&#39;sara&#39;]</span><br><span class="line">s[0:2]</span><br><span class="line">[&#39;john&#39;,mike]</span><br><span class="line">s[-2:]</span><br><span class="line">[&#39;mike&#39;,&#39;sara&#39;]</span><br><span class="line">s[-1:]</span><br><span class="line">[&#39;sara&#39;]</span><br></pre></td></tr></table></figure>
+<p>固定步长切片</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">s&#x3D;[1,2,3,4,5,6,7,8]</span><br><span class="line">s[::2]</span><br><span class="line">[1,3,5,7]</span><br></pre></td></tr></table></figure>
+<p>字符串</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#39;abcd&#39;[1:3]</span><br><span class="line">&#39;bc&#39;</span><br></pre></td></tr></table></figure>
+<h2 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h2><p>对dict使用迭代<br>默认迭代dict中的key</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">d&#x3D;&#123;&#39;a&#39;:1,&#39;b&#39;:2,&#39;c&#39;:3&#125;</span><br><span class="line">for i in d:</span><br><span class="line">	print(i)</span><br><span class="line">a</span><br><span class="line">b</span><br><span class="line">c</span><br></pre></td></tr></table></figure>
+<p>如果要迭代<code>value</code><br><code>for value in d.values():</code></p>
+<p>迭代字符串<br><code>for char in &#39;abcd&#39;:</code></p>
+<h2 id="列表生成式"><a href="#列表生成式" class="headerlink" title="列表生成式"></a>列表生成式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">list(range(1,11))</span><br><span class="line">[1,2,3,4,5,6,7,8,9,10]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[x*x for x in range(1,5)]</span><br><span class="line">[1,4,9,16]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[a+c for a in&#39;ab&#39; for c in &#39;xy&#39;]</span><br><span class="line">[&#39;ax&#39;,&#39;ay&#39;,&#39;bx&#39;,&#39;by&#39;]</span><br></pre></td></tr></table></figure>
+<p>if…else…</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[x if x % 2 &#x3D;&#x3D; 0 else -x for x in range(1,4)]</span><br><span class="line">[-1,2,-3]</span><br></pre></td></tr></table></figure>
+<h2 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h2><p>构造一个生成器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g&#x3D;(x*x for x in range(1,5))</span><br></pre></td></tr></table></figure>
+<p><code>next(g)</code>获取下一个元素<br>运用迭代来获得元素</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">for x in g:</span><br><span class="line">	print(x)</span><br><span class="line">1</span><br><span class="line">4</span><br><span class="line">9</span><br><span class="line">16</span><br></pre></td></tr></table></figure>
+<h2 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h2><h3 id="Iterable"><a href="#Iterable" class="headerlink" title="Iterable"></a>Iterable</h3><p><code>Iterable</code>可迭代对象<br>使用<code>isinstance()</code>判断是否为可迭代对象<br><code>isinstance(&#39;abc&#39;,Iterable)</code></p>
+<h3 id="Iterator"><a href="#Iterator" class="headerlink" title="Iterator"></a>Iterator</h3><p>可以通过<code>next()</code>函数调用的迭代对象为迭代器<code>Iterator</code><br>可以通过<code>iter()</code>函数获得<code>Iterator</code></p>
+<h1 id="函数式编程"><a href="#函数式编程" class="headerlink" title="函数式编程"></a>函数式编程</h1><h2 id="高级函数"><a href="#高级函数" class="headerlink" title="高级函数"></a>高级函数</h2><p>变量可以指向函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">f&#x3D;abs</span><br><span class="line">f(-10)</span><br><span class="line">10</span><br></pre></td></tr></table></figure>
+<p>函数名也可以指向变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">abs &#x3D; 10</span><br><span class="line">abs</span><br><span class="line">10</span><br></pre></td></tr></table></figure>
+<p>一个函数可以作为参数传入另一个函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def my_fun(x,y,f):</span><br><span class="line">	print(f(x)+f(y))</span><br><span class="line">my_fun(-5,10,abs)</span><br><span class="line">15</span><br></pre></td></tr></table></figure>
+<h3 id="map-reduce"><a href="#map-reduce" class="headerlink" title="map/reduce"></a>map/reduce</h3><h4 id="map"><a href="#map" class="headerlink" title="map"></a>map</h4><p>对序列中的每个元素执行相同的操作<br><code>map()</code>接受两种参数</p>
+<ul>
+<li>Iterable</li>
+<li>函数名</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">list(map(abs,[1,-2,-3,4]))</span><br><span class="line">[1,2,3,4]</span><br></pre></td></tr></table></figure>
+<h4 id="reduce"><a href="#reduce" class="headerlink" title="reduce"></a>reduce</h4><p>对序列中的元素执行累加操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def fun(x,y):</span><br><span class="line">	return x+y</span><br><span class="line">reduce(fun,[1,2,3,4])</span><br><span class="line">10</span><br></pre></td></tr></table></figure>
+<h3 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h3><p>用来过滤序列<br>接受一个函数，作用于每一个元素，返回值是<code>True</code>保留该元素</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def is_odd(x)</span><br><span class="line">	return x % 2 &#x3D;&#x3D; 1</span><br><span class="line">list(filter(is_odd,[1,2,3,4]))</span><br><span class="line">[1,3]</span><br></pre></td></tr></table></figure>
+<h3 id="sorted"><a href="#sorted" class="headerlink" title="sorted"></a>sorted</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sorted([3,1,4,78,34])</span><br><span class="line">[1,3,4,34,78]</span><br></pre></td></tr></table></figure>
+<p>还可以接受一个<code>key</code>函数来实现自定义的排序</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sorted([3,-1,4,-78,34],key&#x3D;abs)</span><br><span class="line">[-1,3,4,34,-78]</span><br></pre></td></tr></table></figure>
+<h2 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a>匿名函数</h2><p>只能有一个表达式，不能写return<br>返回值就是该表达式的结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">list(map(lambda x:x*x,[1,2,3,4]))</span><br><span class="line">[1,4,9,16]</span><br></pre></td></tr></table></figure>
+<p>关键字<code>lambda</code>表示匿名函数，冒号前面的x表示函数参数</p>
+
       
     </div>
 
