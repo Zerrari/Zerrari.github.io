@@ -155,6 +155,155 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://zerrari.github.io/2021/02/09/Git-%E4%BA%8C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zerrari">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zerrari">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/02/09/Git-%E4%BA%8C/" class="post-title-link" itemprop="url">Git-二</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-02-09 18:45:29 / Modified: 20:06:57" itemprop="dateCreated datePublished" datetime="2021-02-09T18:45:29+08:00">2021-02-09</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h1><h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><h2 id="查看提交历史"><a href="#查看提交历史" class="headerlink" title="查看提交历史"></a>查看提交历史</h2><p><code>git log</code><br><code>git log -p</code>会显示每次提交的差异<br><code>git log --stat</code>显示每次提交的简略信息</p>
+<h2 id="撤销操作"><a href="#撤销操作" class="headerlink" title="撤销操作"></a>撤销操作</h2><p><code>git commit --amend</code><br>执行此命令，最后只会有一个提交，覆盖了前面的提交</p>
+<p><code>git reset &lt;file&gt;</code><br>取消暂存的文件</p>
+<p><code>git checkout --&lt;file&gt;</code><br>取消文件的修改即恢复到上次提交的样子</p>
+<h2 id="远程仓库的使用"><a href="#远程仓库的使用" class="headerlink" title="远程仓库的使用"></a>远程仓库的使用</h2><p><code>git remote</code><br>查看远程仓库</p>
+<p><code>git remote add &lt;shortname&gt; &lt;url&gt;</code><br>添加一个远程仓库，同时指定一个简单的缩写</p>
+<p><code>git fetch [remote-name]</code><br>拉取远程仓库中自己还没有的数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git push [remote-name] [branch-name]</span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
+<p>推送到远程仓库</p>
+<p><code>git remote show [remote-name]</code><br>查看远程仓库的信息</p>
+<p><code>git remote rename</code><br>修改远程仓库的简写名</p>
+<p><code>git remote rm</code><br>删除远程仓库</p>
+<h2 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h2><p><code>git tag</code><br>列出标签</p>
+<h3 id="创建标签"><a href="#创建标签" class="headerlink" title="创建标签"></a>创建标签</h3><p>标签分为：</p>
+<ul>
+<li><p>轻量标签<br><code>git tag v1.4-lw</code></p>
+</li>
+<li><p>附注标签<br><code>git tag -a v1.4 -m &quot;some messages&quot;</code></p>
+</li>
+</ul>
+<p><code>git show</code><br>显示附注标签于该次提交的信息</p>
+<p><code>git tag -a v1.2 9fceb02</code><br>后期打标签</p>
+<p><code>git push origin [tagname]</code><br>将标签推送到服务器上</p>
+<h2 id="Git别名"><a href="#Git别名" class="headerlink" title="Git别名"></a>Git别名</h2><p><code>git config --global alias.co checkout</code><br>当要输入<code>git checkout</code>,只要输入<code>git co</code></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://zerrari.github.io/2021/02/09/Homebrew/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zerrari">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zerrari">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/02/09/Homebrew/" class="post-title-link" itemprop="url">Homebrew</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-02-09 13:13:03 / Modified: 20:17:54" itemprop="dateCreated datePublished" datetime="2021-02-09T13:13:03+08:00">2021-02-09</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Macos/" itemprop="url" rel="index"><span itemprop="name">Macos</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Homebrew"><a href="#Homebrew" class="headerlink" title="Homebrew"></a>Homebrew</h1><h1 id="introduction"><a href="#introduction" class="headerlink" title="introduction"></a>introduction</h1>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://zerrari.github.io/2021/02/08/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%BA%94/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -950,223 +1099,11 @@ add，pop和remove方法<figure class="highlight plain"><table><tr><td class="gu
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://zerrari.github.io/2021/01/28/My-Archlinux/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Zerrari">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Zerrari">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/28/My-Archlinux/" class="post-title-link" itemprop="url">My Archlinux</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-01-28 15:13:50" itemprop="dateCreated datePublished" datetime="2021-01-28T15:13:50+08:00">2021-01-28</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-02-05 20:02:19" itemprop="dateModified" datetime="2021-02-05T20:02:19+08:00">2021-02-05</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Archlinux/" itemprop="url" rel="index"><span itemprop="name">Archlinux</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="My-Archlinux"><a href="#My-Archlinux" class="headerlink" title="My Archlinux"></a>My Archlinux</h1><h2 id="installation"><a href="#installation" class="headerlink" title="installation"></a>installation</h2><p>参照<a target="_blank" rel="noopener" href="https://wiki.archlinux.org/index.php/Installation_guide_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)">Archlinux</a>官网的安装教程</p>
-<h3 id="issues-in-installation"><a href="#issues-in-installation" class="headerlink" title="issues in installation"></a>issues in installation</h3><h4 id="安装重启前一定要安装好网络连接工具"><a href="#安装重启前一定要安装好网络连接工具" class="headerlink" title="安装重启前一定要安装好网络连接工具"></a>安装重启前一定要安装好网络连接工具</h4><p>这里我安装的是networkmanager,附带有图形界面的网络管理器<em>nmtui</em></p>
-<h4 id="解除rfkill的无线网卡禁用"><a href="#解除rfkill的无线网卡禁用" class="headerlink" title="解除rfkill的无线网卡禁用"></a>解除rfkill的无线网卡禁用</h4><p><code>rfkill list</code><br>如果soft blocked是no的状态<br><code>rfkill unblock wifi</code></p>
-<h2 id="tools"><a href="#tools" class="headerlink" title="tools"></a>tools</h2><p>用pacman命令安装工具<br><code>sudo pacman -S dwm emacs st dmen  networkmanager</code></p>
-<ul>
-<li>dwm<br>一个简洁的窗口管理器</li>
-<li>emacs<br>一个强大的代码编辑器s</li>
-<li>st<br>一个快速的终端模拟器</li>
-<li>dmenu<br>一个快速的程序启动器</li>
-<li>networkmanager<br>网络管理器</li>
-<li>fish<br>一个开箱即用的shell</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://zerrari.github.io/2021/01/28/Emacs-Hexo/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Zerrari">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Zerrari">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/28/Emacs-Hexo/" class="post-title-link" itemprop="url">Emacs+Hexo</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2021-01-28 13:20:58 / Modified: 18:55:41" itemprop="dateCreated datePublished" datetime="2021-01-28T13:20:58+08:00">2021-01-28</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Emacs/" itemprop="url" rel="index"><span itemprop="name">Emacs</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Emacs-Hexo-打造高效博客写作方案"><a href="#Emacs-Hexo-打造高效博客写作方案" class="headerlink" title="Emacs + Hexo 打造高效博客写作方案"></a>Emacs + Hexo 打造高效博客写作方案</h1><h2 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h2><h3 id="什么是Hexo"><a href="#什么是Hexo" class="headerlink" title="什么是Hexo"></a>什么是Hexo</h3><p><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo</a>是一个快速、简洁且高效的博客框架。</p>
-<h3 id="安装指南"><a href="#安装指南" class="headerlink" title="安装指南"></a>安装指南</h3><ul>
-<li>官网的文档十分的详细，并且有简体中文版本。参考官网即可。</li>
-</ul>
-<h2 id="Emacs"><a href="#Emacs" class="headerlink" title="Emacs"></a>Emacs</h2><h3 id="什么是Emacs"><a href="#什么是Emacs" class="headerlink" title="什么是Emacs"></a>什么是Emacs</h3><p>Emacs是一个功能强大的编辑器。<br>本文通过一个Emacs插件来完成在Emacs上利用Hexo书写博客。</p>
-<h3 id="安装指南-1"><a href="#安装指南-1" class="headerlink" title="安装指南"></a>安装指南</h3><p><a target="_blank" rel="noopener" href="https://github.com/kuanyui/hexo.el">hexo.el</a></p>
-<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p>最后，通过，一系列快捷键就可以在Emacs中完成Hexo博客的相关操作</p>
-<table>
-<thead>
-<tr>
-<th>command</th>
-<th>function</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>M-p b</td>
-<td>start hexo</td>
-</tr>
-<tr>
-<td>M-p RET</td>
-<td>open file</td>
-</tr>
-<tr>
-<td>M-p SPC</td>
-<td>show article info</td>
-</tr>
-<tr>
-<td>M-p D</td>
-<td>delete file</td>
-</tr>
-<tr>
-<td>M-p N</td>
-<td>new file</td>
-</tr>
-<tr>
-<td>M-p M a</td>
-<td>add tags</td>
-</tr>
-<tr>
-<td>M-p M r</td>
-<td>remove tags</td>
-</tr>
-<tr>
-<td>M-p m</td>
-<td>mark</td>
-</tr>
-<tr>
-<td>M-p u</td>
-<td>unmark</td>
-</tr>
-<tr>
-<td>M-p s r</td>
-<td>run server</td>
-</tr>
-<tr>
-<td>M-p s s</td>
-<td>stop server</td>
-</tr>
-<tr>
-<td>M-p s d</td>
-<td>deploy</td>
-</tr>
-</tbody></table>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+  </nav>
 
 
 
@@ -1231,14 +1168,14 @@ add，pop和remove方法<figure class="highlight plain"><table><tr><td class="gu
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">

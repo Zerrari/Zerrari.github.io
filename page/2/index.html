@@ -20,33 +20,28 @@
     var CONFIG = {"hostname":"zerrari.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="dwmintroductiondwm是一个简单易用的窗口管理器 configdwm由C语言编写而成修改配置文件是通过修改头文件(即.h文件)来完成的dwm已提供了默认的配置文件config.def.hconfig.h是用户的配置文件运行dwm的过程和编译.c文件的过程一样sudo makesudo make clean install这是我的配置文件config windows key这是一个修饰">
-<meta property="og:type" content="article">
-<meta property="og:title" content="dwm配置">
-<meta property="og:url" content="https://zerrari.github.io/2021/01/28/dwm%E9%85%8D%E7%BD%AE/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Zerrari">
+<meta property="og:url" content="https://zerrari.github.io/page/2/index.html">
 <meta property="og:site_name" content="Zerrari">
-<meta property="og:description" content="dwmintroductiondwm是一个简单易用的窗口管理器 configdwm由C语言编写而成修改配置文件是通过修改头文件(即.h文件)来完成的dwm已提供了默认的配置文件config.def.hconfig.h是用户的配置文件运行dwm的过程和编译.c文件的过程一样sudo makesudo make clean install这是我的配置文件config windows key这是一个修饰">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-01-28T11:30:21.000Z">
-<meta property="article:modified_time" content="2021-01-31T06:47:07.156Z">
 <meta property="article:author" content="Zerrari">
-<meta property="article:tag" content="Tools">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://zerrari.github.io/2021/01/28/dwm%E9%85%8D%E7%BD%AE/">
+<link rel="canonical" href="https://zerrari.github.io/page/2/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : false,
-    isPost : true,
+    isHome : true,
+    isPost : false,
     lang   : 'en'
   };
 </script>
 
-  <title>dwm配置 | Zerrari</title>
+  <title>Zerrari</title>
   
 
 
@@ -154,14 +149,13 @@
         <div class="content-wrap">
           
 
-          <div class="content post posts-expand">
+          <div class="content index posts-expand">
             
-
-    
+      
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://zerrari.github.io/2021/01/28/dwm%E9%85%8D%E7%BD%AE/">
+    <link itemprop="mainEntityOfPage" href="https://zerrari.github.io/2021/01/28/My-Archlinux/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -173,9 +167,10 @@
       <meta itemprop="name" content="Zerrari">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          dwm配置
-        </h1>
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/01/28/My-Archlinux/" class="post-title-link" itemprop="url">My Archlinux</a>
+        </h2>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -184,14 +179,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2021-01-28 19:30:21" itemprop="dateCreated datePublished" datetime="2021-01-28T19:30:21+08:00">2021-01-28</time>
+              <time title="Created: 2021-01-28 15:13:50" itemprop="dateCreated datePublished" datetime="2021-01-28T15:13:50+08:00">2021-01-28</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-01-31 14:47:07" itemprop="dateModified" datetime="2021-01-31T14:47:07+08:00">2021-01-31</time>
+                <time title="Modified: 2021-02-05 20:02:19" itemprop="dateModified" datetime="2021-02-05T20:02:19+08:00">2021-02-05</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -214,17 +209,93 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="dwm"><a href="#dwm" class="headerlink" title="dwm"></a>dwm</h1><h1 id="introduction"><a href="#introduction" class="headerlink" title="introduction"></a>introduction</h1><p><a target="_blank" rel="noopener" href="http://dwm.suckless.org/">dwm</a>是一个简单易用的窗口管理器</p>
-<h2 id="config"><a href="#config" class="headerlink" title="config"></a>config</h2><p><em>dwm</em>由C语言编写而成<br>修改配置文件是通过修改头文件(即.h文件)来完成的<br>dwm已提供了默认的配置文件config.def.h<br>config.h是用户的配置文件<br>运行<em>dwm</em>的过程和编译.c文件的过程一样<br><code>sudo make</code><br><code>sudo make clean install</code><br>这是我的配置文件<a target="_blank" rel="noopener" href="https://github.com/Zerrari/dwm">config</a></p>
-<h3 id="windows-key"><a href="#windows-key" class="headerlink" title="windows key"></a>windows key</h3><p>这是一个修饰键，通过和其他按键的组合可以操作窗口的布局<br>默认的修饰键是Mod1(Alt)<br>如果想修改修饰键<br>找到config.h中的x<br><code>#define MODKEY Mod1Mask</code><br>修改Mod1Mask即可，Windows键为Mod4Mask</p>
-<h3 id="layouts"><a href="#layouts" class="headerlink" title="layouts"></a>layouts</h3><p><em>dwm</em>分为三种窗口布局<br>可以通过不同的按键来切换不同的窗口布局</p>
+          <h1 id="My-Archlinux"><a href="#My-Archlinux" class="headerlink" title="My Archlinux"></a>My Archlinux</h1><h2 id="installation"><a href="#installation" class="headerlink" title="installation"></a>installation</h2><p>参照<a target="_blank" rel="noopener" href="https://wiki.archlinux.org/index.php/Installation_guide_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)">Archlinux</a>官网的安装教程</p>
+<h3 id="issues-in-installation"><a href="#issues-in-installation" class="headerlink" title="issues in installation"></a>issues in installation</h3><h4 id="安装重启前一定要安装好网络连接工具"><a href="#安装重启前一定要安装好网络连接工具" class="headerlink" title="安装重启前一定要安装好网络连接工具"></a>安装重启前一定要安装好网络连接工具</h4><p>这里我安装的是networkmanager,附带有图形界面的网络管理器<em>nmtui</em></p>
+<h4 id="解除rfkill的无线网卡禁用"><a href="#解除rfkill的无线网卡禁用" class="headerlink" title="解除rfkill的无线网卡禁用"></a>解除rfkill的无线网卡禁用</h4><p><code>rfkill list</code><br>如果soft blocked是no的状态<br><code>rfkill unblock wifi</code></p>
+<h2 id="tools"><a href="#tools" class="headerlink" title="tools"></a>tools</h2><p>用pacman命令安装工具<br><code>sudo pacman -S dwm emacs st dmen  networkmanager</code></p>
 <ul>
-<li>tiled     []=     [Win] + t</li>
-<li>floating  &gt;&lt;&gt;     [Win] + f</li>
-<li>monocle   [m]     [Win] + m</li>
+<li>dwm<br>一个简洁的窗口管理器</li>
+<li>emacs<br>一个强大的代码编辑器s</li>
+<li>st<br>一个快速的终端模拟器</li>
+<li>dmenu<br>一个快速的程序启动器</li>
+<li>networkmanager<br>网络管理器</li>
+<li>fish<br>一个开箱即用的shell</li>
 </ul>
-<h3 id="windows-model"><a href="#windows-model" class="headerlink" title="windows model"></a>windows model</h3><p>一个windows分为master和stack区域，<br>打开一个程序，会将原本存在的程序放到stack区域中<br>[Win]+[Enter]切换master和stack中的程序 </p>
-<h3 id="keybindings"><a href="#keybindings" class="headerlink" title="keybindings"></a>keybindings</h3><table>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://zerrari.github.io/2021/01/28/Emacs-Hexo/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zerrari">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zerrari">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/01/28/Emacs-Hexo/" class="post-title-link" itemprop="url">Emacs+Hexo</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-01-28 13:20:58 / Modified: 18:55:41" itemprop="dateCreated datePublished" datetime="2021-01-28T13:20:58+08:00">2021-01-28</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Emacs/" itemprop="url" rel="index"><span itemprop="name">Emacs</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Emacs-Hexo-打造高效博客写作方案"><a href="#Emacs-Hexo-打造高效博客写作方案" class="headerlink" title="Emacs + Hexo 打造高效博客写作方案"></a>Emacs + Hexo 打造高效博客写作方案</h1><h2 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h2><h3 id="什么是Hexo"><a href="#什么是Hexo" class="headerlink" title="什么是Hexo"></a>什么是Hexo</h3><p><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo</a>是一个快速、简洁且高效的博客框架。</p>
+<h3 id="安装指南"><a href="#安装指南" class="headerlink" title="安装指南"></a>安装指南</h3><ul>
+<li>官网的文档十分的详细，并且有简体中文版本。参考官网即可。</li>
+</ul>
+<h2 id="Emacs"><a href="#Emacs" class="headerlink" title="Emacs"></a>Emacs</h2><h3 id="什么是Emacs"><a href="#什么是Emacs" class="headerlink" title="什么是Emacs"></a>什么是Emacs</h3><p>Emacs是一个功能强大的编辑器。<br>本文通过一个Emacs插件来完成在Emacs上利用Hexo书写博客。</p>
+<h3 id="安装指南-1"><a href="#安装指南-1" class="headerlink" title="安装指南"></a>安装指南</h3><p><a target="_blank" rel="noopener" href="https://github.com/kuanyui/hexo.el">hexo.el</a></p>
+<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p>最后，通过，一系列快捷键就可以在Emacs中完成Hexo博客的相关操作</p>
+<table>
 <thead>
 <tr>
 <th>command</th>
@@ -232,85 +303,74 @@
 </tr>
 </thead>
 <tbody><tr>
-<td>[Win]+[Enter]</td>
-<td>launch terminal</td>
+<td>M-p b</td>
+<td>start hexo</td>
 </tr>
 <tr>
-<td>[Win]+s</td>
-<td>launch dwm</td>
+<td>M-p RET</td>
+<td>open file</td>
 </tr>
 <tr>
-<td>[Win]+j/[Win]+k</td>
-<td>move to another client</td>
+<td>M-p SPC</td>
+<td>show article info</td>
 </tr>
 <tr>
-<td>[Win]+[Shift]+2</td>
-<td>move terminal to tag 2</td>
+<td>M-p D</td>
+<td>delete file</td>
 </tr>
 <tr>
-<td>[Win]+[Shift]+q</td>
-<td>quit dwm</td>
+<td>M-p N</td>
+<td>new file</td>
 </tr>
 <tr>
-<td>[Win]+[h]/[Win]+l</td>
-<td>set the width of stack area</td>
+<td>M-p M a</td>
+<td>add tags</td>
 </tr>
 <tr>
-<td>[win]+[c]/[Win]+v</td>
-<td>set the layouts</td>
+<td>M-p M r</td>
+<td>remove tags</td>
 </tr>
 <tr>
-<td>[Win]+q</td>
-<td>quit the client</td>
+<td>M-p m</td>
+<td>mark</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
+<td>M-p u</td>
+<td>unmark</td>
+</tr>
+<tr>
+<td>M-p s r</td>
+<td>run server</td>
+</tr>
+<tr>
+<td>M-p s s</td>
+<td>stop server</td>
+</tr>
+<tr>
+<td>M-p s d</td>
+<td>deploy</td>
 </tr>
 </tbody></table>
-<h3 id="status-bar"><a href="#status-bar" class="headerlink" title="status bar"></a>status bar</h3><p>状态栏是一个可以显示系统一些信息的地方<br>dwm提供了两种配置状态栏的方法</p>
-<ul>
-<li>通过脚本文件即script</li>
-<li>通过编写的程序，如slstatus<br>让状态栏显示信息的命令十分简单<br><code>xsetroot -name $status</code></li>
-</ul>
-<h4 id="slstatus"><a href="#slstatus" class="headerlink" title="slstatus"></a>slstatus</h4><p>我使用了<a target="_blank" rel="noopener" href="http://git.suckless.org/slstatus/">slstatus</a>来配置我的状态栏<br>这是我的配置文件<a target="_blank" rel="noopener" href="https://github.com/Zerrari/slstatus">config</a></p>
-<h2 id="patches"><a href="#patches" class="headerlink" title="patches"></a>patches</h2><p>可以通过打补丁的方法来增加<em>dwm</em>的不同特性<br>补丁是一个.diff文件<br>打补丁的命令<br><code>patch &lt; 补丁文件名</code></p>
-<p>本人使用的补丁：</p>
-<ul>
-<li>dwm-colorbar-6.2.diff </li>
-</ul>
 
+      
     </div>
 
     
     
     
-
       <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/Tools/" rel="tag"># Tools</a>
-          </div>
-
-        
-
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2021/01/28/My-Archlinux/" rel="prev" title="My Archlinux">
-      <i class="fa fa-chevron-left"></i> My Archlinux
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/2021/02/01/all-the-icons/" rel="next" title="mac下安装all-the-icons">
-      mac下安装all-the-icons <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
+        <div class="post-eof"></div>
       </footer>
-    
   </article>
   
   
   
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
 
 
 
@@ -362,7 +422,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#dwm"><span class="nav-number">1.</span> <span class="nav-text">dwm</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#introduction"><span class="nav-number">2.</span> <span class="nav-text">introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#config"><span class="nav-number">2.1.</span> <span class="nav-text">config</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#windows-key"><span class="nav-number">2.1.1.</span> <span class="nav-text">windows key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#layouts"><span class="nav-number">2.1.2.</span> <span class="nav-text">layouts</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#windows-model"><span class="nav-number">2.1.3.</span> <span class="nav-text">windows model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#keybindings"><span class="nav-number">2.1.4.</span> <span class="nav-text">keybindings</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#status-bar"><span class="nav-number">2.1.5.</span> <span class="nav-text">status bar</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#slstatus"><span class="nav-number">2.1.5.1.</span> <span class="nav-text">slstatus</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#patches"><span class="nav-number">2.2.</span> <span class="nav-text">patches</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

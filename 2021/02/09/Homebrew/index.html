@@ -20,20 +20,20 @@
     var CONFIG = {"hostname":"zerrari.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="GitintroductionGit是分布式版本控制系统 文件的三种状态 committed staged modified  config每台电脑上有三个config文件  &#x2F;etc&#x2F;gitconfig ~&#x2F;.gitconfig 当前仓库中的config文件(.git&#x2F;config)每一个级别覆盖上一个级别的配置  用户信息在命令行下输入下列命令来配置用户信息$ git config --glo">
+  <meta name="description" content="Homebrewintroduction">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Git(一)">
-<meta property="og:url" content="https://zerrari.github.io/2021/02/08/Git-%E4%B8%80/index.html">
+<meta property="og:title" content="Homebrew">
+<meta property="og:url" content="https://zerrari.github.io/2021/02/09/Homebrew/index.html">
 <meta property="og:site_name" content="Zerrari">
-<meta property="og:description" content="GitintroductionGit是分布式版本控制系统 文件的三种状态 committed staged modified  config每台电脑上有三个config文件  &#x2F;etc&#x2F;gitconfig ~&#x2F;.gitconfig 当前仓库中的config文件(.git&#x2F;config)每一个级别覆盖上一个级别的配置  用户信息在命令行下输入下列命令来配置用户信息$ git config --glo">
+<meta property="og:description" content="Homebrewintroduction">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-02-08T05:08:45.000Z">
-<meta property="article:modified_time" content="2021-02-08T07:08:11.284Z">
+<meta property="article:published_time" content="2021-02-09T05:13:03.000Z">
+<meta property="article:modified_time" content="2021-02-09T12:17:54.872Z">
 <meta property="article:author" content="Zerrari">
 <meta property="article:tag" content="Tools">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://zerrari.github.io/2021/02/08/Git-%E4%B8%80/">
+<link rel="canonical" href="https://zerrari.github.io/2021/02/09/Homebrew/">
 
 
 <script id="page-configurations">
@@ -46,7 +46,7 @@
   };
 </script>
 
-  <title>Git(一) | Zerrari</title>
+  <title>Homebrew | Zerrari</title>
   
 
 
@@ -161,7 +161,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://zerrari.github.io/2021/02/08/Git-%E4%B8%80/">
+    <link itemprop="mainEntityOfPage" href="https://zerrari.github.io/2021/02/09/Homebrew/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -174,7 +174,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Git(一)
+          Homebrew
         </h1>
 
         <div class="post-meta">
@@ -185,7 +185,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-02-08 13:08:45 / Modified: 15:08:11" itemprop="dateCreated datePublished" datetime="2021-02-08T13:08:45+08:00">2021-02-08</time>
+              <time title="Created: 2021-02-09 13:13:03 / Modified: 20:17:54" itemprop="dateCreated datePublished" datetime="2021-02-09T13:13:03+08:00">2021-02-09</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -193,7 +193,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Learning/" itemprop="url" rel="index"><span itemprop="name">Learning</span></a>
+                  <a href="/categories/Macos/" itemprop="url" rel="index"><span itemprop="name">Macos</span></a>
                 </span>
             </span>
 
@@ -208,44 +208,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h1><h1 id="introduction"><a href="#introduction" class="headerlink" title="introduction"></a>introduction</h1><p>Git是分布式版本控制系统</p>
-<h2 id="文件的三种状态"><a href="#文件的三种状态" class="headerlink" title="文件的三种状态"></a>文件的三种状态</h2><ul>
-<li>committed</li>
-<li>staged</li>
-<li>modified</li>
-</ul>
-<h2 id="config"><a href="#config" class="headerlink" title="config"></a>config</h2><p>每台电脑上有三个config文件</p>
-<ul>
-<li>/etc/gitconfig</li>
-<li>~/.gitconfig</li>
-<li>当前仓库中的config文件(.git/config)<br>每一个级别覆盖上一个级别的配置</li>
-</ul>
-<h3 id="用户信息"><a href="#用户信息" class="headerlink" title="用户信息"></a>用户信息</h3><p>在命令行下输入下列命令来配置用户信息<br><code>$ git config --global user.name &#39;xxx&#39;</code><br><code>$ git config --global user.email xxx@example.com</code></p>
-<h3 id="配置默认编辑器"><a href="#配置默认编辑器" class="headerlink" title="配置默认编辑器"></a>配置默认编辑器</h3><p><code>$ git config --global core.editor vim</code></p>
-<h3 id="检查配置信息"><a href="#检查配置信息" class="headerlink" title="检查配置信息"></a>检查配置信息</h3><p><code>$ git config --list</code></p>
-<p>通过<code>git config &lt;key&gt;</code>检查某一项配置</p>
-<h3 id="获取帮助"><a href="#获取帮助" class="headerlink" title="获取帮助"></a>获取帮助</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git help &lt;verb&gt;</span><br><span class="line">$ git &lt;verb&gt; --help</span><br><span class="line">$ man git-&lt;verb&gt;</span><br></pre></td></tr></table></figure>
-<p>例如，获取config的帮助<code>git config --help</code></p>
-<h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><h2 id="获取仓库"><a href="#获取仓库" class="headerlink" title="获取仓库"></a>获取仓库</h2><ul>
-<li><p>新建一个仓库<br>进入该项目的目录，执行<code>git init</code>操作，<br>会在该目录中产生一个<code>.git</code>文件夹<br><code>git add .</code><br>追踪指定文件<br><code>git commit -m &#39;the first version&#39;</code><br>提交文件</p>
-</li>
-<li><p>克隆现有仓库<br>克隆命令的格式为<code>git clone [url]</code><br><code>git clone [url] name</code><br>将仓库克隆到本地并放到以<code>name</code>命名的文件夹中</p>
-</li>
-</ul>
-<h2 id="记录更新"><a href="#记录更新" class="headerlink" title="记录更新"></a>记录更新</h2><ul>
-<li>检查文件状态<br><code>git status</code></li>
-<li>跟踪新文件<br><code>git add</code></li>
-<li>状态简览<br><code>git status -s</code><br>输出更紧凑的文件状态<br><code>??</code>代表未追踪文件<br><code>A</code>代表暂存区的文件<br><code> M</code>代表文件修改了但是没放到暂存区<br><code>M </code>代表文件修改了放到了暂存区</li>
-<li>忽略文件<br>创建一个名为<code>.gitignore</code><br>以#开头的行会被忽略</li>
-<li>查看修改<br><code>git diff</code><br>查看尚未暂存的文件的修改<br><code>git diff -cached/git diff --staged</code><br>查看暂存文件的修改</li>
-<li>提交更新<br><code>git commit -m &#39;string&#39;</code><br><code>git commit</code>会启动编辑器，输入提交说明</li>
-<li>跳过使用暂存区域<br><code>git commit -a</code></li>
-<li>重命名文件<br><code>git mv name1.file name2.file</code></li>
-</ul>
-<h3 id="gitignore"><a href="#gitignore" class="headerlink" title=".gitignore"></a>.gitignore</h3><p>github上有一个十分详细的<code>.gitignore</code>的<a target="_blank" rel="noopener" href="https://github.com/github/gitignore">仓库</a></p>
-<h3 id="移除文件"><a href="#移除文件" class="headerlink" title="移除文件"></a>移除文件</h3><p><code>git rm</code><br>在已跟踪文件中删除指定文件，并从工作目录中删除</p>
-<p><code>git rm --cached</code><br>从git仓库中删除，但是在工作目录中保留</p>
-
+        <h1 id="Homebrew"><a href="#Homebrew" class="headerlink" title="Homebrew"></a>Homebrew</h1><h1 id="introduction"><a href="#introduction" class="headerlink" title="introduction"></a>introduction</h1>
     </div>
 
     
@@ -263,12 +226,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/02/05/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%9B%9B/" rel="prev" title="python学习笔记(四)">
-      <i class="fa fa-chevron-left"></i> python学习笔记(四)
+    <a href="/2021/02/08/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%BA%94/" rel="prev" title="python学习笔记-五">
+      <i class="fa fa-chevron-left"></i> python学习笔记-五
     </a></div>
       <div class="post-nav-item">
-    <a href="/2021/02/08/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%BA%94/" rel="next" title="python学习笔记-五">
-      python学习笔记-五 <i class="fa fa-chevron-right"></i>
+    <a href="/2021/02/09/Git-%E4%BA%8C/" rel="next" title="Git-二">
+      Git-二 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -328,7 +291,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Git"><span class="nav-number">1.</span> <span class="nav-text">Git</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#introduction"><span class="nav-number">2.</span> <span class="nav-text">introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E7%9A%84%E4%B8%89%E7%A7%8D%E7%8A%B6%E6%80%81"><span class="nav-number">2.1.</span> <span class="nav-text">文件的三种状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#config"><span class="nav-number">2.2.</span> <span class="nav-text">config</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF"><span class="nav-number">2.2.1.</span> <span class="nav-text">用户信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E9%BB%98%E8%AE%A4%E7%BC%96%E8%BE%91%E5%99%A8"><span class="nav-number">2.2.2.</span> <span class="nav-text">配置默认编辑器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A3%80%E6%9F%A5%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF"><span class="nav-number">2.2.3.</span> <span class="nav-text">检查配置信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%B8%AE%E5%8A%A9"><span class="nav-number">2.2.4.</span> <span class="nav-text">获取帮助</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80"><span class="nav-number">3.</span> <span class="nav-text">基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E4%BB%93%E5%BA%93"><span class="nav-number">3.1.</span> <span class="nav-text">获取仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%B0%E5%BD%95%E6%9B%B4%E6%96%B0"><span class="nav-number">3.2.</span> <span class="nav-text">记录更新</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#gitignore"><span class="nav-number">3.2.1.</span> <span class="nav-text">.gitignore</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A7%BB%E9%99%A4%E6%96%87%E4%BB%B6"><span class="nav-number">3.2.2.</span> <span class="nav-text">移除文件</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Homebrew"><span class="nav-number">1.</span> <span class="nav-text">Homebrew</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#introduction"><span class="nav-number">2.</span> <span class="nav-text">introduction</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
