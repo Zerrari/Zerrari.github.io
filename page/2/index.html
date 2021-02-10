@@ -155,6 +155,144 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://zerrari.github.io/2021/01/28/dwm%E9%85%8D%E7%BD%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zerrari">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zerrari">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/01/28/dwm%E9%85%8D%E7%BD%AE/" class="post-title-link" itemprop="url">dwm配置</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-01-28 19:30:21" itemprop="dateCreated datePublished" datetime="2021-01-28T19:30:21+08:00">2021-01-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-01-31 14:47:07" itemprop="dateModified" datetime="2021-01-31T14:47:07+08:00">2021-01-31</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Archlinux/" itemprop="url" rel="index"><span itemprop="name">Archlinux</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="dwm"><a href="#dwm" class="headerlink" title="dwm"></a>dwm</h1><h1 id="introduction"><a href="#introduction" class="headerlink" title="introduction"></a>introduction</h1><p><a target="_blank" rel="noopener" href="http://dwm.suckless.org/">dwm</a>是一个简单易用的窗口管理器</p>
+<h2 id="config"><a href="#config" class="headerlink" title="config"></a>config</h2><p><em>dwm</em>由C语言编写而成<br>修改配置文件是通过修改头文件(即.h文件)来完成的<br>dwm已提供了默认的配置文件config.def.h<br>config.h是用户的配置文件<br>运行<em>dwm</em>的过程和编译.c文件的过程一样<br><code>sudo make</code><br><code>sudo make clean install</code><br>这是我的配置文件<a target="_blank" rel="noopener" href="https://github.com/Zerrari/dwm">config</a></p>
+<h3 id="windows-key"><a href="#windows-key" class="headerlink" title="windows key"></a>windows key</h3><p>这是一个修饰键，通过和其他按键的组合可以操作窗口的布局<br>默认的修饰键是Mod1(Alt)<br>如果想修改修饰键<br>找到config.h中的x<br><code>#define MODKEY Mod1Mask</code><br>修改Mod1Mask即可，Windows键为Mod4Mask</p>
+<h3 id="layouts"><a href="#layouts" class="headerlink" title="layouts"></a>layouts</h3><p><em>dwm</em>分为三种窗口布局<br>可以通过不同的按键来切换不同的窗口布局</p>
+<ul>
+<li>tiled     []=     [Win] + t</li>
+<li>floating  &gt;&lt;&gt;     [Win] + f</li>
+<li>monocle   [m]     [Win] + m</li>
+</ul>
+<h3 id="windows-model"><a href="#windows-model" class="headerlink" title="windows model"></a>windows model</h3><p>一个windows分为master和stack区域，<br>打开一个程序，会将原本存在的程序放到stack区域中<br>[Win]+[Enter]切换master和stack中的程序 </p>
+<h3 id="keybindings"><a href="#keybindings" class="headerlink" title="keybindings"></a>keybindings</h3><table>
+<thead>
+<tr>
+<th>command</th>
+<th>function</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>[Win]+[Enter]</td>
+<td>launch terminal</td>
+</tr>
+<tr>
+<td>[Win]+s</td>
+<td>launch dwm</td>
+</tr>
+<tr>
+<td>[Win]+j/[Win]+k</td>
+<td>move to another client</td>
+</tr>
+<tr>
+<td>[Win]+[Shift]+2</td>
+<td>move terminal to tag 2</td>
+</tr>
+<tr>
+<td>[Win]+[Shift]+q</td>
+<td>quit dwm</td>
+</tr>
+<tr>
+<td>[Win]+[h]/[Win]+l</td>
+<td>set the width of stack area</td>
+</tr>
+<tr>
+<td>[win]+[c]/[Win]+v</td>
+<td>set the layouts</td>
+</tr>
+<tr>
+<td>[Win]+q</td>
+<td>quit the client</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="status-bar"><a href="#status-bar" class="headerlink" title="status bar"></a>status bar</h3><p>状态栏是一个可以显示系统一些信息的地方<br>dwm提供了两种配置状态栏的方法</p>
+<ul>
+<li>通过脚本文件即script</li>
+<li>通过编写的程序，如slstatus<br>让状态栏显示信息的命令十分简单<br><code>xsetroot -name $status</code></li>
+</ul>
+<h4 id="slstatus"><a href="#slstatus" class="headerlink" title="slstatus"></a>slstatus</h4><p>我使用了<a target="_blank" rel="noopener" href="http://git.suckless.org/slstatus/">slstatus</a>来配置我的状态栏<br>这是我的配置文件<a target="_blank" rel="noopener" href="https://github.com/Zerrari/slstatus">config</a></p>
+<h2 id="patches"><a href="#patches" class="headerlink" title="patches"></a>patches</h2><p>可以通过打补丁的方法来增加<em>dwm</em>的不同特性<br>补丁是一个.diff文件<br>打补丁的命令<br><code>patch &lt; 补丁文件名</code></p>
+<p>本人使用的补丁：</p>
+<ul>
+<li>dwm-colorbar-6.2.diff </li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://zerrari.github.io/2021/01/28/My-Archlinux/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -435,7 +573,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
