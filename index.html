@@ -155,6 +155,113 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://zerrari.github.io/2021/02/14/python%E7%88%AC%E8%99%AB%E5%AE%9E%E8%B7%B5-%E5%9B%BE%E7%89%87%E4%B8%8B%E8%BD%BD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zerrari">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zerrari">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/02/14/python%E7%88%AC%E8%99%AB%E5%AE%9E%E8%B7%B5-%E5%9B%BE%E7%89%87%E4%B8%8B%E8%BD%BD/" class="post-title-link" itemprop="url">python爬虫实践-图片下载</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-02-14 14:24:54 / Modified: 15:59:50" itemprop="dateCreated datePublished" datetime="2021-02-14T14:24:54+08:00">2021-02-14</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="python-crawler"><a href="#python-crawler" class="headerlink" title="python crawler"></a>python crawler</h1><h1 id="爬虫实践"><a href="#爬虫实践" class="headerlink" title="爬虫实践"></a>爬虫实践</h1><p><a target="_blank" rel="noopener" href='https://github.com/Zerrari/python-crawler-photos'>代码地址</a></p>
+<h2 id="库"><a href="#库" class="headerlink" title="库"></a>库</h2><ul>
+<li><code>Beautifulsoup</code></li>
+<li><code>Requests</code></li>
+<li><code>os</code></li>
+</ul>
+<h3 id="Requests"><a href="#Requests" class="headerlink" title="Requests"></a>Requests</h3><p><code>Requests</code>是一个python的http库</p>
+<p>尝试获取某个页面<br><code>r=requests.get(&lt;url&gt;)</code><br>建立了一个名为<code>r</code>的<code>Response</code>对象</p>
+<p>发送一个<code>post</code>请求<br><code>r = requests.post(&#39;http://httpbin.org/post&#39;, data = &#123;&#39;key&#39;:&#39;value&#39;&#125;)</code></p>
+<p>传递url参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">payload &#x3D; &#123;&#39;key1&#39;: &#39;value1&#39;, &#39;key2&#39;: &#39;value2&#39;&#125;</span><br><span class="line">r &#x3D; requests.get(&quot;http:&#x2F;&#x2F;httpbin.org&#x2F;get&quot;, params&#x3D;payload)</span><br></pre></td></tr></table></figure>
+<p>读取响应内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">r.text</span><br><span class="line">r.encoding</span><br></pre></td></tr></table></figure>
+<p>二进制响应内容<br><code>r.content</code></p>
+<p>定制请求头</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">url &#x3D; &#39;https:&#x2F;&#x2F;api.github.com&#x2F;some&#x2F;endpoint&#39;</span><br><span class="line">headers &#x3D; &#123;&#39;user-agent&#39;: &#39;my-app&#x2F;0.0.1&#39;&#125;</span><br><span class="line">r &#x3D; requests.get(url, headers&#x3D;headers)</span><br></pre></td></tr></table></figure>
+<p>响应状态码<br><code>r.status_code</code></p>
+<h3 id="Beautifulsoup"><a href="#Beautifulsoup" class="headerlink" title="Beautifulsoup"></a>Beautifulsoup</h3><p>这是一个从<code>HTML</code>文件中提取数据的<code>python</code>库</p>
+<p>导入<br><code>from bs4 import BeautifulSoup</code></p>
+<p>建立对象<br><code>soup = BeautifulSoup(html_doc,&#39;lxml&#39;)</code></p>
+<p><code>Beautiful Soup</code>将复杂HTML文档转换成一个复杂的树形结构,<br>每个节点都是<code>Python</code>对象,所有对象可以归纳为4种:</p>
+<ul>
+<li>Tag</li>
+<li>NavigableString </li>
+<li>BeautifulSoup </li>
+<li>Comment</li>
+</ul>
+<h4 id="Tag"><a href="#Tag" class="headerlink" title="Tag"></a>Tag</h4><p><code>Tag</code>对象与<code>HTML</code>中的<code>Tag</code>一样</p>
+<p>获取<code>tag</code>的名字<br><code>tag.name</code></p>
+<p><code>Tag</code>的属性操作方法与字典一致<br><code>tag[&#39;class&#39;]</code><br>tag的属性可以被添加,删除或修改</p>
+<h4 id="遍历文档树"><a href="#遍历文档树" class="headerlink" title="遍历文档树"></a>遍历文档树</h4><p>得到所有的<code>&lt;a&gt;</code>标签<br><code>soup.find_all(&#39;a&#39;)</code></p>
+<p>得到所有的<code>&lt;a&gt;</code>标签，并且<code>class=&#39;sister&#39;</code>的标签<br><code>soup.find_all(&quot;a&quot;, class_=&quot;sister&quot;)</code></p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p><a target="_blank" rel="noopener" href="http://www.netbian.com/">目标网站</a></p>
+<p>建立网页的对象<br>并且提取图片的地址</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">def ana_web(url,header):</span><br><span class="line">    response &#x3D; requests.get(url,headers&#x3D;header)</span><br><span class="line">    response.encoding &#x3D; &#39;gbk&#39;</span><br><span class="line">    soup &#x3D; BeautifulSoup(response.text,&#39;lxml&#39;)</span><br><span class="line">    tags &#x3D; soup.find_all(&#39;img&#39;)</span><br><span class="line">    return tags</span><br></pre></td></tr></table></figure>
+<p>运用<code>os</code>库建立文件夹</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def setDir():</span><br><span class="line">    print(&quot;你正处于的路径：&quot;)</span><br><span class="line">    print(os.path.abspath(&#39;.&#39;))</span><br><span class="line">    now_path &#x3D; os.path.abspath(&#39;.&#39;)</span><br><span class="line">    print(&#39;\n&#39;)</span><br><span class="line">    dir_name &#x3D; input(&#39;请输入你想保存的文件夹名称&#39;)</span><br><span class="line">    os.mkdir(dir_name)</span><br><span class="line">    os.chdir(now_path+&#39;&#x2F;&#39;+dir_name)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>下载图片并且保存到刚刚的文件夹中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">def download_img():</span><br><span class="line">    tags&#x3D;ana_web(target_url,target_header)</span><br><span class="line">    setDir()</span><br><span class="line">    nums &#x3D; 0</span><br><span class="line">    for tag in tags:</span><br><span class="line">        nums &#x3D; nums + 1</span><br><span class="line">        img &#x3D; requests.get(tag[&#39;src&#39;]).content</span><br><span class="line">        with open(str(nums)+&#39;.jpg&#39;,&#39;wb&#39;) as f:</span><br><span class="line">            f.write(img)</span><br><span class="line">            f.close()</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://zerrari.github.io/2021/02/12/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%85%AD/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -989,84 +1096,6 @@ add，pop和remove方法<figure class="highlight plain"><table><tr><td class="gu
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://zerrari.github.io/2021/02/01/all-the-icons/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Zerrari">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Zerrari">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/02/01/all-the-icons/" class="post-title-link" itemprop="url">mac下安装all-the-icons</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-02-01 17:52:57" itemprop="dateCreated datePublished" datetime="2021-02-01T17:52:57+08:00">2021-02-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-02-05 20:03:04" itemprop="dateModified" datetime="2021-02-05T20:03:04+08:00">2021-02-05</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Emacs/" itemprop="url" rel="index"><span itemprop="name">Emacs</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="mac下安装all-the-icons"><a href="#mac下安装all-the-icons" class="headerlink" title="mac下安装all-the-icons"></a>mac下安装all-the-icons</h1><h1 id="all-the-icons"><a href="#all-the-icons" class="headerlink" title="all-the-icons"></a>all-the-icons</h1><p><a target="_blank" rel="noopener" href="https://github.com/domtronn/all-the-icons.el/tree/5fa728399bd6233a82bbfd4f7cb203a1d7ede708">all-the-icons</a>是一个图标字体，用来美化Emacs的界面</p>
-<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><h3 id="Installation-in-Emacs"><a href="#Installation-in-Emacs" class="headerlink" title="Installation in Emacs"></a>Installation in Emacs</h3><p>Type <code>M-x all-the-icons-install-fonts</code><br>不过由于DNS污染的原因，对网站的访问被拒绝，下载不成功</p>
-<p>解决方法：参考<a target="_blank" rel="noopener" href="https://www.cnblogs.com/windyvalley/p/14113509.html">这个链接</a></p>
-<h3 id="Installation-in-terminal"><a href="#Installation-in-terminal" class="headerlink" title="Installation in terminal"></a>Installation in terminal</h3><p>在Terminal中执行<code>fc-cache -f -v</code><br>不过在Mac下并没有安装成功</p>
-<p>解决的方法是：<br>直接将all-the-icons.el克隆到本地<br>然后将字体移动到系统的字体文档中<br>Mac的字体路径是<code>/System/Library/Fonts</code><br>然后又出现了新的问题<em>Operation not permitted</em><br>mac下会有<em>rootless内核保护机制</em>防止用户修改内核文件<br>关闭的方法可参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/jcl314159/article/details/82710452">这篇文章</a><br>最后还要打开Terminal执行<code>sudo mount -uw /</code><br>这样就可以成功安装<em>all-the-icons</em></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1136,7 +1165,7 @@ add，pop和remove方法<figure class="highlight plain"><table><tr><td class="gu
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-count">14</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
