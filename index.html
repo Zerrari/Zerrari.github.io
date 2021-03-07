@@ -155,6 +155,102 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://zerrari.github.io/2021/03/07/Leetcode-47DW/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zerrari">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zerrari">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/07/Leetcode-47DW/" class="post-title-link" itemprop="url">Leetcode 47DW</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-03-07 18:54:22 / Modified: 19:40:19" itemprop="dateCreated datePublished" datetime="2021-03-07T18:54:22+08:00">2021-03-07</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Leetcode-47场双周赛"><a href="#Leetcode-47场双周赛" class="headerlink" title="Leetcode 47场双周赛"></a>Leetcode 47场双周赛</h1><h2 id="Question-1"><a href="#Question-1" class="headerlink" title="Question 1"></a>Question 1</h2><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/find-nearest-point-that-has-the-same-x-or-y-coordinate/">找到最近的有相同X或Y坐标的点</a></p>
+<p>这道题比较容易</p>
+<h2 id="Question-2"><a href="#Question-2" class="headerlink" title="Question 2"></a>Question 2</h2><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/check-if-number-is-a-sum-of-powers-of-three/submissions/"> 判断一个数字是否可以表示成三的幂的和</a></p>
+<h3 id="Method-1"><a href="#Method-1" class="headerlink" title="Method 1"></a>Method 1</h3><p>除三取余法<br>三的幂次方除三取余后除了0和1不会出现其他的数  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">bool checkPowersOfThree(int n)&#123;</span><br><span class="line">    int x &#x3D; 0;</span><br><span class="line">    while (n !&#x3D; 0)</span><br><span class="line">    &#123;</span><br><span class="line">        if (n % 3 &#x3D;&#x3D; 2)</span><br><span class="line">            return false;</span><br><span class="line">        n &#x3D; n &#x2F; 3;</span><br><span class="line">    &#125;</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Method-2"><a href="#Method-2" class="headerlink" title="Method 2"></a>Method 2</h3><p>组成三的幂次方的数必然有比它小的第一个三次幂得数  </p>
+<pre><code>bool checkPowersOfThree(int n)&#123;
+    int max = 1;
+    while (max &lt; 10000000)
+    &#123;
+        max = max * 3;
+    &#125;
+    while (n &gt;= 0)
+    &#123;
+        if (n &gt;= max)
+        &#123;
+            n = n - max;
+            max = max / 3;
+            if (max == 0)
+                break;
+        &#125;
+        else
+            max = max / 3;
+    &#125;
+    if (n == 0 )
+        return true;
+    return false;
+&#125;
+</code></pre>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://zerrari.github.io/2021/02/27/Vimium/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1008,106 +1104,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://zerrari.github.io/2021/02/04/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(%E4%BA%8C)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Zerrari">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Zerrari">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/02/04/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(%E4%BA%8C)/" class="post-title-link" itemprop="url">python学习笔记(二)</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-02-04 19:52:50" itemprop="dateCreated datePublished" datetime="2021-02-04T19:52:50+08:00">2021-02-04</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-02-05 19:12:45" itemprop="dateModified" datetime="2021-02-05T19:12:45+08:00">2021-02-05</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Day2-in-python"><a href="#Day2-in-python" class="headerlink" title="Day2 in python"></a>Day2 in python</h1><h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><h2 id="tuple"><a href="#tuple" class="headerlink" title="tuple"></a>tuple</h2><p>定义一个tuple<br><code>name=(&#39;john&#39;,&#39;mike&#39;,&#39;lisa&#39;)</code><br>定义一个空的tuple<br><code>name=()</code><br>定义只有一个元素的tuple<br>用逗号来防止歧义<br><code>name=(1,)</code></p>
-<h1 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h1><h2 id="条件判断"><a href="#条件判断" class="headerlink" title="条件判断"></a>条件判断</h2><p>非空字符串，非空列表，非零数代表<code>True</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">if x &gt; 5:</span><br><span class="line">	statement</span><br><span class="line">elif x &gt; 10 :</span><br><span class="line">	statement</span><br><span class="line">else :</span><br><span class="line">	statement</span><br></pre></td></tr></table></figure>
-<h2 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h2><h3 id="for-…-in"><a href="#for-…-in" class="headerlink" title="for … in"></a>for … in</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">names&#x3D;[&#39;john&#39;,&#39;mike&#39;,&#39;lisa&#39;]</span><br><span class="line">for name in names :</span><br><span class="line">	print(name)</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">john</span><br><span class="line">mike</span><br><span class="line">lisa</span><br></pre></td></tr></table></figure>
-<h3 id="while"><a href="#while" class="headerlink" title="while"></a>while</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">n&#x3D;1</span><br><span class="line">sum &#x3D; 0</span><br><span class="line">while n&lt;100 :</span><br><span class="line">	sum &#x3D; sum + n</span><br><span class="line">	n &#x3D; n + 1</span><br><span class="line">print(sum)	</span><br></pre></td></tr></table></figure>
-<p><code>4950</code></p>
-<h3 id="break"><a href="#break" class="headerlink" title="break"></a>break</h3><p>中断当前循环</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">n &#x3D; 1</span><br><span class="line">while n &lt;&#x3D; 100:</span><br><span class="line">    if n &gt; 1: </span><br><span class="line">        break</span><br><span class="line">    print(n)</span><br><span class="line">    n &#x3D; n + 1</span><br><span class="line">print(&#39;END&#39;)</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">END</span><br></pre></td></tr></table></figure>
-<h3 id="continue"><a href="#continue" class="headerlink" title="continue"></a>continue</h3><p>直接进入下一个循环，不执行下面的语句</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">n &#x3D; 0</span><br><span class="line">while n &lt; 10:</span><br><span class="line">    n &#x3D; n + 1</span><br><span class="line">    if n % 2 &#x3D;&#x3D; 0:</span><br><span class="line">        continue</span><br><span class="line">    print(n)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">3</span><br><span class="line">5</span><br><span class="line">7</span><br><span class="line">9</span><br></pre></td></tr></table></figure>
-<h1 id="dict-and-set"><a href="#dict-and-set" class="headerlink" title="dict and set"></a>dict and set</h1><h2 id="dict"><a href="#dict" class="headerlink" title="dict"></a>dict</h2><p>dict的对应关系为”key-value”</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">d&#x3D;&#123;&#39;bob&#39;:74,&#39;mike&#39;:86,&#39;john&#39;:90&#125;</span><br><span class="line">d[&#39;bob&#39;]</span><br><span class="line">74</span><br></pre></td></tr></table></figure>
-<h3 id="key"><a href="#key" class="headerlink" title="key"></a>key</h3><p>判断key是否存在</p>
-<ul>
-<li>in<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#39;mike&#39; in d</span><br><span class="line">False</span><br></pre></td></tr></table></figure></li>
-<li>get()<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">d.get(&#39;mike&#39;)</span><br><span class="line">None</span><br><span class="line">d.get(&#39;mike&#39;,-1)</span><br><span class="line">-1</span><br></pre></td></tr></table></figure>
-删除key<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">d.pop(&#39;bob&#39;)</span><br><span class="line">d</span><br><span class="line">&#123;&#39;mike&#39;:86,&#39;john&#39;:90&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="set"><a href="#set" class="headerlink" title="set"></a>set</h2>创建一个set<br>重复元素自动被过滤<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">s&#x3D;set([1,2,3])</span><br><span class="line">s</span><br><span class="line">&#123;1,2,3&#125;</span><br><span class="line">s&#x3D;set([1,2,2,3,4,4])</span><br><span class="line">s</span><br><span class="line">&#123;1,2,3,4&#125;</span><br></pre></td></tr></table></figure>
-add，pop和remove方法<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">s.add(4)</span><br><span class="line">s</span><br><span class="line">&#123;1,2,3,4&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">s.pop()</span><br><span class="line">s</span><br><span class="line">&#123;2,3,4&#125;</span><br><span class="line"></span><br><span class="line">s.remove(4)</span><br><span class="line">s</span><br><span class="line">&#123;2,3&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1177,14 +1173,14 @@ add，pop和remove方法<figure class="highlight plain"><table><tr><td class="gu
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-count">16</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
