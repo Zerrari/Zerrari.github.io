@@ -4,15 +4,24 @@
   <meta charset="utf-8">
   
   
-  <title>Archives: 2021/3 | Zerrari</title>
+  <title>Operating System Learning-2 | Zerrari</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Zerrari">
-<meta property="og:url" content="https://zerrari.github.io/archives/2021/03/index.html">
+  <meta name="description" content="Operating System虚拟内存MMU 内存管理单元  利用查询表来翻译虚拟地址页表  页表是一个页表条目(PTE)的数组 TLB翻译后备缓冲区 由单个的PTE组成的块，来加速地址翻译  处理器产生一个虚拟地址 通过MMU产生PTE(页表条目) 通过TLB查找是否存在该页表条目 若存在，交由MMU直接翻译成物理地址 若不存在，从高速缓存中取出该条目，并放入TLB中  多级页表优点  节省了">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Operating System Learning-2">
+<meta property="og:url" content="https://zerrari.github.io/2021/03/14/Operating-System-Learning-2/index.html">
 <meta property="og:site_name" content="Zerrari">
+<meta property="og:description" content="Operating System虚拟内存MMU 内存管理单元  利用查询表来翻译虚拟地址页表  页表是一个页表条目(PTE)的数组 TLB翻译后备缓冲区 由单个的PTE组成的块，来加速地址翻译  处理器产生一个虚拟地址 通过MMU产生PTE(页表条目) 通过TLB查找是否存在该页表条目 若存在，交由MMU直接翻译成物理地址 若不存在，从高速缓存中取出该条目，并放入TLB中  多级页表优点  节省了">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://zerrari.github.io/2021/03/14/images/%E8%99%9A%E6%8B%9F%E5%AF%BB%E5%9D%80%E7%B3%BB%E7%BB%9F.png">
+<meta property="og:image" content="https://zerrari.github.io/2021/03/14/images/1.png">
+<meta property="og:image" content="https://zerrari.github.io/2021/03/14/images/TLB.png">
+<meta property="article:published_time" content="2021-03-14T11:48:46.000Z">
+<meta property="article:modified_time" content="2021-03-14T12:51:48.948Z">
 <meta property="article:author" content="Zerrari">
+<meta property="article:tag" content="Learning">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zerrari.github.io/2021/03/14/images/%E8%99%9A%E6%8B%9F%E5%AF%BB%E5%9D%80%E7%B3%BB%E7%BB%9F.png">
   
     <link rel="alternate" href="/atom.xml" title="Zerrari" type="application/atom+xml">
   
@@ -69,77 +78,78 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2021/03/14/Operating-System-Learning-2/" class="archive-article-date">
-  <time class="dt-published" datetime="2021-03-14T11:48:46.000Z" itemprop="datePublished">Mar 14</time>
+        <section id="main"><article id="post-Operating-System-Learning-2" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/03/14/Operating-System-Learning-2/" class="article-date">
+  <time class="dt-published" datetime="2021-03-14T11:48:46.000Z" itemprop="datePublished">2021-03-14</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/OS/">OS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/03/14/Operating-System-Learning-2/">Operating System Learning-2</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      Operating System Learning-2
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2021/03/13/Operating-System-Learning/" class="archive-article-date">
-  <time class="dt-published" datetime="2021-03-13T11:32:12.000Z" itemprop="datePublished">Mar 13</time>
-</a>
+    <div class="e-content article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/03/13/Operating-System-Learning/">Operating System Learning</a>
-    </h1>
-  
+        <h1 id="Operating-System"><a href="#Operating-System" class="headerlink" title="Operating System"></a>Operating System</h1><h2 id="虚拟内存"><a href="#虚拟内存" class="headerlink" title="虚拟内存"></a>虚拟内存</h2><p><img src="../images/%E8%99%9A%E6%8B%9F%E5%AF%BB%E5%9D%80%E7%B3%BB%E7%BB%9F.png" alt="虚拟内存"><br><strong>MMU</strong> 内存管理单元</p>
+<ul>
+<li>利用查询表来翻译虚拟地址<h2 id="页表"><a href="#页表" class="headerlink" title="页表"></a>页表</h2><img src="../images/1.png" alt="页表"></li>
+</ul>
+<p><strong>页表</strong>是一个页表条目(PTE)的数组</p>
+<h3 id="TLB"><a href="#TLB" class="headerlink" title="TLB"></a>TLB</h3><p><strong>翻译后备缓冲区</strong></p>
+<p>由单个的PTE组成的块，来加速地址翻译<br><img src="../images/TLB.png" alt="TLB"></p>
+<ol>
+<li>处理器产生一个虚拟地址</li>
+<li>通过<strong>MMU</strong>产生<strong>PTE</strong>(页表条目)</li>
+<li>通过<strong>TLB</strong>查找是否存在该页表条目</li>
+<li>若存在，交由<strong>MMU</strong>直接翻译成物理地址</li>
+<li>若不存在，从高速缓存中取出该条目，并放入<strong>TLB</strong>中</li>
+</ol>
+<h3 id="多级页表"><a href="#多级页表" class="headerlink" title="多级页表"></a>多级页表</h3><p>优点</p>
+<ul>
+<li><p>节省了页表的产生空间</p>
+<p>  如果一级页表中的某个页表条目为空，该条目的二级页表不存在</p>
+</li>
+</ul>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2021/03/07/Leetcode-47DW/" class="archive-article-date">
-  <time class="dt-published" datetime="2021-03-07T10:54:22.000Z" itemprop="datePublished">Mar 7</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/03/07/Leetcode-47DW/">Leetcode 47DW</a>
-    </h1>
-  
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://zerrari.github.io/2021/03/14/Operating-System-Learning-2/" data-id="ckm95qn6q000ljefzhakf05dc" data-title="Operating System Learning-2" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Learning/" rel="tag">Learning</a></li></ul>
 
-    </header>
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2021/03/13/Operating-System-Learning/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Operating System Learning</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
 
 
 </section>

@@ -71,6 +71,70 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Operating-System-Learning-2" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/03/14/Operating-System-Learning-2/" class="article-date">
+  <time class="dt-published" datetime="2021-03-14T11:48:46.000Z" itemprop="datePublished">2021-03-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/OS/">OS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/03/14/Operating-System-Learning-2/">Operating System Learning-2</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="Operating-System"><a href="#Operating-System" class="headerlink" title="Operating System"></a>Operating System</h1><h2 id="虚拟内存"><a href="#虚拟内存" class="headerlink" title="虚拟内存"></a>虚拟内存</h2><p><img src="../images/%E8%99%9A%E6%8B%9F%E5%AF%BB%E5%9D%80%E7%B3%BB%E7%BB%9F.png" alt="虚拟内存"><br><strong>MMU</strong> 内存管理单元</p>
+<ul>
+<li>利用查询表来翻译虚拟地址<h2 id="页表"><a href="#页表" class="headerlink" title="页表"></a>页表</h2><img src="../images/1.png" alt="页表"></li>
+</ul>
+<p><strong>页表</strong>是一个页表条目(PTE)的数组</p>
+<h3 id="TLB"><a href="#TLB" class="headerlink" title="TLB"></a>TLB</h3><p><strong>翻译后备缓冲区</strong></p>
+<p>由单个的PTE组成的块，来加速地址翻译<br><img src="../images/TLB.png" alt="TLB"></p>
+<ol>
+<li>处理器产生一个虚拟地址</li>
+<li>通过<strong>MMU</strong>产生<strong>PTE</strong>(页表条目)</li>
+<li>通过<strong>TLB</strong>查找是否存在该页表条目</li>
+<li>若存在，交由<strong>MMU</strong>直接翻译成物理地址</li>
+<li>若不存在，从高速缓存中取出该条目，并放入<strong>TLB</strong>中</li>
+</ol>
+<h3 id="多级页表"><a href="#多级页表" class="headerlink" title="多级页表"></a>多级页表</h3><p>优点</p>
+<ul>
+<li><p>节省了页表的产生空间</p>
+<p>  如果一级页表中的某个页表条目为空，该条目的二级页表不存在</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://zerrari.github.io/2021/03/14/Operating-System-Learning-2/" data-id="ckm95qn6q000ljefzhakf05dc" data-title="Operating System Learning-2" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Learning/" rel="tag">Learning</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-Operating-System-Learning" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/03/13/Operating-System-Learning/" class="article-date">
@@ -150,7 +214,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://zerrari.github.io/2021/03/13/Operating-System-Learning/" data-id="ckm7pxn9r000e61fz33qb02ct" data-title="Operating System Learning" class="article-share-link">Share</a>
+      <a data-url="https://zerrari.github.io/2021/03/13/Operating-System-Learning/" data-id="ckm95qn6s000pjefz9wx1bs9v" data-title="Operating System Learning" class="article-share-link">Share</a>
       
       
       
@@ -223,7 +287,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://zerrari.github.io/2021/03/07/Leetcode-47DW/" data-id="ckm7pxn9p000c61fzbg26clx6" data-title="Leetcode 47DW" class="article-share-link">Share</a>
+      <a data-url="https://zerrari.github.io/2021/03/07/Leetcode-47DW/" data-id="ckm95qn6n000fjefzaduwbied" data-title="Leetcode 47DW" class="article-share-link">Share</a>
       
       
       
@@ -298,7 +362,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://zerrari.github.io/2021/02/27/Vimium/" data-id="ckm7pxn9t000j61fzelfp2nt4" data-title="Vimium" class="article-share-link">Share</a>
+      <a data-url="https://zerrari.github.io/2021/02/27/Vimium/" data-id="ckm95qn6r000ojefz2fr88t8u" data-title="Vimium" class="article-share-link">Share</a>
       
       
       
@@ -382,7 +446,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://zerrari.github.io/2021/02/14/python%E7%88%AC%E8%99%AB%E5%AE%9E%E8%B7%B5-%E5%9B%BE%E7%89%87%E4%B8%8B%E8%BD%BD/" data-id="ckm7pxna9001c61fza3vd08ni" data-title="python爬虫实践-图片下载" class="article-share-link">Share</a>
+      <a data-url="https://zerrari.github.io/2021/02/14/python%E7%88%AC%E8%99%AB%E5%AE%9E%E8%B7%B5-%E5%9B%BE%E7%89%87%E4%B8%8B%E8%BD%BD/" data-id="ckm95qn78001ljefzeppaa2vz" data-title="python爬虫实践-图片下载" class="article-share-link">Share</a>
       
       
       
@@ -442,7 +506,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://zerrari.github.io/2021/02/12/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%85%AD/" data-id="ckm7pxna7001861fzhld1h4u4" data-title="python学习笔记-六" class="article-share-link">Share</a>
+      <a data-url="https://zerrari.github.io/2021/02/12/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%85%AD/" data-id="ckm95qn77001hjefzfkcx41nd" data-title="python学习笔记-六" class="article-share-link">Share</a>
       
       
       
@@ -494,7 +558,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://zerrari.github.io/2021/02/10/Git-%E4%B8%89/" data-id="ckm7pxn9j000661fz1m5t87ij" data-title="Git-三" class="article-share-link">Share</a>
+      <a data-url="https://zerrari.github.io/2021/02/10/Git-%E4%B8%89/" data-id="ckm95qn6l000cjefz68q07lyb" data-title="Git-三" class="article-share-link">Share</a>
       
       
       
@@ -562,7 +626,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://zerrari.github.io/2021/02/09/Git-%E4%BA%8C/" data-id="ckm7pxn9m000861fzh99u219e" data-title="Git-二" class="article-share-link">Share</a>
+      <a data-url="https://zerrari.github.io/2021/02/09/Git-%E4%BA%8C/" data-id="ckm95qn6m000djefzdcfb084s" data-title="Git-二" class="article-share-link">Share</a>
       
       
       
@@ -626,7 +690,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://zerrari.github.io/2021/02/08/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%BA%94/" data-id="ckm7pxna5001561fz4o6793c9" data-title="python学习笔记-五" class="article-share-link">Share</a>
+      <a data-url="https://zerrari.github.io/2021/02/08/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%BA%94/" data-id="ckm95qn720017jefzhfxqczxb" data-title="python学习笔记-五" class="article-share-link">Share</a>
       
       
       
@@ -707,98 +771,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://zerrari.github.io/2021/02/08/Git-%E4%B8%80/" data-id="ckm7pxn9e000361fze6z8946f" data-title="Git(一)" class="article-share-link">Share</a>
+      <a data-url="https://zerrari.github.io/2021/02/08/Git-%E4%B8%80/" data-id="ckm95qn690003jefzdrgv8sfu" data-title="Git(一)" class="article-share-link">Share</a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tools/" rel="tag">Tools</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-python学习笔记-四" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/02/05/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%9B%9B/" class="article-date">
-  <time class="dt-published" datetime="2021-02-05T13:15:58.000Z" itemprop="datePublished">2021-02-05</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Python/">Python</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/02/05/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%9B%9B/">python学习笔记(四)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="day4-in-python"><a href="#day4-in-python" class="headerlink" title="day4 in python"></a>day4 in python</h1><h1 id="高级特性"><a href="#高级特性" class="headerlink" title="高级特性"></a>高级特性</h1><h2 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h2><p>通过切片可以取出list和tuple或是字符串中的部分元素<br>索引从0开始<br>倒数第一个元素的索引为-1</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">s&#x3D;[&#39;john&#39;,&#39;mike&#39;,&#39;sara&#39;]</span><br><span class="line">s[0:2]</span><br><span class="line">[&#39;john&#39;,mike]</span><br><span class="line">s[-2:]</span><br><span class="line">[&#39;mike&#39;,&#39;sara&#39;]</span><br><span class="line">s[-1:]</span><br><span class="line">[&#39;sara&#39;]</span><br></pre></td></tr></table></figure>
-<p>固定步长切片</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">s&#x3D;[1,2,3,4,5,6,7,8]</span><br><span class="line">s[::2]</span><br><span class="line">[1,3,5,7]</span><br></pre></td></tr></table></figure>
-<p>字符串</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#39;abcd&#39;[1:3]</span><br><span class="line">&#39;bc&#39;</span><br></pre></td></tr></table></figure>
-<h2 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h2><p>对dict使用迭代<br>默认迭代dict中的key</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">d&#x3D;&#123;&#39;a&#39;:1,&#39;b&#39;:2,&#39;c&#39;:3&#125;</span><br><span class="line">for i in d:</span><br><span class="line">	print(i)</span><br><span class="line">a</span><br><span class="line">b</span><br><span class="line">c</span><br></pre></td></tr></table></figure>
-<p>如果要迭代<code>value</code><br><code>for value in d.values():</code></p>
-<p>迭代字符串<br><code>for char in &#39;abcd&#39;:</code></p>
-<h2 id="列表生成式"><a href="#列表生成式" class="headerlink" title="列表生成式"></a>列表生成式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">list(range(1,11))</span><br><span class="line">[1,2,3,4,5,6,7,8,9,10]</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[x*x for x in range(1,5)]</span><br><span class="line">[1,4,9,16]</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[a+c for a in&#39;ab&#39; for c in &#39;xy&#39;]</span><br><span class="line">[&#39;ax&#39;,&#39;ay&#39;,&#39;bx&#39;,&#39;by&#39;]</span><br></pre></td></tr></table></figure>
-<p>if…else…</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[x if x % 2 &#x3D;&#x3D; 0 else -x for x in range(1,4)]</span><br><span class="line">[-1,2,-3]</span><br></pre></td></tr></table></figure>
-<h2 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h2><p>构造一个生成器</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g&#x3D;(x*x for x in range(1,5))</span><br></pre></td></tr></table></figure>
-<p><code>next(g)</code>获取下一个元素<br>运用迭代来获得元素</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">for x in g:</span><br><span class="line">	print(x)</span><br><span class="line">1</span><br><span class="line">4</span><br><span class="line">9</span><br><span class="line">16</span><br></pre></td></tr></table></figure>
-<h2 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h2><h3 id="Iterable"><a href="#Iterable" class="headerlink" title="Iterable"></a>Iterable</h3><p><code>Iterable</code>可迭代对象<br>使用<code>isinstance()</code>判断是否为可迭代对象<br><code>isinstance(&#39;abc&#39;,Iterable)</code></p>
-<h3 id="Iterator"><a href="#Iterator" class="headerlink" title="Iterator"></a>Iterator</h3><p>可以通过<code>next()</code>函数调用的迭代对象为迭代器<code>Iterator</code><br>可以通过<code>iter()</code>函数获得<code>Iterator</code></p>
-<h1 id="函数式编程"><a href="#函数式编程" class="headerlink" title="函数式编程"></a>函数式编程</h1><h2 id="高级函数"><a href="#高级函数" class="headerlink" title="高级函数"></a>高级函数</h2><p>变量可以指向函数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">f&#x3D;abs</span><br><span class="line">f(-10)</span><br><span class="line">10</span><br></pre></td></tr></table></figure>
-<p>函数名也可以指向变量</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">abs &#x3D; 10</span><br><span class="line">abs</span><br><span class="line">10</span><br></pre></td></tr></table></figure>
-<p>一个函数可以作为参数传入另一个函数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def my_fun(x,y,f):</span><br><span class="line">	print(f(x)+f(y))</span><br><span class="line">my_fun(-5,10,abs)</span><br><span class="line">15</span><br></pre></td></tr></table></figure>
-<h3 id="map-reduce"><a href="#map-reduce" class="headerlink" title="map/reduce"></a>map/reduce</h3><h4 id="map"><a href="#map" class="headerlink" title="map"></a>map</h4><p>对序列中的每个元素执行相同的操作<br><code>map()</code>接受两种参数</p>
-<ul>
-<li>Iterable</li>
-<li>函数名</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">list(map(abs,[1,-2,-3,4]))</span><br><span class="line">[1,2,3,4]</span><br></pre></td></tr></table></figure>
-<h4 id="reduce"><a href="#reduce" class="headerlink" title="reduce"></a>reduce</h4><p>对序列中的元素执行累加操作</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def fun(x,y):</span><br><span class="line">	return x+y</span><br><span class="line">reduce(fun,[1,2,3,4])</span><br><span class="line">10</span><br></pre></td></tr></table></figure>
-<h3 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h3><p>用来过滤序列<br>接受一个函数，作用于每一个元素，返回值是<code>True</code>保留该元素</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def is_odd(x)</span><br><span class="line">	return x % 2 &#x3D;&#x3D; 1</span><br><span class="line">list(filter(is_odd,[1,2,3,4]))</span><br><span class="line">[1,3]</span><br></pre></td></tr></table></figure>
-<h3 id="sorted"><a href="#sorted" class="headerlink" title="sorted"></a>sorted</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sorted([3,1,4,78,34])</span><br><span class="line">[1,3,4,34,78]</span><br></pre></td></tr></table></figure>
-<p>还可以接受一个<code>key</code>函数来实现自定义的排序</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sorted([3,-1,4,-78,34],key&#x3D;abs)</span><br><span class="line">[-1,3,4,34,-78]</span><br></pre></td></tr></table></figure>
-<h2 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a>匿名函数</h2><p>只能有一个表达式，不能写return<br>返回值就是该表达式的结果</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">list(map(lambda x:x*x,[1,2,3,4]))</span><br><span class="line">[1,4,9,16]</span><br></pre></td></tr></table></figure>
-<p>关键字<code>lambda</code>表示匿名函数，冒号前面的x表示函数参数</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://zerrari.github.io/2021/02/05/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%9B%9B/" data-id="ckm7pxnaa001f61fzf4lxgz1w" data-title="python学习笔记(四)" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Learning/" rel="tag">Learning</a></li></ul>
 
     </footer>
   </div>
@@ -865,6 +842,10 @@
       <ul>
         
           <li>
+            <a href="/2021/03/14/Operating-System-Learning-2/">Operating System Learning-2</a>
+          </li>
+        
+          <li>
             <a href="/2021/03/13/Operating-System-Learning/">Operating System Learning</a>
           </li>
         
@@ -878,10 +859,6 @@
         
           <li>
             <a href="/2021/02/14/python%E7%88%AC%E8%99%AB%E5%AE%9E%E8%B7%B5-%E5%9B%BE%E7%89%87%E4%B8%8B%E8%BD%BD/">python爬虫实践-图片下载</a>
-          </li>
-        
-          <li>
-            <a href="/2021/02/12/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%85%AD/">python学习笔记-六</a>
           </li>
         
       </ul>
