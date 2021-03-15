@@ -14,7 +14,7 @@
 <meta property="og:description" content="OS Learning计算机体系结构和内存结构 cpu cache 内存 硬盘    金字塔的结构，体积减小，速度增加 地址空间与地址生成 逻辑地址空间   硬件支持的地址空间  物理地址空间   一个运行的程序所拥有的内存范围   连续内存的分配内存碎片问题：空闲内存不能被利用  外部碎片：在分配单元间的未使用内存 内部碎片：在分配单元中的未使用内存  分区的动态分配策略要分配空间为n的内存">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-03-13T11:32:12.000Z">
-<meta property="article:modified_time" content="2021-03-13T12:29:15.205Z">
+<meta property="article:modified_time" content="2021-03-15T09:21:52.193Z">
 <meta property="article:author" content="Zerrari">
 <meta property="article:tag" content="Learning">
 <meta name="twitter:card" content="summary">
@@ -142,13 +142,14 @@
 <li>分配的物理地址是连续的</li>
 <li>容易产生内存碎片问题，内存利用率低</li>
 </ul>
-<h2 id="非连续的内存分配"><a href="#非连续的内存分配" class="headerlink" title="非连续的内存分配"></a>非连续的内存分配</h2><p>如何建立虚拟地址和物理地址的转换</p>
+<h2 id="非连续的内存分配"><a href="#非连续的内存分配" class="headerlink" title="非连续的内存分配"></a>非连续的内存分配</h2><p>如何建立逻辑地址和物理地址的转换</p>
 <h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ul>
 <li>分配的物理地址是非连续的</li>
 <li>更好的内存利用</li>
 <li>允许共享代码和数据</li>
 <li>允许动态加载和链接<h3 id="分段"><a href="#分段" class="headerlink" title="分段"></a>分段</h3><h3 id="分页"><a href="#分页" class="headerlink" title="分页"></a>分页</h3></li>
 </ul>
+<p>早期计算机系统，内存不够，如果程序太大<br>，采取覆盖技术，将需要的数据和代码储存在内存中；如果程序太多，将暂时不能执行的程序放在外存中</p>
 
       
     </div>

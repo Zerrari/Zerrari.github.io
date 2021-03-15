@@ -230,6 +230,8 @@
 <li>利用查询表来翻译虚拟地址<h2 id="页表"><a href="#页表" class="headerlink" title="页表"></a>页表</h2><img src="../images/1.png" alt="页表"></li>
 </ul>
 <p><strong>页表</strong>是一个页表条目(PTE)的数组</p>
+<h3 id="程序的局部性原理"><a href="#程序的局部性原理" class="headerlink" title="程序的局部性原理"></a>程序的局部性原理</h3><h4 id="时间局部性"><a href="#时间局部性" class="headerlink" title="时间局部性"></a>时间局部性</h4><p>一段时间内重复执行一段代码，或者访问一组数据</p>
+<h4 id="空间局部性"><a href="#空间局部性" class="headerlink" title="空间局部性"></a>空间局部性</h4><p>访问一段空间内的数据或者执行代码</p>
 <h3 id="TLB"><a href="#TLB" class="headerlink" title="TLB"></a>TLB</h3><p><strong>翻译后备缓冲区</strong></p>
 <p>由单个的PTE组成的块，来加速地址翻译<br><img src="../images/TLB.png" alt="TLB"></p>
 <ol>
@@ -245,6 +247,9 @@
 <p>  如果一级页表中的某个页表条目为空，该条目的二级页表不存在</p>
 </li>
 </ul>
+<blockquote>
+<p>参考资料《深入理解计算机系统》</p>
+</blockquote>
 
       
     </div>
@@ -331,13 +336,14 @@
 <li>分配的物理地址是连续的</li>
 <li>容易产生内存碎片问题，内存利用率低</li>
 </ul>
-<h2 id="非连续的内存分配"><a href="#非连续的内存分配" class="headerlink" title="非连续的内存分配"></a>非连续的内存分配</h2><p>如何建立虚拟地址和物理地址的转换</p>
+<h2 id="非连续的内存分配"><a href="#非连续的内存分配" class="headerlink" title="非连续的内存分配"></a>非连续的内存分配</h2><p>如何建立逻辑地址和物理地址的转换</p>
 <h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ul>
 <li>分配的物理地址是非连续的</li>
 <li>更好的内存利用</li>
 <li>允许共享代码和数据</li>
 <li>允许动态加载和链接<h3 id="分段"><a href="#分段" class="headerlink" title="分段"></a>分段</h3><h3 id="分页"><a href="#分页" class="headerlink" title="分页"></a>分页</h3></li>
 </ul>
+<p>早期计算机系统，内存不够，如果程序太大<br>，采取覆盖技术，将需要的数据和代码储存在内存中；如果程序太多，将暂时不能执行的程序放在外存中</p>
 
       
     </div>
