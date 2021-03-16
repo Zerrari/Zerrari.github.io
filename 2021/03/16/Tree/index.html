@@ -4,15 +4,23 @@
   <meta charset="utf-8">
   
   
-  <title>Category: Emacs | Zerrari</title>
+  <title>Tree | Zerrari</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Zerrari">
-<meta property="og:url" content="https://zerrari.github.io/categories/Emacs/index.html">
+  <meta name="description" content="树定义树是结点的有限集。 度 结点拥有的子树的树目。 度为零的结点称为叶子结点或终端结点。度不为零的结点称为分支结点或非终端结点。 树的度是各结点度的最大值。 树中结点的最大层次称为树的深度或高度。 森林是互不相交树的集合。 树的存储结构双亲表示法   Data Parent    Data 表示数据域    Parent 表示指针域，指向双亲  孩子表示法  两种结点结构  孩子链表的孩子结点|">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tree">
+<meta property="og:url" content="https://zerrari.github.io/2021/03/16/Tree/index.html">
 <meta property="og:site_name" content="Zerrari">
+<meta property="og:description" content="树定义树是结点的有限集。 度 结点拥有的子树的树目。 度为零的结点称为叶子结点或终端结点。度不为零的结点称为分支结点或非终端结点。 树的度是各结点度的最大值。 树中结点的最大层次称为树的深度或高度。 森林是互不相交树的集合。 树的存储结构双亲表示法   Data Parent    Data 表示数据域    Parent 表示指针域，指向双亲  孩子表示法  两种结点结构  孩子链表的孩子结点|">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://zerrari.github.io/2021/03/16/images/Tree-parent.png">
+<meta property="og:image" content="https://zerrari.github.io/2021/03/16/images/tree-child.png">
+<meta property="article:published_time" content="2021-03-16T12:07:17.000Z">
+<meta property="article:modified_time" content="2021-03-16T12:38:58.708Z">
 <meta property="article:author" content="Zerrari">
+<meta property="article:tag" content="Data Structure">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zerrari.github.io/2021/03/16/images/Tree-parent.png">
   
     <link rel="alternate" href="/atom.xml" title="Zerrari" type="application/atom+xml">
   
@@ -69,58 +77,104 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2021/02/01/all-the-icons/" class="archive-article-date">
-  <time class="dt-published" datetime="2021-02-01T09:52:57.000Z" itemprop="datePublished">Feb 1</time>
+        <section id="main"><article id="post-Tree" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/03/16/Tree/" class="article-date">
+  <time class="dt-published" datetime="2021-03-16T12:07:17.000Z" itemprop="datePublished">2021-03-16</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Learning/">Learning</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/02/01/all-the-icons/">mac下安装all-the-icons</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      Tree
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2021/01/28/Emacs-Hexo/" class="archive-article-date">
-  <time class="dt-published" datetime="2021-01-28T05:20:58.000Z" itemprop="datePublished">Jan 28</time>
-</a>
+    <div class="e-content article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/01/28/Emacs-Hexo/">Emacs+Hexo</a>
-    </h1>
-  
+        <h1 id="树"><a href="#树" class="headerlink" title="树"></a>树</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>树是结点的有限集。</p>
+<p><strong>度</strong> 结点拥有的子树的树目。</p>
+<p>度为零的结点称为叶子结点或终端结点。<br>度不为零的结点称为分支结点或非终端结点。</p>
+<p>树的度是各结点度的最大值。</p>
+<p>树中结点的最大层次称为树的深度或高度。</p>
+<p>森林是互不相交树的集合。</p>
+<h2 id="树的存储结构"><a href="#树的存储结构" class="headerlink" title="树的存储结构"></a>树的存储结构</h2><h3 id="双亲表示法"><a href="#双亲表示法" class="headerlink" title="双亲表示法"></a>双亲表示法</h3><table>
+<thead>
+<tr>
+<th>Data</th>
+<th>Parent</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Data</strong> 表示数据域</td>
+<td></td>
+</tr>
+</tbody></table>
+<p><strong>Parent</strong> 表示指针域，指向双亲</p>
+<p><img src="../images/Tree-parent.png" alt="双亲表示法"></p>
+<h3 id="孩子表示法"><a href="#孩子表示法" class="headerlink" title="孩子表示法"></a>孩子表示法</h3><p><img src="../images/tree-child.png" alt="孩子表示法"> </p>
+<p>两种结点结构</p>
+<hr>
+<p>孩子链表的孩子结点<br>|child|next|<br>|—–|—-|</p>
+<p><strong>next</strong> 指向下一个孩子结点</p>
+<p><strong>child</strong> 保存某个结点在表头数组中的下标</p>
+<hr>
+<p>表头数组<br>|data|firstchild|<br>|—-|———-|</p>
+<p><strong>data</strong> 保存数据<br><strong>firstchild</strong> 保存第一个孩子的头指针</p>
+<hr>
+<h3 id="孩子兄弟表示法"><a href="#孩子兄弟表示法" class="headerlink" title="孩子兄弟表示法"></a>孩子兄弟表示法</h3><table>
+<thead>
+<tr>
+<th>data</th>
+<th>firstchild</th>
+<th>rightsib</th>
+</tr>
+</thead>
+</table>
+<p><strong>rightsib</strong> 存储右兄弟指针</p>
+<h2 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h2><p>除了叶子结点以外，每个结点的子树的个数不超过2.</p>
+<h3 id="二叉树的分类"><a href="#二叉树的分类" class="headerlink" title="二叉树的分类"></a>二叉树的分类</h3><ul>
+<li>斜树</li>
+<li>完全二叉树</li>
+<li>满二叉树</li>
+</ul>
 
-    </header>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://zerrari.github.io/2021/03/16/Tree/" data-id="ckmc05lnu0000x2fz0m4352tn" data-title="Tree" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Data-Structure/" rel="tag">Data Structure</a></li></ul>
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2021/03/15/vim-markdown/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">vim-markdown</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
 
 
 </section>
