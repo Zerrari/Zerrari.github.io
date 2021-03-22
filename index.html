@@ -71,6 +71,50 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Makefile" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/03/22/Makefile/" class="article-date">
+  <time class="dt-published" datetime="2021-03-22T08:32:00.000Z" itemprop="datePublished">2021-03-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Makefile/">Makefile</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/03/22/Makefile/">Makefile</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://zerrari.github.io/2021/03/22/Makefile/" data-id="ckmkc30ph0000n5fz09ovfxzw" data-title="Makefile" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Learning/" rel="tag">Learning</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-Tree" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/03/16/Tree/" class="article-date">
@@ -78,7 +122,7 @@
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Learning/">Learning</a>
+    <a class="article-category-link" href="/categories/Data-Structure/">Data Structure</a>
   </div>
 
   </div>
@@ -151,7 +195,7 @@
 <h4 id="后序遍历"><a href="#后序遍历" class="headerlink" title="后序遍历"></a>后序遍历</h4><p>若二叉树为空，则空操作返回；否则从左到右先访问左右子树，再访问根结点。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">void PostOrderTraverse(BitTree T)</span><br><span class="line">&#123;</span><br><span class="line">		if (&amp;T &#x3D;&#x3D; NULL)</span><br><span class="line">				return;</span><br><span class="line">		PostOrderTraverse(T.lchild);</span><br><span class="line">		PostOrderTraverse(T.rchild);</span><br><span class="line">		printf(T.data);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>KHDEBIFJGCA</p>
-
+<h3 id="二叉树的建立"><a href="#二叉树的建立" class="headerlink" title="二叉树的建立"></a>二叉树的建立</h3>
       
     </div>
     <footer class="article-footer">
@@ -159,7 +203,7 @@
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Data-Structure/" rel="tag">Data Structure</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Learning/" rel="tag">Learning</a></li></ul>
 
     </footer>
   </div>
@@ -344,10 +388,25 @@
 <ul>
 <li><p>节省了页表的产生空间</p>
 <p>  如果一级页表中的某个页表条目为空，该条目的二级页表不存在</p>
+<h2 id="页表置换算法"><a href="#页表置换算法" class="headerlink" title="页表置换算法"></a>页表置换算法</h2><h3 id="最优页面置换算法"><a href="#最优页面置换算法" class="headerlink" title="最优页面置换算法"></a>最优页面置换算法</h3><p>当发生缺页中断时，调入即将访问的页面。<br>现实中无法实现。</p>
 </li>
 </ul>
-<blockquote>
-<p>参考资料《深入理解计算机系统》</p>
+<h3 id="最近未使用页面置换算法"><a href="#最近未使用页面置换算法" class="headerlink" title="最近未使用页面置换算法"></a>最近未使用页面置换算法</h3><p>系统为每一个页面设置两个状态位</p>
+<ul>
+<li>R 访问位（定期清零）</li>
+<li>M 修改位</li>
+</ul>
+<p>根据两个状态位，所有的页面被分为四类：</p>
+<ul>
+<li>0 没有被访问，没有被修改</li>
+<li>1 没有被访问，被修改</li>
+<li>2 被访问，没有被修改</li>
+<li>3 被访问，被修改</li>
+</ul>
+<p>算法随机从编号最小的页面中挑选一个淘汰</p>
+<h3 id="先进先出页面置换算法"><a href="#先进先出页面置换算法" class="headerlink" title="先进先出页面置换算法"></a>先进先出页面置换算法</h3><p>维护一个页面的链表。<br>淘汰最早进入的页面，将最近的页面放在表尾。</p>
+<h3 id="第二次机会页面置换算法"><a href="#第二次机会页面置换算法" class="headerlink" title="第二次机会页面置换算法"></a>第二次机会页面置换算法</h3><h3 id="时钟页面置换算法"><a href="#时钟页面置换算法" class="headerlink" title="时钟页面置换算法"></a>时钟页面置换算法</h3><h3 id="最近最少使用页面置换算法"><a href="#最近最少使用页面置换算法" class="headerlink" title="最近最少使用页面置换算法"></a>最近最少使用页面置换算法</h3><blockquote>
+<p>参考资料《深入理解计算机系统》<br>参考资料《现代操作系统》</p>
 </blockquote>
 
       
@@ -782,79 +841,11 @@
 
 
   
-    <article id="post-Git-二" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/02/09/Git-%E4%BA%8C/" class="article-date">
-  <time class="dt-published" datetime="2021-02-09T10:45:29.000Z" itemprop="datePublished">2021-02-09</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Learning/">Learning</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/02/09/Git-%E4%BA%8C/">Git-二</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h1><h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><h2 id="查看提交历史"><a href="#查看提交历史" class="headerlink" title="查看提交历史"></a>查看提交历史</h2><p><code>git log</code><br><code>git log -p</code>会显示每次提交的差异<br><code>git log --stat</code>显示每次提交的简略信息</p>
-<h2 id="撤销操作"><a href="#撤销操作" class="headerlink" title="撤销操作"></a>撤销操作</h2><p><code>git commit --amend</code><br>执行此命令，最后只会有一个提交，覆盖了前面的提交</p>
-<p><code>git reset &lt;file&gt;</code><br>取消暂存的文件</p>
-<p><code>git checkout --&lt;file&gt;</code><br>取消文件的修改即恢复到上次提交的样子</p>
-<h2 id="远程仓库的使用"><a href="#远程仓库的使用" class="headerlink" title="远程仓库的使用"></a>远程仓库的使用</h2><p><code>git remote</code><br>查看远程仓库</p>
-<p><code>git remote add &lt;shortname&gt; &lt;url&gt;</code><br>添加一个远程仓库，同时指定一个简单的缩写</p>
-<p><code>git fetch [remote-name]</code><br>拉取远程仓库中自己还没有的数据</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git push [remote-name] [branch-name]</span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
-<p>推送到远程仓库</p>
-<p><code>git remote show [remote-name]</code><br>查看远程仓库的信息</p>
-<p><code>git remote rename</code><br>修改远程仓库的简写名</p>
-<p><code>git remote rm</code><br>删除远程仓库</p>
-<h2 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h2><p><code>git tag</code><br>列出标签</p>
-<h3 id="创建标签"><a href="#创建标签" class="headerlink" title="创建标签"></a>创建标签</h3><p>标签分为：</p>
-<ul>
-<li><p>轻量标签<br><code>git tag v1.4-lw</code></p>
-</li>
-<li><p>附注标签<br><code>git tag -a v1.4 -m &quot;some messages&quot;</code></p>
-</li>
-</ul>
-<p><code>git show</code><br>显示附注标签于该次提交的信息</p>
-<p><code>git tag -a v1.2 9fceb02</code><br>后期打标签</p>
-<p><code>git push origin [tagname]</code><br>将标签推送到服务器上</p>
-<h2 id="Git别名"><a href="#Git别名" class="headerlink" title="Git别名"></a>Git别名</h2><p><code>git config --global alias.co checkout</code><br>当要输入<code>git checkout</code>,只要输入<code>git co</code></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://zerrari.github.io/2021/02/09/Git-%E4%BA%8C/" data-id="ckm95qn6m000djefzdcfb084s" data-title="Git-二" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tools/" rel="tag">Tools</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -865,7 +856,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Archlinux/">Archlinux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Emacs/">Emacs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Learning/">Learning</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Leetcode/">Leetcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vim/">Vim</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Archlinux/">Archlinux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Structure/">Data Structure</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Emacs/">Emacs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Learning/">Learning</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Leetcode/">Leetcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Makefile/">Makefile</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vim/">Vim</a></li></ul>
     </div>
   </div>
 
@@ -875,7 +866,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/" rel="tag">Data Structure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Issues/" rel="tag">Issues</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Learning/" rel="tag">Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tools/" rel="tag">Tools</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Issues/" rel="tag">Issues</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Learning/" rel="tag">Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tools/" rel="tag">Tools</a></li></ul>
     </div>
   </div>
 
@@ -885,7 +876,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/Issues/" style="font-size: 10px;">Issues</a> <a href="/tags/Learning/" style="font-size: 20px;">Learning</a> <a href="/tags/Tools/" style="font-size: 15px;">Tools</a>
+      <a href="/tags/Issues/" style="font-size: 10px;">Issues</a> <a href="/tags/Learning/" style="font-size: 20px;">Learning</a> <a href="/tags/Tools/" style="font-size: 15px;">Tools</a>
     </div>
   </div>
 
@@ -907,6 +898,10 @@
       <ul>
         
           <li>
+            <a href="/2021/03/22/Makefile/">Makefile</a>
+          </li>
+        
+          <li>
             <a href="/2021/03/16/Tree/">Tree</a>
           </li>
         
@@ -920,10 +915,6 @@
         
           <li>
             <a href="/2021/03/13/Operating-System-Learning/">Operating System Learning</a>
-          </li>
-        
-          <li>
-            <a href="/2021/03/07/Leetcode-47DW/">Leetcode 47DW</a>
           </li>
         
       </ul>
