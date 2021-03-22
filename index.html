@@ -97,7 +97,14 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        
+        <h1 id="Makefile"><a href="#Makefile" class="headerlink" title="Makefile"></a>Makefile</h1><h2 id="intro"><a href="#intro" class="headerlink" title="intro"></a>intro</h2><p>编译文件的工具，可以有效组织大规模的源文件。</p>
+<h2 id="规则"><a href="#规则" class="headerlink" title="规则"></a>规则</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">target... : prerequisites...</span><br><span class="line">    command...</span><br></pre></td></tr></table></figure>
+<p><strong>command</strong> 前要用Tab键缩进</p>
+<p>首先从依赖中寻找是否有比目标文件更新的文件，或者如果目标文件不存在，则运行下面的命令，并生成目标文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.PHONY : clean</span><br><span class="line">clean :</span><br><span class="line">    -rm edit $(objects)</span><br></pre></td></tr></table></figure>
+<p><code>.PHONY</code>表示<code>clean</code>是一个伪目标，并不会生成这个文件，只有显式执行<code>make clean</code>,才会执行命令。</p>
+<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>变量的声明<br><code>objects = program.o foo.o utils.o</code><br>变量的使用<br><code>program : $(objects)</code></p>
+
       
     </div>
     <footer class="article-footer">
@@ -460,10 +467,10 @@
 </ul>
 <p><strong>金字塔</strong>的结构，体积减小，速度增加</p>
 <h2 id="地址空间与地址生成"><a href="#地址空间与地址生成" class="headerlink" title="地址空间与地址生成"></a>地址空间与地址生成</h2><ul>
-<li><p>逻辑地址空间</p>
+<li><p>物理地址空间</p>
 <p>  硬件支持的地址空间</p>
 </li>
-<li><p>物理地址空间</p>
+<li><p>逻辑地址空间</p>
 <p>  一个运行的程序所拥有的内存范围</p>
 </li>
 </ul>
@@ -501,7 +508,7 @@
 <li>允许共享代码和数据</li>
 <li>允许动态加载和链接<h3 id="分段"><a href="#分段" class="headerlink" title="分段"></a>分段</h3><h3 id="分页"><a href="#分页" class="headerlink" title="分页"></a>分页</h3></li>
 </ul>
-<p>早期计算机系统，内存不够，如果程序太大<br>，采取覆盖技术，将需要的数据和代码储存在内存中；如果程序太多，将暂时不能执行的程序放在外存中</p>
+<p>早期计算机系统，内存不够，如果程序太大，采取覆盖技术，将需要的数据和代码储存在内存中；如果程序太多，将暂时不能执行的程序放在外存中</p>
 
       
     </div>
