@@ -71,6 +71,171 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-dwm配置" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/28/dwm%E9%85%8D%E7%BD%AE/" class="article-date">
+  <time class="dt-published" datetime="2021-01-28T11:30:21.000Z" itemprop="datePublished">2021-01-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Archlinux/">Archlinux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/01/28/dwm%E9%85%8D%E7%BD%AE/">dwm配置</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="dwm"><a href="#dwm" class="headerlink" title="dwm"></a>dwm</h1><h1 id="introduction"><a href="#introduction" class="headerlink" title="introduction"></a>introduction</h1><p><a target="_blank" rel="noopener" href="http://dwm.suckless.org/">dwm</a>是一个简单易用的窗口管理器</p>
+<h2 id="config"><a href="#config" class="headerlink" title="config"></a>config</h2><p><em>dwm</em>由C语言编写而成<br>修改配置文件是通过修改头文件(即.h文件)来完成的<br>dwm已提供了默认的配置文件config.def.h<br>config.h是用户的配置文件<br>运行<em>dwm</em>的过程和编译.c文件的过程一样<br><code>sudo make</code><br><code>sudo make clean install</code><br>这是我的配置文件<a target="_blank" rel="noopener" href="https://github.com/Zerrari/dwm">config</a></p>
+<h3 id="windows-key"><a href="#windows-key" class="headerlink" title="windows key"></a>windows key</h3><p>这是一个修饰键，通过和其他按键的组合可以操作窗口的布局<br>默认的修饰键是Mod1(Alt)<br>如果想修改修饰键<br>找到config.h中的x<br><code>#define MODKEY Mod1Mask</code><br>修改Mod1Mask即可，Windows键为Mod4Mask</p>
+<h3 id="layouts"><a href="#layouts" class="headerlink" title="layouts"></a>layouts</h3><p><em>dwm</em>分为三种窗口布局<br>可以通过不同的按键来切换不同的窗口布局</p>
+<ul>
+<li>tiled     []=     [Win] + t</li>
+<li>floating  &gt;&lt;&gt;     [Win] + f</li>
+<li>monocle   [m]     [Win] + m</li>
+</ul>
+<h3 id="windows-model"><a href="#windows-model" class="headerlink" title="windows model"></a>windows model</h3><p>一个windows分为master和stack区域，<br>打开一个程序，会将原本存在的程序放到stack区域中<br>[Win]+[Enter]切换master和stack中的程序 </p>
+<h3 id="keybindings"><a href="#keybindings" class="headerlink" title="keybindings"></a>keybindings</h3><table>
+<thead>
+<tr>
+<th>command</th>
+<th>function</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>[Win]+[Enter]</td>
+<td>launch terminal</td>
+</tr>
+<tr>
+<td>[Win]+s</td>
+<td>launch dwm</td>
+</tr>
+<tr>
+<td>[Win]+j/[Win]+k</td>
+<td>move to another client</td>
+</tr>
+<tr>
+<td>[Win]+[Shift]+2</td>
+<td>move terminal to tag 2</td>
+</tr>
+<tr>
+<td>[Win]+[Shift]+q</td>
+<td>quit dwm</td>
+</tr>
+<tr>
+<td>[Win]+[h]/[Win]+l</td>
+<td>set the width of stack area</td>
+</tr>
+<tr>
+<td>[win]+[c]/[Win]+v</td>
+<td>set the layouts</td>
+</tr>
+<tr>
+<td>[Win]+q</td>
+<td>quit the client</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="status-bar"><a href="#status-bar" class="headerlink" title="status bar"></a>status bar</h3><p>状态栏是一个可以显示系统一些信息的地方<br>dwm提供了两种配置状态栏的方法</p>
+<ul>
+<li>通过脚本文件即script</li>
+<li>通过编写的程序，如slstatus<br>让状态栏显示信息的命令十分简单<br><code>xsetroot -name $status</code></li>
+</ul>
+<h4 id="slstatus"><a href="#slstatus" class="headerlink" title="slstatus"></a>slstatus</h4><p>我使用了<a target="_blank" rel="noopener" href="http://git.suckless.org/slstatus/">slstatus</a>来配置我的状态栏<br>这是我的配置文件<a target="_blank" rel="noopener" href="https://github.com/Zerrari/slstatus">config</a></p>
+<h2 id="patches"><a href="#patches" class="headerlink" title="patches"></a>patches</h2><p>可以通过打补丁的方法来增加<em>dwm</em>的不同特性<br>补丁是一个.diff文件<br>打补丁的命令<br><code>patch &lt; 补丁文件名</code></p>
+<p>本人使用的补丁：</p>
+<ul>
+<li>dwm-colorbar-6.2.diff </li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://zerrari.github.io/2021/01/28/dwm%E9%85%8D%E7%BD%AE/" data-id="ckm95qn6w000vjefz0ah46kuj" data-title="dwm配置" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tools/" rel="tag">Tools</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-My-Archlinux" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/28/My-Archlinux/" class="article-date">
+  <time class="dt-published" datetime="2021-01-28T07:13:50.000Z" itemprop="datePublished">2021-01-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Archlinux/">Archlinux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/01/28/My-Archlinux/">My Archlinux</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="My-Archlinux"><a href="#My-Archlinux" class="headerlink" title="My Archlinux"></a>My Archlinux</h1><h2 id="installation"><a href="#installation" class="headerlink" title="installation"></a>installation</h2><p>参照<a target="_blank" rel="noopener" href="https://wiki.archlinux.org/index.php/Installation_guide_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)">Archlinux</a>官网的安装教程</p>
+<h3 id="issues-in-installation"><a href="#issues-in-installation" class="headerlink" title="issues in installation"></a>issues in installation</h3><h4 id="安装重启前一定要安装好网络连接工具"><a href="#安装重启前一定要安装好网络连接工具" class="headerlink" title="安装重启前一定要安装好网络连接工具"></a>安装重启前一定要安装好网络连接工具</h4><p>这里我安装的是networkmanager,附带有图形界面的网络管理器<em>nmtui</em></p>
+<h4 id="解除rfkill的无线网卡禁用"><a href="#解除rfkill的无线网卡禁用" class="headerlink" title="解除rfkill的无线网卡禁用"></a>解除rfkill的无线网卡禁用</h4><p><code>rfkill list</code><br>如果soft blocked是no的状态<br><code>rfkill unblock wifi</code></p>
+<h2 id="tools"><a href="#tools" class="headerlink" title="tools"></a>tools</h2><p>用pacman命令安装工具<br><code>sudo pacman -S dwm emacs st dmen  networkmanager</code></p>
+<ul>
+<li>dwm<br>一个简洁的窗口管理器</li>
+<li>emacs<br>一个强大的代码编辑器s</li>
+<li>st<br>一个快速的终端模拟器</li>
+<li>dmenu<br>一个快速的程序启动器</li>
+<li>networkmanager<br>网络管理器</li>
+<li>fish<br>一个开箱即用的shell</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://zerrari.github.io/2021/01/28/My-Archlinux/" data-id="ckm95qn6o000hjefz4a2r5wb7" data-title="My Archlinux" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tools/" rel="tag">Tools</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-Emacs-Hexo" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/01/28/Emacs-Hexo/" class="article-date">
@@ -193,7 +358,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Archlinux/">Archlinux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Structure/">Data Structure</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Emacs/">Emacs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Learning/">Learning</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Leetcode/">Leetcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Makefile/">Makefile</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vim/">Vim</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Archlinux/">Archlinux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Structure/">Data Structure</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Emacs/">Emacs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Learning/">Learning</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Leetcode/">Leetcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Makefile/">Makefile</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vim/">Vim</a></li></ul>
     </div>
   </div>
 
@@ -235,6 +400,14 @@
       <ul>
         
           <li>
+            <a href="/2021/03/25/Search/">Search</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/25/http/">http</a>
+          </li>
+        
+          <li>
             <a href="/2021/03/22/Makefile/">Makefile</a>
           </li>
         
@@ -244,14 +417,6 @@
         
           <li>
             <a href="/2021/03/15/vim-markdown/">vim-markdown</a>
-          </li>
-        
-          <li>
-            <a href="/2021/03/14/Operating-System-Learning-2/">Operating System Learning-2</a>
-          </li>
-        
-          <li>
-            <a href="/2021/03/13/Operating-System-Learning/">Operating System Learning</a>
           </li>
         
       </ul>
