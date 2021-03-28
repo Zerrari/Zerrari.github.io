@@ -71,6 +71,55 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-all-the-icons" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/02/01/all-the-icons/" class="article-date">
+  <time class="dt-published" datetime="2021-02-01T09:52:57.000Z" itemprop="datePublished">2021-02-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Emacs/">Emacs</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/02/01/all-the-icons/">mac下安装all-the-icons</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="mac下安装all-the-icons"><a href="#mac下安装all-the-icons" class="headerlink" title="mac下安装all-the-icons"></a>mac下安装all-the-icons</h1><h1 id="all-the-icons"><a href="#all-the-icons" class="headerlink" title="all-the-icons"></a>all-the-icons</h1><p><a target="_blank" rel="noopener" href="https://github.com/domtronn/all-the-icons.el/tree/5fa728399bd6233a82bbfd4f7cb203a1d7ede708">all-the-icons</a>是一个图标字体，用来美化Emacs的界面</p>
+<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><h3 id="Installation-in-Emacs"><a href="#Installation-in-Emacs" class="headerlink" title="Installation in Emacs"></a>Installation in Emacs</h3><p>Type <code>M-x all-the-icons-install-fonts</code><br>不过由于DNS污染的原因，对网站的访问被拒绝，下载不成功</p>
+<p>解决方法：参考<a target="_blank" rel="noopener" href="https://www.cnblogs.com/windyvalley/p/14113509.html">这个链接</a></p>
+<h3 id="Installation-in-terminal"><a href="#Installation-in-terminal" class="headerlink" title="Installation in terminal"></a>Installation in terminal</h3><p>在Terminal中执行<code>fc-cache -f -v</code><br>不过在Mac下并没有安装成功</p>
+<p>解决的方法是：<br>直接将all-the-icons.el克隆到本地<br>然后将字体移动到系统的字体文档中<br>Mac的字体路径是<code>/System/Library/Fonts</code><br>然后又出现了新的问题<em>Operation not permitted</em><br>mac下会有<em>rootless内核保护机制</em>防止用户修改内核文件<br>关闭的方法可参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/jcl314159/article/details/82710452">这篇文章</a><br>最后还要打开Terminal执行<code>sudo mount -uw /</code><br>这样就可以成功安装<em>all-the-icons</em></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://zerrari.github.io/2021/02/01/all-the-icons/" data-id="ckm95qn6v000tjefzbjxm06d6" data-title="mac下安装all-the-icons" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Issues/" rel="tag">Issues</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-dwm配置" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/01/28/dwm%E9%85%8D%E7%BD%AE/" class="article-date">
@@ -400,6 +449,10 @@
       <ul>
         
           <li>
+            <a href="/2021/03/28/virtual-memory/">virtual memory</a>
+          </li>
+        
+          <li>
             <a href="/2021/03/25/Search/">Search</a>
           </li>
         
@@ -413,10 +466,6 @@
         
           <li>
             <a href="/2021/03/16/Tree/">Tree</a>
-          </li>
-        
-          <li>
-            <a href="/2021/03/15/vim-markdown/">vim-markdown</a>
           </li>
         
       </ul>

@@ -71,6 +71,75 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-virtual-memory" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/03/28/virtual-memory/" class="article-date">
+  <time class="dt-published" datetime="2021-03-28T09:51:34.000Z" itemprop="datePublished">2021-03-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/OS/">OS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/03/28/virtual-memory/">virtual memory</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="虚拟内存"><a href="#虚拟内存" class="headerlink" title="虚拟内存"></a>虚拟内存</h1><h2 id="地址的虚拟化和转换"><a href="#地址的虚拟化和转换" class="headerlink" title="地址的虚拟化和转换"></a>地址的虚拟化和转换</h2><p>为每一个进程开辟出一个地址空间，地址空间的大小可以大于物理内存的大小。</p>
+<h3 id="地址的转换（基于硬件）"><a href="#地址的转换（基于硬件）" class="headerlink" title="地址的转换（基于硬件）"></a>地址的转换（基于硬件）</h3><p>通过基值寄存器和限制寄存器，来进行程序对内存访问的重定位。<br>将虚拟地址加上基值寄存器所存储的值，即是物理地址的值。<br>通过限制寄存器来防止这个进程对其他进程的物理内存进行操作。</p>
+<h3 id="分段"><a href="#分段" class="headerlink" title="分段"></a>分段</h3><p>将栈段，堆段和代码段分段独立地放置在物理内存中，给每一段分配基值寄存器和限制寄存器。<br>节省了栈和堆之间的空闲空间所占有的物理内存。</p>
+<h2 id="空闲空间的管理"><a href="#空闲空间的管理" class="headerlink" title="空闲空间的管理"></a>空闲空间的管理</h2><p>操作系统会用一张链表来记录空闲空间的分布，一个值表明当前空闲块的大小，另外一个为指向下一个空闲块的指针。</p>
+<h3 id="分裂和合并"><a href="#分裂和合并" class="headerlink" title="分裂和合并"></a>分裂和合并</h3><p>当系统需要内存分配空间的时候，空闲块会分裂出合适大小的内存块供系统使用。</p>
+<p>当存在相邻的空闲块时，会进行合并，以提高内存的使用率。</p>
+<h3 id="空闲块的算法"><a href="#空闲块的算法" class="headerlink" title="空闲块的算法"></a>空闲块的算法</h3><p>malloc会分配比要求更大的内存，在已分配的内存上附加一个头块，头块包含分配的内存大小以及一个魔数</p>
+<h4 id="最优适配"><a href="#最优适配" class="headerlink" title="最优适配"></a>最优适配</h4><p>寻找空闲块中最大的空闲块，来进行内存分配。</p>
+<p>需要遍历整个列表。</p>
+<h4 id="最快适配"><a href="#最快适配" class="headerlink" title="最快适配"></a>最快适配</h4><p>寻找第一个有足够空间的内存块，来进行分配。</p>
+<p>速度快，容易在内存头部造成很多外部碎片。</p>
+<h4 id="最坏适配"><a href="#最坏适配" class="headerlink" title="最坏适配"></a>最坏适配</h4><p>寻找最小的能够分配的内存块，来进行分配。</p>
+<p>同样要遍历整个列表。</p>
+<h4 id="下次匹配"><a href="#下次匹配" class="headerlink" title="下次匹配"></a>下次匹配</h4><p>从上一次结束的位置开始查找，将分配扩散到整个列表中去。</p>
+<h2 id="分页"><a href="#分页" class="headerlink" title="分页"></a>分页</h2><p>将虚拟内存和物理内存分页管理<br>物理内存每一页又叫页帧。<br>虚拟内存每一页的大小和物理内存每一页的大小相同。<br>虚拟内存的地址前一部分是虚拟页表号，后一部分是在该页上的偏移。<br>每个进程拥有一张页表，上面是虚拟页表到页帧的对应关系。</p>
+<p>页表是一个数据结构，可以是链表，也可以是树（比如后面的多级页表）。<br>页表的每一项是页表条目，上面有虚拟页表号，和页帧号，还可能有保护位，表示是否可读写；脏位，换入内存，是否被修改过；有效位，表明当前的页帧是在内存中，还是在硬盘上。</p>
+<hr>
+<p>问题</p>
+<ul>
+<li>页表很大</li>
+<li>需要访问两次内存，一次是进入内存查询页表，获得物理帧号，再从内存中将该物理页中需要的数据或代码取出来，加载到寄存器中去。</li>
+</ul>
+<h4 id="TLB"><a href="#TLB" class="headerlink" title="TLB"></a>TLB</h4><p>TLB放置在MMU中，维护着一部分页表条目，当进行内存访问时，先进入TLB寻找，成功，则访问物理内存中对应的页帧；不成功，再到页表中去寻找，找到，将该条目替换到TLB中，重新开始过程。</p>
+<p>因为局部性原理，TLB能提高很多的效率。</p>
+<h4 id="多级页表"><a href="#多级页表" class="headerlink" title="多级页表"></a>多级页表</h4><p>节省了页表的产生空间,<br>如果一级页表中的某个页表条目为空，该条目的二级页表不存在</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://zerrari.github.io/2021/03/28/virtual-memory/" data-id="ckmt1va4e0000f4fz6u2o7tza" data-title="virtual memory" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Learning/" rel="tag">Learning</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-Search" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/03/25/Search/" class="article-date">
@@ -824,90 +893,6 @@
 
 
   
-    <article id="post-python爬虫实践-图片下载" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/02/14/python%E7%88%AC%E8%99%AB%E5%AE%9E%E8%B7%B5-%E5%9B%BE%E7%89%87%E4%B8%8B%E8%BD%BD/" class="article-date">
-  <time class="dt-published" datetime="2021-02-14T06:24:54.000Z" itemprop="datePublished">2021-02-14</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Python/">Python</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/02/14/python%E7%88%AC%E8%99%AB%E5%AE%9E%E8%B7%B5-%E5%9B%BE%E7%89%87%E4%B8%8B%E8%BD%BD/">python爬虫实践-图片下载</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="python-crawler"><a href="#python-crawler" class="headerlink" title="python crawler"></a>python crawler</h1><h1 id="爬虫实践"><a href="#爬虫实践" class="headerlink" title="爬虫实践"></a>爬虫实践</h1><p><a target="_blank" rel="noopener" href='https://github.com/Zerrari/python-crawler-photos'>代码地址</a></p>
-<h2 id="库"><a href="#库" class="headerlink" title="库"></a>库</h2><ul>
-<li><code>Beautifulsoup</code></li>
-<li><code>Requests</code></li>
-<li><code>os</code></li>
-</ul>
-<h3 id="Requests"><a href="#Requests" class="headerlink" title="Requests"></a>Requests</h3><p><code>Requests</code>是一个python的http库</p>
-<p>尝试获取某个页面<br><code>r=requests.get(&lt;url&gt;)</code><br>建立了一个名为<code>r</code>的<code>Response</code>对象</p>
-<p>发送一个<code>post</code>请求<br><code>r = requests.post(&#39;http://httpbin.org/post&#39;, data = &#123;&#39;key&#39;:&#39;value&#39;&#125;)</code></p>
-<p>传递url参数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">payload &#x3D; &#123;&#39;key1&#39;: &#39;value1&#39;, &#39;key2&#39;: &#39;value2&#39;&#125;</span><br><span class="line">r &#x3D; requests.get(&quot;http:&#x2F;&#x2F;httpbin.org&#x2F;get&quot;, params&#x3D;payload)</span><br></pre></td></tr></table></figure>
-<p>读取响应内容</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">r.text</span><br><span class="line">r.encoding</span><br></pre></td></tr></table></figure>
-<p>二进制响应内容<br><code>r.content</code></p>
-<p>定制请求头</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">url &#x3D; &#39;https:&#x2F;&#x2F;api.github.com&#x2F;some&#x2F;endpoint&#39;</span><br><span class="line">headers &#x3D; &#123;&#39;user-agent&#39;: &#39;my-app&#x2F;0.0.1&#39;&#125;</span><br><span class="line">r &#x3D; requests.get(url, headers&#x3D;headers)</span><br></pre></td></tr></table></figure>
-<p>响应状态码<br><code>r.status_code</code></p>
-<h3 id="Beautifulsoup"><a href="#Beautifulsoup" class="headerlink" title="Beautifulsoup"></a>Beautifulsoup</h3><p>这是一个从<code>HTML</code>文件中提取数据的<code>python</code>库</p>
-<p>导入<br><code>from bs4 import BeautifulSoup</code></p>
-<p>建立对象<br><code>soup = BeautifulSoup(html_doc,&#39;lxml&#39;)</code></p>
-<p><code>Beautiful Soup</code>将复杂HTML文档转换成一个复杂的树形结构,<br>每个节点都是<code>Python</code>对象,所有对象可以归纳为4种:</p>
-<ul>
-<li>Tag</li>
-<li>NavigableString </li>
-<li>BeautifulSoup </li>
-<li>Comment</li>
-</ul>
-<h4 id="Tag"><a href="#Tag" class="headerlink" title="Tag"></a>Tag</h4><p><code>Tag</code>对象与<code>HTML</code>中的<code>Tag</code>一样</p>
-<p>获取<code>tag</code>的名字<br><code>tag.name</code></p>
-<p><code>Tag</code>的属性操作方法与字典一致<br><code>tag[&#39;class&#39;]</code><br>tag的属性可以被添加,删除或修改</p>
-<h4 id="遍历文档树"><a href="#遍历文档树" class="headerlink" title="遍历文档树"></a>遍历文档树</h4><p>得到所有的<code>&lt;a&gt;</code>标签<br><code>soup.find_all(&#39;a&#39;)</code></p>
-<p>得到所有的<code>&lt;a&gt;</code>标签，并且<code>class=&#39;sister&#39;</code>的标签<br><code>soup.find_all(&quot;a&quot;, class_=&quot;sister&quot;)</code></p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p><a target="_blank" rel="noopener" href="http://www.netbian.com/">目标网站</a></p>
-<p>建立网页的对象<br>并且提取图片的地址</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">def ana_web(url,header):</span><br><span class="line">    response &#x3D; requests.get(url,headers&#x3D;header)</span><br><span class="line">    response.encoding &#x3D; &#39;gbk&#39;</span><br><span class="line">    soup &#x3D; BeautifulSoup(response.text,&#39;lxml&#39;)</span><br><span class="line">    tags &#x3D; soup.find_all(&#39;img&#39;)</span><br><span class="line">    return tags</span><br></pre></td></tr></table></figure>
-<p>运用<code>os</code>库建立文件夹</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def setDir():</span><br><span class="line">    print(&quot;你正处于的路径：&quot;)</span><br><span class="line">    print(os.path.abspath(&#39;.&#39;))</span><br><span class="line">    now_path &#x3D; os.path.abspath(&#39;.&#39;)</span><br><span class="line">    print(&#39;\n&#39;)</span><br><span class="line">    dir_name &#x3D; input(&#39;请输入你想保存的文件夹名称&#39;)</span><br><span class="line">    os.mkdir(dir_name)</span><br><span class="line">    os.chdir(now_path+&#39;&#x2F;&#39;+dir_name)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>下载图片并且保存到刚刚的文件夹中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">def download_img():</span><br><span class="line">    tags&#x3D;ana_web(target_url,target_header)</span><br><span class="line">    setDir()</span><br><span class="line">    nums &#x3D; 0</span><br><span class="line">    for tag in tags:</span><br><span class="line">        nums &#x3D; nums + 1</span><br><span class="line">        img &#x3D; requests.get(tag[&#39;src&#39;]).content</span><br><span class="line">        with open(str(nums)+&#39;.jpg&#39;,&#39;wb&#39;) as f:</span><br><span class="line">            f.write(img)</span><br><span class="line">            f.close()</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://zerrari.github.io/2021/02/14/python%E7%88%AC%E8%99%AB%E5%AE%9E%E8%B7%B5-%E5%9B%BE%E7%89%87%E4%B8%8B%E8%BD%BD/" data-id="ckm95qn78001ljefzeppaa2vz" data-title="python爬虫实践-图片下载" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Learning/" rel="tag">Learning</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
@@ -965,6 +950,10 @@
       <ul>
         
           <li>
+            <a href="/2021/03/28/virtual-memory/">virtual memory</a>
+          </li>
+        
+          <li>
             <a href="/2021/03/25/Search/">Search</a>
           </li>
         
@@ -978,10 +967,6 @@
         
           <li>
             <a href="/2021/03/16/Tree/">Tree</a>
-          </li>
-        
-          <li>
-            <a href="/2021/03/15/vim-markdown/">vim-markdown</a>
           </li>
         
       </ul>
