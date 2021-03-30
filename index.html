@@ -71,6 +71,144 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-a-linux-command-in-a-day" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/03/30/a-linux-command-in-a-day/" class="article-date">
+  <time class="dt-published" datetime="2021-03-30T01:40:13.000Z" itemprop="datePublished">2021-03-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/03/30/a-linux-command-in-a-day/">a linux command in a day</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h1><p><code>grep [option...] [pattern] [file...]</code></p>
+<h2 id="匹配控制"><a href="#匹配控制" class="headerlink" title="匹配控制"></a>匹配控制</h2><p>忽略大小写搜索</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-i</span><br><span class="line">--ignore-case</span><br></pre></td></tr></table></figure>
+<p>不忽略大小写搜索<br><code>--no-ignore-case</code></p>
+<p>反转搜索，输出没有匹配的文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-v</span><br><span class="line">--invert-match</span><br></pre></td></tr></table></figure>
+<h2 id="输出控制"><a href="#输出控制" class="headerlink" title="输出控制"></a>输出控制</h2><p>输出匹配的数目</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-c</span><br><span class="line">--count</span><br></pre></td></tr></table></figure>
+<p>高亮匹配的字符</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--color</span><br></pre></td></tr></table></figure>
+<p>列出匹配的文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-l</span><br><span class="line">--files-with-match</span><br></pre></td></tr></table></figure>
+<p>列出不匹配的文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-L</span><br><span class="line">--files-without-match</span><br></pre></td></tr></table></figure>
+<p>指定数目匹配<br>匹配到该数目即停止</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-m count</span><br></pre></td></tr></table></figure>
+<p>仅输出匹配的部分，如果匹配的是一个单词，就输出一个匹配的单词</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-o</span><br><span class="line">--only-matching</span><br></pre></td></tr></table></figure>
+<p>不输出任何匹配信息，包括错误</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-q</span><br><span class="line">--quiet</span><br><span class="line">--silent</span><br></pre></td></tr></table></figure>
+<p>输出匹配行所在行号</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-n</span><br><span class="line">--number</span><br></pre></td></tr></table></figure>
+<p>输出匹配行所在的文件名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-H</span><br><span class="line">--with-filename</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-h</span><br><span class="line">--no-filename</span><br></pre></td></tr></table></figure>
+<h2 id="输出上下文"><a href="#输出上下文" class="headerlink" title="输出上下文"></a>输出上下文</h2><p>输出匹配行之前的行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-A num</span><br><span class="line">--after-context&#x3D;num</span><br></pre></td></tr></table></figure>
+<p>输出匹配行之后的行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-B num</span><br><span class="line">--before-context&#x3D;num</span><br></pre></td></tr></table></figure>
+<p>输出之前和之后的匹配行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-C num</span><br><span class="line">--context&#x3D;num</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://zerrari.github.io/2021/03/30/a-linux-command-in-a-day/" data-id="ckmveqsp40003qzfz8t574x0h" data-title="a linux command in a day" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Learning/" rel="tag">Learning</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-WebDev-CSS" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/03/29/WebDev-CSS/" class="article-date">
+  <time class="dt-published" datetime="2021-03-29T08:01:14.000Z" itemprop="datePublished">2021-03-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Web/">Web</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/03/29/WebDev-CSS/">WebDev-CSS</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h1><h2 id="intro"><a href="#intro" class="headerlink" title="intro"></a>intro</h2><p><strong>CSS</strong> 描述如何显示HTML元素，并且储存在外部文件中。</p>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><p>由选择器开头，指向想设置的HTML元素；每条声明都包含一个 CSS 属性名称和一个值，以冒号分隔。<br>多条 CSS 声明用分号分隔，声明块用花括号括起来。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">h1 &#123;</span><br><span class="line">		color: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h3><ul>
+<li><p>元素选择器</p>
+</li>
+<li><p>id选择器</p>
+<pre><code>  选择具有要求id的元素，以#开头
+</code></pre>
+</li>
+<li><p>类选择器</p>
+<pre><code>  选择具有要求类名的元素，以.开头
+</code></pre>
+</li>
+</ul>
+<h3 id="使用CSS"><a href="#使用CSS" class="headerlink" title="使用CSS"></a>使用CSS</h3><ul>
+<li>外部CSS</li>
+<li>内部CSS</li>
+<li>行内CSS</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://zerrari.github.io/2021/03/29/WebDev-CSS/" data-id="ckmveqsoo0000qzfz451bggyg" data-title="WebDev-CSS" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Learning/" rel="tag">Learning</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-virtual-memory" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/03/28/virtual-memory/" class="article-date">
@@ -279,9 +417,9 @@
 </ul>
 <h3 id="URL编码"><a href="#URL编码" class="headerlink" title="URL编码"></a>URL编码</h3><p>%00~%8f</p>
 <ul>
-<li>%30<del>%39 0</del>9</li>
-<li>%41<del>%5a A</del>Z</li>
-<li>%61<del>%7a a</del>z</li>
+<li>%30/<del>%39 0/</del>9</li>
+<li>%41/<del>%5a A/</del>Z</li>
+<li>%61/<del>%7a a/</del>z</li>
 <li>%25     %</li>
 <li>%20     space</li>
 </ul>
@@ -768,131 +906,6 @@
 
 
   
-    <article id="post-Leetcode-47DW" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/03/07/Leetcode-47DW/" class="article-date">
-  <time class="dt-published" datetime="2021-03-07T10:54:22.000Z" itemprop="datePublished">2021-03-07</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Leetcode/">Leetcode</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/03/07/Leetcode-47DW/">Leetcode 47DW</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="Leetcode-47场双周赛"><a href="#Leetcode-47场双周赛" class="headerlink" title="Leetcode 47场双周赛"></a>Leetcode 47场双周赛</h1><h2 id="Question-1"><a href="#Question-1" class="headerlink" title="Question 1"></a>Question 1</h2><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/find-nearest-point-that-has-the-same-x-or-y-coordinate/">找到最近的有相同X或Y坐标的点</a></p>
-<p>这道题比较容易</p>
-<h2 id="Question-2"><a href="#Question-2" class="headerlink" title="Question 2"></a>Question 2</h2><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/check-if-number-is-a-sum-of-powers-of-three/submissions/"> 判断一个数字是否可以表示成三的幂的和</a></p>
-<h3 id="Method-1"><a href="#Method-1" class="headerlink" title="Method 1"></a>Method 1</h3><p>除三取余法<br>三的幂次方除三取余后除了0和1不会出现其他的数  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">bool checkPowersOfThree(int n)&#123;</span><br><span class="line">    int x &#x3D; 0;</span><br><span class="line">    while (n !&#x3D; 0)</span><br><span class="line">    &#123;</span><br><span class="line">        if (n % 3 &#x3D;&#x3D; 2)</span><br><span class="line">            return false;</span><br><span class="line">        n &#x3D; n &#x2F; 3;</span><br><span class="line">    &#125;</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Method-2"><a href="#Method-2" class="headerlink" title="Method 2"></a>Method 2</h3><p>组成三的幂次方的数必然有比它小的第一个三次幂得数  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">bool checkPowersOfThree(int n)&#123;</span><br><span class="line">    int max &#x3D; 1;</span><br><span class="line">    while (max &lt; 10000000)</span><br><span class="line">    &#123;</span><br><span class="line">        max &#x3D; max * 3;</span><br><span class="line">    &#125;</span><br><span class="line">    while (n &gt;&#x3D; 0)</span><br><span class="line">    &#123;</span><br><span class="line">        if (n &gt;&#x3D; max)</span><br><span class="line">        &#123;</span><br><span class="line">            n &#x3D; n - max;</span><br><span class="line">            max &#x3D; max &#x2F; 3;</span><br><span class="line">            if (max &#x3D;&#x3D; 0)</span><br><span class="line">                break;</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">            max &#x3D; max &#x2F; 3;</span><br><span class="line">    &#125;</span><br><span class="line">    if (n &#x3D;&#x3D; 0 )</span><br><span class="line">        return true;</span><br><span class="line">    return false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://zerrari.github.io/2021/03/07/Leetcode-47DW/" data-id="ckm95qn6n000fjefzaduwbied" data-title="Leetcode 47DW" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Learning/" rel="tag">Learning</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Vimium" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/02/27/Vimium/" class="article-date">
-  <time class="dt-published" datetime="2021-02-27T09:10:05.000Z" itemprop="datePublished">2021-02-27</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Learning/">Learning</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/02/27/Vimium/">Vimium</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="Vimium"><a href="#Vimium" class="headerlink" title="Vimium"></a>Vimium</h1><h1 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h1><p>The hacker’s browser.<br>Chrome浏览器的类似vim的插件</p>
-<h1 id="Key"><a href="#Key" class="headerlink" title="Key"></a>Key</h1><ul>
-<li><p>f/F<br>快速跳转链接，大写在新标签页打开，小写在当前标签页打开</p>
-</li>
-<li><p>x<br>关闭当前标签页</p>
-</li>
-<li><p>X<br>打开刚关闭的标签页</p>
-</li>
-<li><p>gg<br>滑动到页面顶部</p>
-</li>
-<li><p>G<br>滑动到页面底部</p>
-</li>
-<li><p>r<br>刷新页面</p>
-</li>
-<li><p>i<br>进入输入模式，自动寻找输入框</p>
-</li>
-<li><p>yy<br>拷贝当前链接</p>
-</li>
-<li><p>o/O<br>搜索链接，书签和历史</p>
-</li>
-<li><p>b/B<br>搜索书签</p>
-</li>
-<li><p>/<br>进入搜索模式，<code>n</code>向后匹配，<code>N</code>向前匹配</p>
-</li>
-<li><p>H/L<br>前进和后退</p>
-</li>
-<li><p>J/K<br>在不同标签中移动</p>
-</li>
-<li><p>T<br>在标签页中搜索</p>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://zerrari.github.io/2021/02/27/Vimium/" data-id="ckm95qn6r000ojefz2fr88t8u" data-title="Vimium" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tools/" rel="tag">Tools</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
@@ -908,7 +921,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Archlinux/">Archlinux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Structure/">Data Structure</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Emacs/">Emacs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Learning/">Learning</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Leetcode/">Leetcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Makefile/">Makefile</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vim/">Vim</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Archlinux/">Archlinux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Structure/">Data Structure</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Emacs/">Emacs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Learning/">Learning</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Leetcode/">Leetcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Makefile/">Makefile</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vim/">Vim</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li></ul>
     </div>
   </div>
 
@@ -950,6 +963,14 @@
       <ul>
         
           <li>
+            <a href="/2021/03/30/a-linux-command-in-a-day/">a linux command in a day</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/29/WebDev-CSS/">WebDev-CSS</a>
+          </li>
+        
+          <li>
             <a href="/2021/03/28/virtual-memory/">virtual memory</a>
           </li>
         
@@ -959,14 +980,6 @@
         
           <li>
             <a href="/2021/03/25/http/">http</a>
-          </li>
-        
-          <li>
-            <a href="/2021/03/22/Makefile/">Makefile</a>
-          </li>
-        
-          <li>
-            <a href="/2021/03/16/Tree/">Tree</a>
           </li>
         
       </ul>
