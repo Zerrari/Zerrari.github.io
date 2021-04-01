@@ -4,19 +4,19 @@
   <meta charset="utf-8">
   
   
-  <title>Vimium | Zerrari</title>
+  <title>awk | Zerrari</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="VimiumIntroThe hacker’s browser.Chrome浏览器的类似vim的插件 Key f&#x2F;F快速跳转链接，大写在新标签页打开，小写在当前标签页打开  x关闭当前标签页  X打开刚关闭的标签页  gg滑动到页面顶部  G滑动到页面底部  r刷新页面  i进入输入模式，自动寻找输入框  yy拷贝当前链接  o&#x2F;O搜索链接，书签和历史  b&#x2F;B搜索书签  &#x2F;进入搜索模式，n向后匹">
+  <meta name="description" content="awkawk [options] &#39;pattern action&#39; file 常见的actionprint 打印文件的第五列awk &#39;&amp;#123;print $5&amp;#125;&#39; txt $0 表示整行$NF表示最后一列 使用逗号来分隔，输出多列awk &#39;&amp;#123;print $1,$2&amp;#125;&#39; txt 可以添加自己的字段awk &#39;&amp;#">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Vimium">
-<meta property="og:url" content="https://zerrari.github.io/2021/02/27/Vimium/index.html">
+<meta property="og:title" content="awk">
+<meta property="og:url" content="https://zerrari.github.io/2021/04/01/awk/index.html">
 <meta property="og:site_name" content="Zerrari">
-<meta property="og:description" content="VimiumIntroThe hacker’s browser.Chrome浏览器的类似vim的插件 Key f&#x2F;F快速跳转链接，大写在新标签页打开，小写在当前标签页打开  x关闭当前标签页  X打开刚关闭的标签页  gg滑动到页面顶部  G滑动到页面底部  r刷新页面  i进入输入模式，自动寻找输入框  yy拷贝当前链接  o&#x2F;O搜索链接，书签和历史  b&#x2F;B搜索书签  &#x2F;进入搜索模式，n向后匹">
+<meta property="og:description" content="awkawk [options] &#39;pattern action&#39; file 常见的actionprint 打印文件的第五列awk &#39;&amp;#123;print $5&amp;#125;&#39; txt $0 表示整行$NF表示最后一列 使用逗号来分隔，输出多列awk &#39;&amp;#123;print $1,$2&amp;#125;&#39; txt 可以添加自己的字段awk &#39;&amp;#">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-02-27T09:10:05.000Z">
-<meta property="article:modified_time" content="2021-02-27T09:31:57.004Z">
+<meta property="article:published_time" content="2021-04-01T10:17:54.000Z">
+<meta property="article:modified_time" content="2021-04-01T11:45:55.541Z">
 <meta property="article:author" content="Zerrari">
-<meta property="article:tag" content="Tools">
+<meta property="article:tag" content="Learning">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Zerrari" type="application/atom+xml">
@@ -74,14 +74,14 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-Vimium" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-awk" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2021/02/27/Vimium/" class="article-date">
-  <time class="dt-published" datetime="2021-02-27T09:10:05.000Z" itemprop="datePublished">2021-02-27</time>
+    <a href="/2021/04/01/awk/" class="article-date">
+  <time class="dt-published" datetime="2021-04-01T10:17:54.000Z" itemprop="datePublished">2021-04-01</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Learning/">Learning</a>
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
   </div>
 
   </div>
@@ -92,7 +92,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      Vimium
+      awk
     </h1>
   
 
@@ -100,46 +100,36 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="Vimium"><a href="#Vimium" class="headerlink" title="Vimium"></a>Vimium</h1><h1 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h1><p>The hacker’s browser.<br>Chrome浏览器的类似vim的插件</p>
-<h1 id="Key"><a href="#Key" class="headerlink" title="Key"></a>Key</h1><ul>
-<li><p>f/F<br>快速跳转链接，大写在新标签页打开，小写在当前标签页打开</p>
-</li>
-<li><p>x<br>关闭当前标签页</p>
-</li>
-<li><p>X<br>打开刚关闭的标签页</p>
-</li>
-<li><p>gg<br>滑动到页面顶部</p>
-</li>
-<li><p>G<br>滑动到页面底部</p>
-</li>
-<li><p>r<br>刷新页面</p>
-</li>
-<li><p>i<br>进入输入模式，自动寻找输入框</p>
-</li>
-<li><p>yy<br>拷贝当前链接</p>
-</li>
-<li><p>o/O<br>搜索链接，书签和历史</p>
-</li>
-<li><p>b/B<br>搜索书签</p>
-</li>
-<li><p>/<br>进入搜索模式，<code>n</code>向后匹配，<code>N</code>向前匹配</p>
-</li>
-<li><p>H/L<br>前进和后退</p>
-</li>
-<li><p>J/K<br>在不同标签中移动</p>
-</li>
-<li><p>T<br>在标签页中搜索</p>
-</li>
-</ul>
+        <h1 id="awk"><a href="#awk" class="headerlink" title="awk"></a>awk</h1><h2 id=""><a href="#" class="headerlink" title=""></a></h2><p><code>awk [options] &#39;pattern action&#39; file</code></p>
+<p>常见的action<code>print</code></p>
+<p>打印文件的第五列<br><code>awk &#39;&#123;print $5&#125;&#39; txt</code></p>
+<p><code>$0</code> 表示整行<br><code>$NF</code>表示最后一列</p>
+<p>使用逗号来分隔，输出多列<br><code>awk &#39;&#123;print $1,$2&#125;&#39; txt</code></p>
+<p>可以添加自己的字段<br><code>awk &#39;&#123;print $1,&quot;string&quot;&#125; txt&#39;</code></p>
+<p><code>BEGIN</code>在处理文本前要执行的动作<br><code>awk &#39;BEGIN&#123;print $1&#125;&#39; txt</code></p>
+<p><code>END</code>在处理文本后要执行的动作</p>
+<h2 id="分隔符"><a href="#分隔符" class="headerlink" title="分隔符"></a>分隔符</h2><p>指定<code>#</code>为输入分隔符<br><code>awk -F# &#39;&#123;print $1&#125; txt&#39;</code></p>
+<p><code>awk -v FS=&#39;#&#39; &#39;&#123;print $1&#125; txt&#39;</code></p>
+<p>指定<code>#为输出分隔符</code><br><code>awk -v OFS=&#39;#&#39; &#39;&#123;print $1&#125; txt&#39;</code></p>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p><code>NR</code>行号</p>
+<p><code>NF</code>列号</p>
+<p>输出带有行号<br><code>awk &#39;&#123;print NR,$0&#125; txt&#39;</code></p>
+<p><code>FNR</code>多个文件的行号<br><code>awk &#39;&#123;print FNR,$0&#125; txt1,txt2&#39;</code></p>
+<p><code>RS</code>输入行分隔符<br>将空格作为行分隔符<br><code>awk -v RS=&#39; &#39; &#39;&#123;print $0&#125;&#39; txt</code></p>
+<p><code>FILENAME</code>文件名<br><code>awk &#39;&#123;print FILENAME,$0&#125; txt&#39;</code></p>
+<p><code>ARGC</code>参数的数量</p>
+<p><code>ARGV</code>参数的值<br><code>awk &#39;&#123;print ARGC,ARGV[0],ARGV[1]&#125;&#39; txt</code></p>
+<h3 id="自定义变量"><a href="#自定义变量" class="headerlink" title="自定义变量"></a>自定义变量</h3><p><code>awk -v var=&quot;var&quot; &#39;&#123;print var,$0&#125;&#39; txt</code></p>
+<p><code>awk &#39;&#123;var=&quot;myVar&quot;;print var,$0&#125;&#39; txt</code></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://zerrari.github.io/2021/02/27/Vimium/" data-id="ckm95qn6r000ojefz2fr88t8u" data-title="Vimium" class="article-share-link">Share</a>
+      <a data-url="https://zerrari.github.io/2021/04/01/awk/" data-id="ckmytszr40000u2fzcx9p6jz4" data-title="awk" class="article-share-link">Share</a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tools/" rel="tag">Tools</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Learning/" rel="tag">Learning</a></li></ul>
 
     </footer>
   </div>
@@ -147,19 +137,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2021/03/07/Leetcode-47DW/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Leetcode 47DW
-        
-      </div>
-    </a>
   
-  
-    <a href="/2021/02/14/python%E7%88%AC%E8%99%AB%E5%AE%9E%E8%B7%B5-%E5%9B%BE%E7%89%87%E4%B8%8B%E8%BD%BD/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2021/03/30/a-linux-command-in-a-day/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">python爬虫实践-图片下载</div>
+      <div class="article-nav-title">a linux command in a day</div>
     </a>
   
 </nav>
