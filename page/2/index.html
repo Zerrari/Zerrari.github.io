@@ -71,155 +71,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-Makefile" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/03/22/Makefile/" class="article-date">
-  <time class="dt-published" datetime="2021-03-22T08:32:00.000Z" itemprop="datePublished">2021-03-22</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Makefile/">Makefile</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/03/22/Makefile/">Makefile</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="Makefile"><a href="#Makefile" class="headerlink" title="Makefile"></a>Makefile</h1><h2 id="intro"><a href="#intro" class="headerlink" title="intro"></a>intro</h2><p>编译文件的工具，可以有效组织大规模的源文件。</p>
-<h2 id="规则"><a href="#规则" class="headerlink" title="规则"></a>规则</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">target... : prerequisites...</span><br><span class="line">    command...</span><br></pre></td></tr></table></figure>
-<p><strong>command</strong> 前要用Tab键缩进</p>
-<p>首先从依赖中寻找是否有比目标文件更新的文件，或者如果目标文件不存在，则运行下面的命令，并生成目标文件。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.PHONY : clean</span><br><span class="line">clean :</span><br><span class="line">    -rm edit $(objects)</span><br></pre></td></tr></table></figure>
-<p><code>.PHONY</code>表示<code>clean</code>是一个伪目标，并不会生成这个文件，只有显式执行<code>make clean</code>,才会执行命令。</p>
-<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>变量的声明<br><code>objects = program.o foo.o utils.o</code><br>变量的使用<br><code>program : $(objects)</code></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://zerrari.github.io/2021/03/22/Makefile/" data-id="ckmkc30ph0000n5fz09ovfxzw" data-title="Makefile" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Learning/" rel="tag">Learning</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Tree" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/03/16/Tree/" class="article-date">
-  <time class="dt-published" datetime="2021-03-16T12:07:17.000Z" itemprop="datePublished">2021-03-16</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Data-Structure/">Data Structure</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/03/16/Tree/">Tree</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="树"><a href="#树" class="headerlink" title="树"></a>树</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>树是结点的有限集。</p>
-<p><strong>度</strong> 结点拥有的子树的树目。</p>
-<p>度为零的结点称为叶子结点或终端结点。<br>度不为零的结点称为分支结点或非终端结点。</p>
-<p>树的度是各结点度的最大值。</p>
-<p>树中结点的最大层次称为树的深度或高度。</p>
-<p>森林是互不相交树的集合。</p>
-<h2 id="树的存储结构"><a href="#树的存储结构" class="headerlink" title="树的存储结构"></a>树的存储结构</h2><h3 id="双亲表示法"><a href="#双亲表示法" class="headerlink" title="双亲表示法"></a>双亲表示法</h3><table>
-<thead>
-<tr>
-<th>Data</th>
-<th>Parent</th>
-</tr>
-</thead>
-</table>
-<p><strong>Data</strong> 表示数据域</p>
-<p><strong>Parent</strong> 表示指针域，指向双亲</p>
-<p><img src="../images/Tree-parent.png" alt="双亲表示法"></p>
-<h3 id="孩子表示法"><a href="#孩子表示法" class="headerlink" title="孩子表示法"></a>孩子表示法</h3><p><img src="../images/tree-child.png" alt="孩子表示法"> </p>
-<p>两种结点结构</p>
-<hr>
-<p>孩子链表的孩子结点<br>|child|next|<br>|—–|—-|</p>
-<p><strong>next</strong> 指向下一个孩子结点</p>
-<p><strong>child</strong> 保存某个结点在表头数组中的下标</p>
-<hr>
-<p>表头数组<br>|data|firstchild|<br>|—-|———-|</p>
-<p><strong>data</strong> 保存数据<br><strong>firstchild</strong> 保存第一个孩子的头指针</p>
-<hr>
-<h3 id="孩子兄弟表示法"><a href="#孩子兄弟表示法" class="headerlink" title="孩子兄弟表示法"></a>孩子兄弟表示法</h3><table>
-<thead>
-<tr>
-<th>data</th>
-<th>firstchild</th>
-<th>rightsib</th>
-</tr>
-</thead>
-</table>
-<p><strong>rightsib</strong> 存储右兄弟指针</p>
-<h2 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h2><p>除了叶子结点以外，每个结点的子树的个数不超过2.</p>
-<h3 id="二叉树的分类"><a href="#二叉树的分类" class="headerlink" title="二叉树的分类"></a>二叉树的分类</h3><ul>
-<li>斜树</li>
-<li>完全二叉树</li>
-<li>满二叉树</li>
-</ul>
-<h3 id="二叉树的存储结构"><a href="#二叉树的存储结构" class="headerlink" title="二叉树的存储结构"></a>二叉树的存储结构</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">typedef struct BitTree</span><br><span class="line">&#123;</span><br><span class="line">		ElementType data;</span><br><span class="line">		struct BitTree *rchild ,*lchild;</span><br><span class="line">&#125;BitTree;</span><br></pre></td></tr></table></figure>
-<h3 id="二叉树的遍历"><a href="#二叉树的遍历" class="headerlink" title="二叉树的遍历"></a>二叉树的遍历</h3><p><img src="../images/Traverse.png" alt="Traverse"> </p>
-<h4 id="前序遍历"><a href="#前序遍历" class="headerlink" title="前序遍历"></a>前序遍历</h4><p>若二叉树为空，则空操作返回；否则先访问根结点，前序遍历左子树，再遍历右子树。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">void PreOrderTraverse(BitTree T)</span><br><span class="line">&#123;</span><br><span class="line">		if (&amp;T &#x3D;&#x3D; NULL)</span><br><span class="line">				return;</span><br><span class="line">		printf(&quot;%c&quot;,T.data);</span><br><span class="line">		PreOrderTraverse(T.lchild);</span><br><span class="line">		PreOrderTraverse(T.rchild);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>ABDHKECFIGJ</p>
-<h4 id="中序遍历"><a href="#中序遍历" class="headerlink" title="中序遍历"></a>中序遍历</h4><p>若二叉树为空，则空操作返回；否则从根结点开始，中序遍历左子树，然后访问根结点，再中序遍历右子树。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">void InOrderTraverse(BitTree T)</span><br><span class="line">&#123;</span><br><span class="line">		if (&amp;T &#x3D;&#x3D; NULL)</span><br><span class="line">				return;</span><br><span class="line">		InOrderTraverse(T.lchild);</span><br><span class="line">		printf(T.data);</span><br><span class="line">		InOrderTraverse(T.rchild);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>HKDBEAIFCGJ</p>
-<h4 id="后序遍历"><a href="#后序遍历" class="headerlink" title="后序遍历"></a>后序遍历</h4><p>若二叉树为空，则空操作返回；否则从左到右先访问左右子树，再访问根结点。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">void PostOrderTraverse(BitTree T)</span><br><span class="line">&#123;</span><br><span class="line">		if (&amp;T &#x3D;&#x3D; NULL)</span><br><span class="line">				return;</span><br><span class="line">		PostOrderTraverse(T.lchild);</span><br><span class="line">		PostOrderTraverse(T.rchild);</span><br><span class="line">		printf(T.data);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>KHDEBIFJGCA</p>
-<h3 id="二叉树的建立"><a href="#二叉树的建立" class="headerlink" title="二叉树的建立"></a>二叉树的建立</h3>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://zerrari.github.io/2021/03/16/Tree/" data-id="ckmc05lnu0000x2fz0m4352tn" data-title="Tree" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Learning/" rel="tag">Learning</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
     <article id="post-vim-markdown" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/03/15/vim-markdown/" class="article-date">
@@ -848,11 +699,143 @@
 
 
   
+    <article id="post-Git-二" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/02/09/Git-%E4%BA%8C/" class="article-date">
+  <time class="dt-published" datetime="2021-02-09T10:45:29.000Z" itemprop="datePublished">2021-02-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Learning/">Learning</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/02/09/Git-%E4%BA%8C/">Git-二</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h1><h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><h2 id="查看提交历史"><a href="#查看提交历史" class="headerlink" title="查看提交历史"></a>查看提交历史</h2><p><code>git log</code><br><code>git log -p</code>会显示每次提交的差异<br><code>git log --stat</code>显示每次提交的简略信息</p>
+<h2 id="撤销操作"><a href="#撤销操作" class="headerlink" title="撤销操作"></a>撤销操作</h2><p><code>git commit --amend</code><br>执行此命令，最后只会有一个提交，覆盖了前面的提交</p>
+<p><code>git reset &lt;file&gt;</code><br>取消暂存的文件</p>
+<p><code>git checkout --&lt;file&gt;</code><br>取消文件的修改即恢复到上次提交的样子</p>
+<h2 id="远程仓库的使用"><a href="#远程仓库的使用" class="headerlink" title="远程仓库的使用"></a>远程仓库的使用</h2><p><code>git remote</code><br>查看远程仓库</p>
+<p><code>git remote add &lt;shortname&gt; &lt;url&gt;</code><br>添加一个远程仓库，同时指定一个简单的缩写</p>
+<p><code>git fetch [remote-name]</code><br>拉取远程仓库中自己还没有的数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git push [remote-name] [branch-name]</span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
+<p>推送到远程仓库</p>
+<p><code>git remote show [remote-name]</code><br>查看远程仓库的信息</p>
+<p><code>git remote rename</code><br>修改远程仓库的简写名</p>
+<p><code>git remote rm</code><br>删除远程仓库</p>
+<h2 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h2><p><code>git tag</code><br>列出标签</p>
+<h3 id="创建标签"><a href="#创建标签" class="headerlink" title="创建标签"></a>创建标签</h3><p>标签分为：</p>
+<ul>
+<li><p>轻量标签<br><code>git tag v1.4-lw</code></p>
+</li>
+<li><p>附注标签<br><code>git tag -a v1.4 -m &quot;some messages&quot;</code></p>
+</li>
+</ul>
+<p><code>git show</code><br>显示附注标签于该次提交的信息</p>
+<p><code>git tag -a v1.2 9fceb02</code><br>后期打标签</p>
+<p><code>git push origin [tagname]</code><br>将标签推送到服务器上</p>
+<h2 id="Git别名"><a href="#Git别名" class="headerlink" title="Git别名"></a>Git别名</h2><p><code>git config --global alias.co checkout</code><br>当要输入<code>git checkout</code>,只要输入<code>git co</code></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://zerrari.github.io/2021/02/09/Git-%E4%BA%8C/" data-id="ckm95qn6m000djefzdcfb084s" data-title="Git-二" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tools/" rel="tag">Tools</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-python学习笔记-五" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/02/08/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%BA%94/" class="article-date">
+  <time class="dt-published" datetime="2021-02-08T12:28:14.000Z" itemprop="datePublished">2021-02-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Python/">Python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/02/08/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%BA%94/">python学习笔记-五</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="day5-in-python"><a href="#day5-in-python" class="headerlink" title="day5 in python"></a>day5 in python</h1><h1 id="面向对象编程"><a href="#面向对象编程" class="headerlink" title="面向对象编程"></a>面向对象编程</h1><p>把对象作为程序的基本单元，一个对象包括了数据和操作数据的函数</p>
+<h2 id="类和实例"><a href="#类和实例" class="headerlink" title="类和实例"></a>类和实例</h2><p>类是抽象的模版，实例是根据类创造出来的具体对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">class Student():</span><br><span class="line">	pass</span><br><span class="line">mike &#x3D; Student()</span><br></pre></td></tr></table></figure>
+<h3 id="init"><a href="#init" class="headerlink" title="init"></a><strong>init</strong></h3><p>通过__init__方法可以在创建实例的同时，赋予对象属性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">def __init_——(self,name,score):</span><br><span class="line">	self.name &#x3D; name</span><br><span class="line">	self.score &#x3D;score</span><br></pre></td></tr></table></figure>
+<p>参数<code>self</code>表示创建的实例本身</p>
+<p>类中的函数第一个变量永远是<code>self</code></p>
+<h3 id="访问限制"><a href="#访问限制" class="headerlink" title="访问限制"></a>访问限制</h3><p>如果要让内部属性不被外部访问，在属性的名称前加上两个下划线，<br>这样变量就变成了私有变量，只能内部访问</p>
+<h2 id="继承和多态"><a href="#继承和多态" class="headerlink" title="继承和多态"></a>继承和多态</h2><p>当我们定义一个类的时候，可以从现有的类继承，<br>被继承的类称为父类，继承的类称为子类</p>
+<p><code>dir()</code>获得一个对象的所有属性和方法,返回一个列表</p>
+<ul>
+<li>继承<br>继承可以获得父类的全部功能</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">class animal(object):</span><br><span class="line">	pass</span><br><span class="line">class dog(animal):</span><br><span class="line">	pass</span><br></pre></td></tr></table></figure>
+<p>dog类继承了animal类</p>
+<ul>
+<li>多态<br><code>isinstance()</code>判断变量是否是某个类型<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">b &#x3D; animal()</span><br><span class="line">isinstance(b,animal)</span><br><span class="line">c &#x3D; dog()</span><br><span class="line">isinstance(c,dog)</span><br></pre></td></tr></table></figure>
+<code>c</code>既是dog类也是animal类<br>因此，传入的任意类型，只要是Animal类或者子类，<br>就会自动调用实际类型的方法，这就是多态的意思</li>
+</ul>
+<h3 id="类属性"><a href="#类属性" class="headerlink" title="类属性"></a>类属性</h3><p>在类中定义的属性可以通过实例和累得名字来访问</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class Student(object):</span><br><span class="line">	name &#x3D; student</span><br><span class="line">Student.name</span><br><span class="line">s&#x3D;student()</span><br><span class="line">s.name</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://zerrari.github.io/2021/02/08/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%BA%94/" data-id="ckm95qn720017jefzhfxqczxb" data-title="python学习笔记-五" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Learning/" rel="tag">Learning</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -863,7 +846,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Archlinux/">Archlinux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Structure/">Data Structure</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Emacs/">Emacs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Learning/">Learning</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Leetcode/">Leetcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Makefile/">Makefile</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vim/">Vim</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Archlinux/">Archlinux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Structure/">Data Structure</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Emacs/">Emacs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Learning/">Learning</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Leetcode/">Leetcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Makefile/">Makefile</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vim/">Vim</a></li></ul>
     </div>
   </div>
 
@@ -913,15 +896,15 @@
           </li>
         
           <li>
-            <a href="/2021/04/02/TFRecord/">TFRecord</a>
-          </li>
-        
-          <li>
             <a href="/2021/04/02/Vim/">Vim</a>
           </li>
         
           <li>
             <a href="/2021/04/01/awk/">awk</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/30/a-linux-command-in-a-day/">a linux command in a day</a>
           </li>
         
       </ul>
