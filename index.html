@@ -71,6 +71,187 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-shell实战" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/07/shell%E5%AE%9E%E6%88%98/" class="article-date">
+  <time class="dt-published" datetime="2021-04-07T04:19:18.000Z" itemprop="datePublished">2021-04-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/07/shell%E5%AE%9E%E6%88%98/">shell实战</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="shell"><a href="#shell" class="headerlink" title="shell"></a>shell</h1><p>本文的重点在于shell脚本的编写。</p>
+<h2 id="调用shell脚本"><a href="#调用shell脚本" class="headerlink" title="调用shell脚本"></a>调用shell脚本</h2><p>方式一</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ chmod +x test.sh</span><br><span class="line">$ .&#x2F;test.sh</span><br></pre></td></tr></table></figure>
+<p>方式二</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ &#x2F;bin&#x2F;sh test.sh</span><br></pre></td></tr></table></figure>
+<h2 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h2><h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>定义一个变量,变量名一般有大写字母构成，其中不能用空格分隔<br><code>$ VAR=value</code></p>
+<p>一个变量仅存在于当前shell进程，用<code>export</code>可以将本地变量变为环境变量<br><code>$ export VAR=value</code></p>
+<p>删除已定义的变量<br><code>$ unset VAR</code></p>
+<p>取变量名时，要用<code>$</code><br><code>$ echo $VAR</code><br><code>$ echo $&#123;var&#125;abc</code></p>
+<h4 id="文件名代换"><a href="#文件名代换" class="headerlink" title="文件名代换"></a>文件名代换</h4><p>wildcard</p>
+<ul>
+<li>?  匹配一个任意字符</li>
+<li><ul>
+<li> 匹配零个或多个任意字符</li>
+</ul>
+</li>
+<li>[] 匹配括号内的任意字符</li>
+</ul>
+<p>命令代换</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ DATE&#x3D;&#96;date&#96;</span><br><span class="line">$ echo $DATE</span><br></pre></td></tr></table></figure>
+<p>或是用$()来表示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ DATE&#x3D;$(date)</span><br></pre></td></tr></table></figure>
+<p>算术代换<br><code>$(())</code>将其中的shell变量取值转换成整数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ VAR&#x3D;45</span><br><span class="line">$ echo $(($VAR+3))</span><br></pre></td></tr></table></figure>
+<h3 id="条件测试"><a href="#条件测试" class="headerlink" title="条件测试"></a>条件测试</h3><p>是否存在一个目录<br><code>[ -d DIR ]</code></p>
+<p>是否存在一个文件<br><code>[ -f FILE ]</code></p>
+<p>如果<code>STRING</code>的长度为零则为真<br><code>[ -z STRING ]</code></p>
+<p><code>[ -n STRING ]</code></p>
+<p><code>[ STRING1 = STRING2 ]</code></p>
+<p><code>[ arg1 op arg2 ]</code></p>
+<p>op</p>
+<ul>
+<li>-eq 等于</li>
+<li>-ne 不等于</li>
+<li>-lt 小于</li>
+<li>-le 小于等于</li>
+<li>-gt 大于</li>
+<li>-ge 大于等于</li>
+</ul>
+<p>与或非</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[ expr1 -a expr2]</span><br><span class="line">[ expr1 -o expr2 ]</span><br><span class="line">[ ! expr ]</span><br></pre></td></tr></table></figure>
+<h4 id="if"><a href="#if" class="headerlink" title="if"></a>if</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">if [ &quot;$YES_OR_NO&quot; &#x3D; &quot;yes&quot; ]; then</span><br><span class="line">  echo &quot;Good morning!&quot;</span><br><span class="line">elif [ &quot;$YES_OR_NO&quot; &#x3D; &quot;no&quot; ]; then</span><br><span class="line">  echo &quot;Good afternoon!&quot;</span><br><span class="line">else</span><br><span class="line">  echo &quot;Sorry, $YES_OR_NO not recognized. Enter yes or no.&quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<h4 id="case"><a href="#case" class="headerlink" title="case"></a>case</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">case &quot;$YES_OR_NO&quot; in</span><br><span class="line">yes|y|Yes|YES)</span><br><span class="line">  echo &quot;Good Morning!&quot;;;</span><br><span class="line">[nN]*)</span><br><span class="line">  echo &quot;Good Afternoon!&quot;;;</span><br><span class="line">*)</span><br><span class="line">  echo &quot;Sorry, $YES_OR_NO not recognized. Enter yes or no.&quot;;;</span><br><span class="line">esac</span><br></pre></td></tr></table></figure>
+<h4 id="for"><a href="#for" class="headerlink" title="for"></a>for</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for NAME in John,Mike; do</span><br><span class="line">    echo $NAME</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+<h4 id="while"><a href="#while" class="headerlink" title="while"></a>while</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">while [ &quot;$TRY&quot; !&#x3D; &quot;secret&quot; ]; do</span><br><span class="line">  echo &quot;Sorry, try again&quot;</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><p>调用时不用加括号</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">foo()</span><br><span class="line">&#123;</span><br><span class="line">    echo &quot;hello world&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="调试方法"><a href="#调试方法" class="headerlink" title="调试方法"></a>调试方法</h3><ul>
+<li>-n 读一遍命令，但不执行，用来检查语法错误</li>
+<li>-x 跟踪执行信息，将每一条命令和输出打印出来</li>
+</ul>
+<p>在命令行使用参数<br><code>$ sh -x ./test.sh</code></p>
+<p>在脚本文件的第一行声明<br>`#! /bin/sh -x </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://zerrari.github.io/2021/04/07/shell%E5%AE%9E%E6%88%98/" data-id="ckn6zq1qy0001lofzb7tda7em" data-title="shell实战" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Learning/" rel="tag">Learning</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-TFRecord" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/02/TFRecord/" class="article-date">
+  <time class="dt-published" datetime="2021-04-02T10:56:52.000Z" itemprop="datePublished">2021-04-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/02/TFRecord/">TFRecord</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://zerrari.github.io/2021/04/02/TFRecord/" data-id="ckn6zq1r10003lofz0pzm815h" data-title="TFRecord" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Learning/" rel="tag">Learning</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Vim" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/02/Vim/" class="article-date">
+  <time class="dt-published" datetime="2021-04-02T09:54:00.000Z" itemprop="datePublished">2021-04-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/02/Vim/">Vim</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://zerrari.github.io/2021/04/02/Vim/" data-id="ckn6zq1qt0000lofzbghvhs5f" data-title="Vim" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tools/" rel="tag">Tools</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-awk" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/04/01/awk/" class="article-date">
@@ -566,317 +747,6 @@
 
 
   
-    <article id="post-Tree" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/03/16/Tree/" class="article-date">
-  <time class="dt-published" datetime="2021-03-16T12:07:17.000Z" itemprop="datePublished">2021-03-16</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Data-Structure/">Data Structure</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/03/16/Tree/">Tree</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="树"><a href="#树" class="headerlink" title="树"></a>树</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>树是结点的有限集。</p>
-<p><strong>度</strong> 结点拥有的子树的树目。</p>
-<p>度为零的结点称为叶子结点或终端结点。<br>度不为零的结点称为分支结点或非终端结点。</p>
-<p>树的度是各结点度的最大值。</p>
-<p>树中结点的最大层次称为树的深度或高度。</p>
-<p>森林是互不相交树的集合。</p>
-<h2 id="树的存储结构"><a href="#树的存储结构" class="headerlink" title="树的存储结构"></a>树的存储结构</h2><h3 id="双亲表示法"><a href="#双亲表示法" class="headerlink" title="双亲表示法"></a>双亲表示法</h3><table>
-<thead>
-<tr>
-<th>Data</th>
-<th>Parent</th>
-</tr>
-</thead>
-</table>
-<p><strong>Data</strong> 表示数据域</p>
-<p><strong>Parent</strong> 表示指针域，指向双亲</p>
-<p><img src="../images/Tree-parent.png" alt="双亲表示法"></p>
-<h3 id="孩子表示法"><a href="#孩子表示法" class="headerlink" title="孩子表示法"></a>孩子表示法</h3><p><img src="../images/tree-child.png" alt="孩子表示法"> </p>
-<p>两种结点结构</p>
-<hr>
-<p>孩子链表的孩子结点<br>|child|next|<br>|—–|—-|</p>
-<p><strong>next</strong> 指向下一个孩子结点</p>
-<p><strong>child</strong> 保存某个结点在表头数组中的下标</p>
-<hr>
-<p>表头数组<br>|data|firstchild|<br>|—-|———-|</p>
-<p><strong>data</strong> 保存数据<br><strong>firstchild</strong> 保存第一个孩子的头指针</p>
-<hr>
-<h3 id="孩子兄弟表示法"><a href="#孩子兄弟表示法" class="headerlink" title="孩子兄弟表示法"></a>孩子兄弟表示法</h3><table>
-<thead>
-<tr>
-<th>data</th>
-<th>firstchild</th>
-<th>rightsib</th>
-</tr>
-</thead>
-</table>
-<p><strong>rightsib</strong> 存储右兄弟指针</p>
-<h2 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h2><p>除了叶子结点以外，每个结点的子树的个数不超过2.</p>
-<h3 id="二叉树的分类"><a href="#二叉树的分类" class="headerlink" title="二叉树的分类"></a>二叉树的分类</h3><ul>
-<li>斜树</li>
-<li>完全二叉树</li>
-<li>满二叉树</li>
-</ul>
-<h3 id="二叉树的存储结构"><a href="#二叉树的存储结构" class="headerlink" title="二叉树的存储结构"></a>二叉树的存储结构</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">typedef struct BitTree</span><br><span class="line">&#123;</span><br><span class="line">		ElementType data;</span><br><span class="line">		struct BitTree *rchild ,*lchild;</span><br><span class="line">&#125;BitTree;</span><br></pre></td></tr></table></figure>
-<h3 id="二叉树的遍历"><a href="#二叉树的遍历" class="headerlink" title="二叉树的遍历"></a>二叉树的遍历</h3><p><img src="../images/Traverse.png" alt="Traverse"> </p>
-<h4 id="前序遍历"><a href="#前序遍历" class="headerlink" title="前序遍历"></a>前序遍历</h4><p>若二叉树为空，则空操作返回；否则先访问根结点，前序遍历左子树，再遍历右子树。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">void PreOrderTraverse(BitTree T)</span><br><span class="line">&#123;</span><br><span class="line">		if (&amp;T &#x3D;&#x3D; NULL)</span><br><span class="line">				return;</span><br><span class="line">		printf(&quot;%c&quot;,T.data);</span><br><span class="line">		PreOrderTraverse(T.lchild);</span><br><span class="line">		PreOrderTraverse(T.rchild);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>ABDHKECFIGJ</p>
-<h4 id="中序遍历"><a href="#中序遍历" class="headerlink" title="中序遍历"></a>中序遍历</h4><p>若二叉树为空，则空操作返回；否则从根结点开始，中序遍历左子树，然后访问根结点，再中序遍历右子树。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">void InOrderTraverse(BitTree T)</span><br><span class="line">&#123;</span><br><span class="line">		if (&amp;T &#x3D;&#x3D; NULL)</span><br><span class="line">				return;</span><br><span class="line">		InOrderTraverse(T.lchild);</span><br><span class="line">		printf(T.data);</span><br><span class="line">		InOrderTraverse(T.rchild);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>HKDBEAIFCGJ</p>
-<h4 id="后序遍历"><a href="#后序遍历" class="headerlink" title="后序遍历"></a>后序遍历</h4><p>若二叉树为空，则空操作返回；否则从左到右先访问左右子树，再访问根结点。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">void PostOrderTraverse(BitTree T)</span><br><span class="line">&#123;</span><br><span class="line">		if (&amp;T &#x3D;&#x3D; NULL)</span><br><span class="line">				return;</span><br><span class="line">		PostOrderTraverse(T.lchild);</span><br><span class="line">		PostOrderTraverse(T.rchild);</span><br><span class="line">		printf(T.data);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>KHDEBIFJGCA</p>
-<h3 id="二叉树的建立"><a href="#二叉树的建立" class="headerlink" title="二叉树的建立"></a>二叉树的建立</h3>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://zerrari.github.io/2021/03/16/Tree/" data-id="ckmc05lnu0000x2fz0m4352tn" data-title="Tree" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Learning/" rel="tag">Learning</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-vim-markdown" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/03/15/vim-markdown/" class="article-date">
-  <time class="dt-published" datetime="2021-03-15T04:04:31.000Z" itemprop="datePublished">2021-03-15</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Vim/">Vim</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/03/15/vim-markdown/">vim-markdown</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="Markdown-Vim"><a href="#Markdown-Vim" class="headerlink" title="Markdown Vim"></a>Markdown Vim</h1><blockquote>
-<p>一种轻量级的标记语言</p>
-</blockquote>
-<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><p>标题</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#    一级标题</span><br><span class="line">##   二级标题</span><br><span class="line">###  三级标题</span><br></pre></td></tr></table></figure>
-<p>字体格式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">*Bold*      粗体</span><br><span class="line">*Italic*    斜体</span><br><span class="line">~~delete~~  中划线</span><br></pre></td></tr></table></figure>
-<p>超链接</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[description](url)   网页链接</span><br><span class="line">![description](url)  图片链接</span><br></pre></td></tr></table></figure>
-<p>表格</p>
-<table>
-<thead>
-<tr>
-<th>name</th>
-<th>address</th>
-<th>grade</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>John</td>
-<td>China</td>
-<td>96</td>
-</tr>
-<tr>
-<td>Mike</td>
-<td>US</td>
-<td>94</td>
-</tr>
-</tbody></table>
-<p>列表</p>
-<ul>
-<li>无序列表<ul>
-<li>列表嵌套(四个空格)</li>
-</ul>
-</li>
-</ul>
-<ol>
-<li>有序列表</li>
-<li>……..</li>
-</ol>
-<h2 id="Vim-快捷键"><a href="#Vim-快捷键" class="headerlink" title="Vim 快捷键"></a>Vim 快捷键</h2><table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Function</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>;c</td>
-<td>insert code block</td>
-</tr>
-<tr>
-<td>;b</td>
-<td>bold text</td>
-</tr>
-<tr>
-<td>;i</td>
-<td>italic text</td>
-</tr>
-<tr>
-<td>;h</td>
-<td>insert header</td>
-</tr>
-<tr>
-<td>;p</td>
-<td>insert image</td>
-</tr>
-<tr>
-<td>;a</td>
-<td>insert url</td>
-</tr>
-<tr>
-<td>;s</td>
-<td>insert line</td>
-</tr>
-<tr>
-<td>;f</td>
-<td>find &lt;++&gt;</td>
-</tr>
-<tr>
-<td>p</td>
-<td>preview markdown</td>
-</tr>
-</tbody></table>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://zerrari.github.io/2021/03/15/vim-markdown/" data-id="ckma399wm0000fqfzfgjs23f6" data-title="vim-markdown" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tools/" rel="tag">Tools</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Operating-System-Learning-2" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/03/14/Operating-System-Learning-2/" class="article-date">
-  <time class="dt-published" datetime="2021-03-14T11:48:46.000Z" itemprop="datePublished">2021-03-14</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/OS/">OS</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/03/14/Operating-System-Learning-2/">Operating System Learning-2</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="Operating-System"><a href="#Operating-System" class="headerlink" title="Operating System"></a>Operating System</h1><h2 id="虚拟内存"><a href="#虚拟内存" class="headerlink" title="虚拟内存"></a>虚拟内存</h2><p><img src="../images/%E8%99%9A%E6%8B%9F%E5%AF%BB%E5%9D%80%E7%B3%BB%E7%BB%9F.png" alt="虚拟内存"><br><strong>MMU</strong> 内存管理单元</p>
-<ul>
-<li>利用查询表来翻译虚拟地址<h2 id="页表"><a href="#页表" class="headerlink" title="页表"></a>页表</h2><img src="../images/1.png" alt="页表"></li>
-</ul>
-<p><strong>页表</strong>是一个页表条目(PTE)的数组</p>
-<h3 id="程序的局部性原理"><a href="#程序的局部性原理" class="headerlink" title="程序的局部性原理"></a>程序的局部性原理</h3><h4 id="时间局部性"><a href="#时间局部性" class="headerlink" title="时间局部性"></a>时间局部性</h4><p>一段时间内重复执行一段代码，或者访问一组数据</p>
-<h4 id="空间局部性"><a href="#空间局部性" class="headerlink" title="空间局部性"></a>空间局部性</h4><p>访问一段空间内的数据或者执行代码</p>
-<h3 id="TLB"><a href="#TLB" class="headerlink" title="TLB"></a>TLB</h3><p><strong>翻译后备缓冲区</strong></p>
-<p>由单个的PTE组成的块，来加速地址翻译<br><img src="../images/TLB.png" alt="TLB"></p>
-<ol>
-<li>处理器产生一个虚拟地址</li>
-<li>通过<strong>MMU</strong>产生<strong>PTE</strong>(页表条目)</li>
-<li>通过<strong>TLB</strong>查找是否存在该页表条目</li>
-<li>若存在，交由<strong>MMU</strong>直接翻译成物理地址</li>
-<li>若不存在，从高速缓存中取出该条目，并放入<strong>TLB</strong>中</li>
-</ol>
-<p><strong>TLB</strong>的加入降低了访问主存的次数，原本需要访问两次主存。</p>
-<h3 id="多级页表"><a href="#多级页表" class="headerlink" title="多级页表"></a>多级页表</h3><p>优点</p>
-<ul>
-<li><p>节省了页表的产生空间</p>
-<p>  如果一级页表中的某个页表条目为空，该条目的二级页表不存在</p>
-</li>
-</ul>
-<h2 id="页表置换算法"><a href="#页表置换算法" class="headerlink" title="页表置换算法"></a>页表置换算法</h2><h3 id="最优页面置换算法"><a href="#最优页面置换算法" class="headerlink" title="最优页面置换算法"></a>最优页面置换算法</h3><p>当发生缺页中断时，调入即将访问的页面。<br>现实中无法实现。</p>
-<h3 id="最近未使用页面置换算法"><a href="#最近未使用页面置换算法" class="headerlink" title="最近未使用页面置换算法"></a>最近未使用页面置换算法</h3><p>系统为每一个页面设置两个状态位</p>
-<ul>
-<li>R 访问位（定期清零）</li>
-<li>M 修改位</li>
-</ul>
-<p>根据两个状态位，所有的页面被分为四类：</p>
-<ul>
-<li>0 没有被访问，没有被修改</li>
-<li>1 没有被访问，被修改</li>
-<li>2 被访问，没有被修改</li>
-<li>3 被访问，被修改</li>
-</ul>
-<p>算法随机从编号最小的页面中挑选一个淘汰</p>
-<h3 id="先进先出页面置换算法"><a href="#先进先出页面置换算法" class="headerlink" title="先进先出页面置换算法"></a>先进先出页面置换算法</h3><p>维护一个页面的链表。<br>淘汰最早进入的页面，将最近的页面放在表尾。</p>
-<h3 id="第二次机会页面置换算法"><a href="#第二次机会页面置换算法" class="headerlink" title="第二次机会页面置换算法"></a>第二次机会页面置换算法</h3><h3 id="时钟页面置换算法"><a href="#时钟页面置换算法" class="headerlink" title="时钟页面置换算法"></a>时钟页面置换算法</h3><h3 id="最近最少使用页面置换算法"><a href="#最近最少使用页面置换算法" class="headerlink" title="最近最少使用页面置换算法"></a>最近最少使用页面置换算法</h3><blockquote>
-<p>参考资料《深入理解计算机系统》<br>参考资料《现代操作系统》</p>
-</blockquote>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://zerrari.github.io/2021/03/14/Operating-System-Learning-2/" data-id="ckm95qn6q000ljefzhakf05dc" data-title="Operating System Learning-2" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Learning/" rel="tag">Learning</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
@@ -934,23 +804,23 @@
       <ul>
         
           <li>
+            <a href="/2021/04/07/shell%E5%AE%9E%E6%88%98/">shell实战</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/02/TFRecord/">TFRecord</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/02/Vim/">Vim</a>
+          </li>
+        
+          <li>
             <a href="/2021/04/01/awk/">awk</a>
           </li>
         
           <li>
             <a href="/2021/03/30/a-linux-command-in-a-day/">a linux command in a day</a>
-          </li>
-        
-          <li>
-            <a href="/2021/03/29/WebDev-CSS/">WebDev-CSS</a>
-          </li>
-        
-          <li>
-            <a href="/2021/03/28/virtual-memory/">virtual memory</a>
-          </li>
-        
-          <li>
-            <a href="/2021/03/25/Search/">Search</a>
           </li>
         
       </ul>
