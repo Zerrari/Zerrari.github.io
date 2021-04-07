@@ -216,50 +216,6 @@
 
 
   
-    <article id="post-Vim" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/04/02/Vim/" class="article-date">
-  <time class="dt-published" datetime="2021-04-02T09:54:00.000Z" itemprop="datePublished">2021-04-02</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Linux/">Linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/04/02/Vim/">Vim</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://zerrari.github.io/2021/04/02/Vim/" data-id="ckn6zq1qt0000lofzbghvhs5f" data-title="Vim" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tools/" rel="tag">Tools</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
     <article id="post-awk" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/04/01/awk/" class="article-date">
@@ -789,6 +745,134 @@
 
 
   
+    <article id="post-vim-markdown" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/03/15/vim-markdown/" class="article-date">
+  <time class="dt-published" datetime="2021-03-15T04:04:31.000Z" itemprop="datePublished">2021-03-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Vim/">Vim</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/03/15/vim-markdown/">vim-markdown</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="Markdown-Vim"><a href="#Markdown-Vim" class="headerlink" title="Markdown Vim"></a>Markdown Vim</h1><blockquote>
+<p>一种轻量级的标记语言</p>
+</blockquote>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><p>标题</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#    一级标题</span><br><span class="line">##   二级标题</span><br><span class="line">###  三级标题</span><br></pre></td></tr></table></figure>
+<p>字体格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">*Bold*      粗体</span><br><span class="line">*Italic*    斜体</span><br><span class="line">~~delete~~  中划线</span><br></pre></td></tr></table></figure>
+<p>超链接</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[description](url)   网页链接</span><br><span class="line">![description](url)  图片链接</span><br></pre></td></tr></table></figure>
+<p>表格</p>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>address</th>
+<th>grade</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>John</td>
+<td>China</td>
+<td>96</td>
+</tr>
+<tr>
+<td>Mike</td>
+<td>US</td>
+<td>94</td>
+</tr>
+</tbody></table>
+<p>列表</p>
+<ul>
+<li>无序列表<ul>
+<li>列表嵌套(四个空格)</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>有序列表</li>
+<li>……..</li>
+</ol>
+<h2 id="Vim-快捷键"><a href="#Vim-快捷键" class="headerlink" title="Vim 快捷键"></a>Vim 快捷键</h2><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>;c</td>
+<td>insert code block</td>
+</tr>
+<tr>
+<td>;b</td>
+<td>bold text</td>
+</tr>
+<tr>
+<td>;i</td>
+<td>italic text</td>
+</tr>
+<tr>
+<td>;h</td>
+<td>insert header</td>
+</tr>
+<tr>
+<td>;p</td>
+<td>insert image</td>
+</tr>
+<tr>
+<td>;a</td>
+<td>insert url</td>
+</tr>
+<tr>
+<td>;s</td>
+<td>insert line</td>
+</tr>
+<tr>
+<td>;f</td>
+<td>find &lt;++&gt;</td>
+</tr>
+<tr>
+<td>p</td>
+<td>preview markdown</td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://zerrari.github.io/2021/03/15/vim-markdown/" data-id="ckma399wm0000fqfzfgjs23f6" data-title="vim-markdown" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tools/" rel="tag">Tools</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
 
 
   <nav id="page-nav">
@@ -854,15 +938,15 @@
           </li>
         
           <li>
-            <a href="/2021/04/02/Vim/">Vim</a>
-          </li>
-        
-          <li>
             <a href="/2021/04/01/awk/">awk</a>
           </li>
         
           <li>
             <a href="/2021/03/30/a-linux-command-in-a-day/">a linux command in a day</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/28/virtual-memory/">virtual memory</a>
           </li>
         
       </ul>
