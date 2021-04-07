@@ -4,14 +4,19 @@
   <meta charset="utf-8">
   
   
-  <title>Archives: 2021/3 | Zerrari</title>
+  <title>Regular Expression | Zerrari</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Zerrari">
-<meta property="og:url" content="https://zerrari.github.io/archives/2021/03/index.html">
+  <meta name="description" content="regular expression语法字符类| 字符      | 含义                                       ||———–|——————————————–|| .         | 匹配任意一个字符                           || [  ]      | 匹配括号内的任意一个字符                   || -">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Regular Expression">
+<meta property="og:url" content="https://zerrari.github.io/2021/04/07/Regular-Expression/index.html">
 <meta property="og:site_name" content="Zerrari">
+<meta property="og:description" content="regular expression语法字符类| 字符      | 含义                                       ||———–|——————————————–|| .         | 匹配任意一个字符                           || [  ]      | 匹配括号内的任意一个字符                   || -">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-04-07T05:16:26.000Z">
+<meta property="article:modified_time" content="2021-04-07T13:32:39.821Z">
 <meta property="article:author" content="Zerrari">
+<meta property="article:tag" content="Learning">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Zerrari" type="application/atom+xml">
@@ -69,216 +74,63 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2021/03/30/a-linux-command-in-a-day/" class="archive-article-date">
-  <time class="dt-published" datetime="2021-03-30T01:40:13.000Z" itemprop="datePublished">Mar 30</time>
+        <section id="main"><article id="post-Regular-Expression" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/07/Regular-Expression/" class="article-date">
+  <time class="dt-published" datetime="2021-04-07T05:16:26.000Z" itemprop="datePublished">2021-04-07</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/03/30/a-linux-command-in-a-day/">a linux command in a day</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      Regular Expression
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2021/03/29/WebDev-CSS/" class="archive-article-date">
-  <time class="dt-published" datetime="2021-03-29T08:01:14.000Z" itemprop="datePublished">Mar 29</time>
-</a>
+    <div class="e-content article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/03/29/WebDev-CSS/">WebDev-CSS</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2021/03/28/virtual-memory/" class="archive-article-date">
-  <time class="dt-published" datetime="2021-03-28T09:51:34.000Z" itemprop="datePublished">Mar 28</time>
-</a>
+        <h1 id="regular-expression"><a href="#regular-expression" class="headerlink" title="regular expression"></a>regular expression</h1><h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><p>字符类<br>| 字符      | 含义                                       |<br>|———–|——————————————–|<br>| .         | 匹配任意一个字符                           |<br>| [  ]      | 匹配括号内的任意一个字符                   |<br>| -         | 在[]内表示范围                             |<br>| ^         | 位于[]内的开头，表示匹配除括号内的字符以外 |<br>| [[:xxx:]] | 预定义的字符类 [[:alpha:]]                 |</p>
+<p>数量限定符<br>| 字符  | 含义                                   |<br>|——-|—————————————-|<br>| ?     | 紧跟在它的单元匹配零次或一次           |<br>| +     | 紧跟在它的单元匹配一次或多次           |<br>| *    | 紧跟在它的单元匹配零次或多次           |<br>| {N}   | 紧跟在它的单元匹配N次                  |<br>| {N,}  | 紧跟在它的单元至少匹配N次              |<br>| {,M}  | 紧跟在它的单元至多匹配M次              |<br>| {N,M} | 紧跟在它的单元至少匹配N次，至多匹配M次 |</p>
+<p>位置限定符<br>| 字符 | 含义                 |<br>|——|———————-|<br>| ^    | 限定行首             |<br>| $    | 限定行尾             |<br>| \&lt; | 匹配单词的开头       |<br>| \&gt; | 匹配单词的结尾       |<br>| \b   | 匹配单词开头或结尾   |<br>| \B   | 不匹配单词开头或结尾 | </p>
+<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><p>匹配IP地址</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">egrep -n --color &#39;([0-9]\.)&#123;3&#125;[0-9]&#123;3&#125;&#39;</span><br></pre></td></tr></table></figure>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/03/28/virtual-memory/">virtual memory</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2021/03/25/Search/" class="archive-article-date">
-  <time class="dt-published" datetime="2021-03-25T10:49:37.000Z" itemprop="datePublished">Mar 25</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://zerrari.github.io/2021/04/07/Regular-Expression/" data-id="ckn7hrb560000g3fzf1r06cqn" data-title="Regular Expression" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/03/25/Search/">Search</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2021/03/25/http/" class="archive-article-date">
-  <time class="dt-published" datetime="2021-03-25T05:31:56.000Z" itemprop="datePublished">Mar 25</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/03/25/http/">http</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2021/03/22/Makefile/" class="archive-article-date">
-  <time class="dt-published" datetime="2021-03-22T08:32:00.000Z" itemprop="datePublished">Mar 22</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/03/22/Makefile/">Makefile</a>
-    </h1>
-  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Learning/" rel="tag">Learning</a></li></ul>
 
-    </header>
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2021/04/07/shell%E5%AE%9E%E6%88%98/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">shell实战</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2021/03/16/Tree/" class="archive-article-date">
-  <time class="dt-published" datetime="2021-03-16T12:07:17.000Z" itemprop="datePublished">Mar 16</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/03/16/Tree/">Tree</a>
-    </h1>
-  
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2021/03/15/vim-markdown/" class="archive-article-date">
-  <time class="dt-published" datetime="2021-03-15T04:04:31.000Z" itemprop="datePublished">Mar 15</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/03/15/vim-markdown/">vim-markdown</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2021/03/14/Operating-System-Learning-2/" class="archive-article-date">
-  <time class="dt-published" datetime="2021-03-14T11:48:46.000Z" itemprop="datePublished">Mar 14</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/03/14/Operating-System-Learning-2/">Operating System Learning-2</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2021/03/13/Operating-System-Learning/" class="archive-article-date">
-  <time class="dt-published" datetime="2021-03-13T11:32:12.000Z" itemprop="datePublished">Mar 13</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/03/13/Operating-System-Learning/">Operating System Learning</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/archives/2021/03/page/2/">2</a><a class="extend next" rel="next" href="/archives/2021/03/page/2/">Next &raquo;</a>
-  </nav>
 
 </section>
         

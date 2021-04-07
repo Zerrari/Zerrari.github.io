@@ -71,6 +71,54 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Regular-Expression" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/07/Regular-Expression/" class="article-date">
+  <time class="dt-published" datetime="2021-04-07T05:16:26.000Z" itemprop="datePublished">2021-04-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/07/Regular-Expression/">Regular Expression</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="regular-expression"><a href="#regular-expression" class="headerlink" title="regular expression"></a>regular expression</h1><h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><p>字符类<br>| 字符      | 含义                                       |<br>|———–|——————————————–|<br>| .         | 匹配任意一个字符                           |<br>| [  ]      | 匹配括号内的任意一个字符                   |<br>| -         | 在[]内表示范围                             |<br>| ^         | 位于[]内的开头，表示匹配除括号内的字符以外 |<br>| [[:xxx:]] | 预定义的字符类 [[:alpha:]]                 |</p>
+<p>数量限定符<br>| 字符  | 含义                                   |<br>|——-|—————————————-|<br>| ?     | 紧跟在它的单元匹配零次或一次           |<br>| +     | 紧跟在它的单元匹配一次或多次           |<br>| *    | 紧跟在它的单元匹配零次或多次           |<br>| {N}   | 紧跟在它的单元匹配N次                  |<br>| {N,}  | 紧跟在它的单元至少匹配N次              |<br>| {,M}  | 紧跟在它的单元至多匹配M次              |<br>| {N,M} | 紧跟在它的单元至少匹配N次，至多匹配M次 |</p>
+<p>位置限定符<br>| 字符 | 含义                 |<br>|——|———————-|<br>| ^    | 限定行首             |<br>| $    | 限定行尾             |<br>| \&lt; | 匹配单词的开头       |<br>| \&gt; | 匹配单词的结尾       |<br>| \b   | 匹配单词开头或结尾   |<br>| \B   | 不匹配单词开头或结尾 | </p>
+<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><p>匹配IP地址</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">egrep -n --color &#39;([0-9]\.)&#123;3&#125;[0-9]&#123;3&#125;&#39;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://zerrari.github.io/2021/04/07/Regular-Expression/" data-id="ckn7hrb560000g3fzf1r06cqn" data-title="Regular Expression" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Learning/" rel="tag">Learning</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-shell实战" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/04/07/shell%E5%AE%9E%E6%88%98/" class="article-date">
@@ -696,62 +744,11 @@
 
 
   
-    <article id="post-Makefile" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/03/22/Makefile/" class="article-date">
-  <time class="dt-published" datetime="2021-03-22T08:32:00.000Z" itemprop="datePublished">2021-03-22</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Makefile/">Makefile</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/03/22/Makefile/">Makefile</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="Makefile"><a href="#Makefile" class="headerlink" title="Makefile"></a>Makefile</h1><h2 id="intro"><a href="#intro" class="headerlink" title="intro"></a>intro</h2><p>编译文件的工具，可以有效组织大规模的源文件。</p>
-<h2 id="规则"><a href="#规则" class="headerlink" title="规则"></a>规则</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">target... : prerequisites...</span><br><span class="line">    command...</span><br></pre></td></tr></table></figure>
-<p><strong>command</strong> 前要用Tab键缩进</p>
-<p>首先从依赖中寻找是否有比目标文件更新的文件，或者如果目标文件不存在，则运行下面的命令，并生成目标文件。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.PHONY : clean</span><br><span class="line">clean :</span><br><span class="line">    -rm edit $(objects)</span><br></pre></td></tr></table></figure>
-<p><code>.PHONY</code>表示<code>clean</code>是一个伪目标，并不会生成这个文件，只有显式执行<code>make clean</code>,才会执行命令。</p>
-<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>变量的声明<br><code>objects = program.o foo.o utils.o</code><br>变量的使用<br><code>program : $(objects)</code></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://zerrari.github.io/2021/03/22/Makefile/" data-id="ckmkc30ph0000n5fz09ovfxzw" data-title="Makefile" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Learning/" rel="tag">Learning</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -804,6 +801,10 @@
       <ul>
         
           <li>
+            <a href="/2021/04/07/Regular-Expression/">Regular Expression</a>
+          </li>
+        
+          <li>
             <a href="/2021/04/07/shell%E5%AE%9E%E6%88%98/">shell实战</a>
           </li>
         
@@ -817,10 +818,6 @@
         
           <li>
             <a href="/2021/04/01/awk/">awk</a>
-          </li>
-        
-          <li>
-            <a href="/2021/03/30/a-linux-command-in-a-day/">a linux command in a day</a>
           </li>
         
       </ul>

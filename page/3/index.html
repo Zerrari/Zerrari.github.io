@@ -71,6 +71,74 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Git-二" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/02/09/Git-%E4%BA%8C/" class="article-date">
+  <time class="dt-published" datetime="2021-02-09T10:45:29.000Z" itemprop="datePublished">2021-02-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Learning/">Learning</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/02/09/Git-%E4%BA%8C/">Git-二</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h1><h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><h2 id="查看提交历史"><a href="#查看提交历史" class="headerlink" title="查看提交历史"></a>查看提交历史</h2><p><code>git log</code><br><code>git log -p</code>会显示每次提交的差异<br><code>git log --stat</code>显示每次提交的简略信息</p>
+<h2 id="撤销操作"><a href="#撤销操作" class="headerlink" title="撤销操作"></a>撤销操作</h2><p><code>git commit --amend</code><br>执行此命令，最后只会有一个提交，覆盖了前面的提交</p>
+<p><code>git reset &lt;file&gt;</code><br>取消暂存的文件</p>
+<p><code>git checkout --&lt;file&gt;</code><br>取消文件的修改即恢复到上次提交的样子</p>
+<h2 id="远程仓库的使用"><a href="#远程仓库的使用" class="headerlink" title="远程仓库的使用"></a>远程仓库的使用</h2><p><code>git remote</code><br>查看远程仓库</p>
+<p><code>git remote add &lt;shortname&gt; &lt;url&gt;</code><br>添加一个远程仓库，同时指定一个简单的缩写</p>
+<p><code>git fetch [remote-name]</code><br>拉取远程仓库中自己还没有的数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git push [remote-name] [branch-name]</span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
+<p>推送到远程仓库</p>
+<p><code>git remote show [remote-name]</code><br>查看远程仓库的信息</p>
+<p><code>git remote rename</code><br>修改远程仓库的简写名</p>
+<p><code>git remote rm</code><br>删除远程仓库</p>
+<h2 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h2><p><code>git tag</code><br>列出标签</p>
+<h3 id="创建标签"><a href="#创建标签" class="headerlink" title="创建标签"></a>创建标签</h3><p>标签分为：</p>
+<ul>
+<li><p>轻量标签<br><code>git tag v1.4-lw</code></p>
+</li>
+<li><p>附注标签<br><code>git tag -a v1.4 -m &quot;some messages&quot;</code></p>
+</li>
+</ul>
+<p><code>git show</code><br>显示附注标签于该次提交的信息</p>
+<p><code>git tag -a v1.2 9fceb02</code><br>后期打标签</p>
+<p><code>git push origin [tagname]</code><br>将标签推送到服务器上</p>
+<h2 id="Git别名"><a href="#Git别名" class="headerlink" title="Git别名"></a>Git别名</h2><p><code>git config --global alias.co checkout</code><br>当要输入<code>git checkout</code>,只要输入<code>git co</code></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://zerrari.github.io/2021/02/09/Git-%E4%BA%8C/" data-id="ckm95qn6m000djefzdcfb084s" data-title="Git-二" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tools/" rel="tag">Tools</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-python学习笔记-五" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/02/08/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%BA%94/" class="article-date">
@@ -712,118 +780,11 @@ add，pop和remove方法<figure class="highlight plain"><table><tr><td class="gu
 
 
   
-    <article id="post-Emacs-Hexo" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/01/28/Emacs-Hexo/" class="article-date">
-  <time class="dt-published" datetime="2021-01-28T05:20:58.000Z" itemprop="datePublished">2021-01-28</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Emacs/">Emacs</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/01/28/Emacs-Hexo/">Emacs+Hexo</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="Emacs-Hexo-打造高效博客写作方案"><a href="#Emacs-Hexo-打造高效博客写作方案" class="headerlink" title="Emacs + Hexo 打造高效博客写作方案"></a>Emacs + Hexo 打造高效博客写作方案</h1><h2 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h2><h3 id="什么是Hexo"><a href="#什么是Hexo" class="headerlink" title="什么是Hexo"></a>什么是Hexo</h3><p><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo</a>是一个快速、简洁且高效的博客框架。</p>
-<h3 id="安装指南"><a href="#安装指南" class="headerlink" title="安装指南"></a>安装指南</h3><ul>
-<li>官网的文档十分的详细，并且有简体中文版本。参考官网即可。</li>
-</ul>
-<h2 id="Emacs"><a href="#Emacs" class="headerlink" title="Emacs"></a>Emacs</h2><h3 id="什么是Emacs"><a href="#什么是Emacs" class="headerlink" title="什么是Emacs"></a>什么是Emacs</h3><p>Emacs是一个功能强大的编辑器。<br>本文通过一个Emacs插件来完成在Emacs上利用Hexo书写博客。</p>
-<h3 id="安装指南-1"><a href="#安装指南-1" class="headerlink" title="安装指南"></a>安装指南</h3><p><a target="_blank" rel="noopener" href="https://github.com/kuanyui/hexo.el">hexo.el</a></p>
-<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p>最后，通过，一系列快捷键就可以在Emacs中完成Hexo博客的相关操作</p>
-<table>
-<thead>
-<tr>
-<th>command</th>
-<th>function</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>M-p b</td>
-<td>start hexo</td>
-</tr>
-<tr>
-<td>M-p RET</td>
-<td>open file</td>
-</tr>
-<tr>
-<td>M-p SPC</td>
-<td>show article info</td>
-</tr>
-<tr>
-<td>M-p D</td>
-<td>delete file</td>
-</tr>
-<tr>
-<td>M-p N</td>
-<td>new file</td>
-</tr>
-<tr>
-<td>M-p M a</td>
-<td>add tags</td>
-</tr>
-<tr>
-<td>M-p M r</td>
-<td>remove tags</td>
-</tr>
-<tr>
-<td>M-p m</td>
-<td>mark</td>
-</tr>
-<tr>
-<td>M-p u</td>
-<td>unmark</td>
-</tr>
-<tr>
-<td>M-p s r</td>
-<td>run server</td>
-</tr>
-<tr>
-<td>M-p s s</td>
-<td>stop server</td>
-</tr>
-<tr>
-<td>M-p s d</td>
-<td>deploy</td>
-</tr>
-</tbody></table>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://zerrari.github.io/2021/01/28/Emacs-Hexo/" data-id="ckm95qn650001jefz1z327s3c" data-title="Emacs+Hexo" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tools/" rel="tag">Tools</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -876,6 +837,10 @@ add，pop和remove方法<figure class="highlight plain"><table><tr><td class="gu
       <ul>
         
           <li>
+            <a href="/2021/04/07/Regular-Expression/">Regular Expression</a>
+          </li>
+        
+          <li>
             <a href="/2021/04/07/shell%E5%AE%9E%E6%88%98/">shell实战</a>
           </li>
         
@@ -889,10 +854,6 @@ add，pop和remove方法<figure class="highlight plain"><table><tr><td class="gu
         
           <li>
             <a href="/2021/04/01/awk/">awk</a>
-          </li>
-        
-          <li>
-            <a href="/2021/03/30/a-linux-command-in-a-day/">a linux command in a day</a>
           </li>
         
       </ul>
