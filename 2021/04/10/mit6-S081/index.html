@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="sed, Zerrari">
+    <meta name="keywords" content="mit6.S081, Zerrari">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>sed | Zerrari</title>
+    <title>mit6.S081 | Zerrari</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -266,12 +266,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">sed</h1>
+                    <h1 class="description center-align post-title">mit6.S081</h1>
                 </div>
             </div>
         </div>
@@ -399,8 +399,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Linux/" class="post-category">
-                                Linux
+                            <a href="/categories/OS/" class="post-category">
+                                OS
                             </a>
                         
                     </div>
@@ -412,7 +412,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-04-08
+                    2021-04-10
                 </div>
                 
 
@@ -433,36 +433,118 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="sed"><a href="#sed" class="headerlink" title="sed"></a>sed</h1><p><code>$ sed SCRIPTS INPUTFILES...</code></p>
-<h2 id="command-line-option"><a href="#command-line-option" class="headerlink" title="command line option"></a>command line option</h2><p>不产生输出，除非存在<code>p</code>command</p>
-<pre><code>$ sed -n
-$ sed --quiet
-$ sed --silent
+                <h1 id="Chapter1"><a href="#Chapter1" class="headerlink" title="Chapter1"></a>Chapter1</h1><p>System Call</p>
+<h2 id="process-and-memory"><a href="#process-and-memory" class="headerlink" title="process and memory"></a>process and memory</h2><p>A process creates new process with <code>fork</code> </p>
+<ul>
+<li>In the parent,fork returns child’s PID.</li>
+<li>In the child,fork returns zero.</li>
+</ul>
+<p><code>wait</code></p>
+<ul>
+<li>wait for the child to exit</li>
+</ul>
+<p><code>exit</code></p>
+<ul>
+<li>cause the process stopping executing</li>
+<li>return 0 to indicate success</li>
+<li>return 1 to indecate failure</li>
+</ul>
+<h3 id="argc-argv"><a href="#argc-argv" class="headerlink" title="argc,argv"></a>argc,argv</h3><p>argc,the number of arguments including the cmd</p>
+<pre><code>grep -n --color &#39;xxx&#39; input.txt
+
+argc = 5
+
+argv[0] = &quot;grep&quot;
+
+argv[1] = &quot;-n&quot;
+
+argv[2] = &quot;--color&quot;
+
+...
 </code></pre>
-<p>直接修改源文件</p>
-<pre><code>$ sed -i &#39;s/my/z/g&#39; text
+<h2 id="I-O-and-File-descriptors"><a href="#I-O-and-File-descriptors" class="headerlink" title="I/O and File descriptors"></a>I/O and File descriptors</h2><ul>
+<li>0 standard input</li>
+<li>1 standard output</li>
+<li>2 standard error</li>
+</ul>
+<p>And if your open a new file,its file descriptor will be 3.</p>
+<pre><code>read(fd,buf,n)
+read n bytes from file descriptor fd ,
+return the number of bytes read
 </code></pre>
-<h2 id="script"><a href="#script" class="headerlink" title="script"></a>script</h2><p>syntax</p>
-<pre><code>[addr]X[options]
-X is a command
+<pre><code>write(fd,buf,n)
+write n bytes from buf to fd
+return the number of bytes write
 </code></pre>
-<p><code>$ sed &#39;30,35d&#39; input.txt d is a command 30,35 is addr</code><br>script内的命令用<code>;</code>隔开<br>多个脚本用<code>-e</code>说明</p>
-<pre><code>$ sed &#39;30,35d ; s/hello/world&#39; input.txt
-$ sed -e &#39;30,35d&#39; -e &#39;s/hello/world&#39; input.txt
+<h2 id="pipes"><a href="#pipes" class="headerlink" title="pipes"></a>pipes</h2><p>A pipe is a pair of file descriptors,one for writing and one for reading.</p>
+<h2 id="file-system"><a href="#file-system" class="headerlink" title="file system"></a>file system</h2><p>As an existing file, it has unique <strong>inode</strong> </p>
+<p><code>link(&quot;a&quot;,&quot;b&quot;)</code></p>
+<p><strong>link</strong> creates new file b,but it has the same inode with the a</p>
+<h2 id="lab"><a href="#lab" class="headerlink" title="lab"></a>lab</h2><h3 id="sleep"><a href="#sleep" class="headerlink" title="sleep"></a>sleep</h3><pre><code>int main(int argc,char* argv[])
+&#123;
+  //check the number of arguments
+  if (argc &lt;= 1 || argc &gt; 2)
+  &#123;
+    printf(&quot;No argument\n&quot;);
+    // 1 stands for error
+    exit(1);
+  &#125;
+
+  int time = atoi(argv[1]);
+  if (time == 0)
+  &#123;
+    printf(&quot;Unvalid argument\n&quot;);
+    exit(1);
+  &#125;
+  else
+  &#123;
+    sleep(time);
+  &#125;
+  exit(0);
+&#125;
 </code></pre>
-<p>s command<br><code>$ sed &#39;s/regexp/replacement/flags input.txt&#39;</code></p>
-<p>s控制行的匹配<br>flags控制行内的匹配</p>
-<p>在一到三行中匹配<br><code>$ sed &#39;1,3s/regexp/replacement/flags input.txt&#39;</code></p>
-<p>匹配行内的第一个<br><code>$ sed &#39;s/regexp.replacement/1&#39; input.txt</code></p>
-<p>delete<br><code>$ sed &#39;2d&#39; input.txt</code></p>
-<p>print<br><code>$ sed &#39;2p&#39; input.txt</code></p>
-<p>append<br><code>$ sed &#39;2a hello&#39; input.txt</code></p>
-<pre><code>$ sed &#39;2a/
-hello&#39; input.txt
-</code></pre>
-<p>insert</p>
-<pre><code>$ sed &#39;2i/
-hello&#39; input.txt
+<h3 id="pingpong"><a href="#pingpong" class="headerlink" title="pingpong"></a>pingpong</h3><pre><code>int main(int argc,char *argv[])
+&#123;
+    //create array to store two file descriptors
+    int p[2];
+    
+    //create pipe
+    pipe(p);
+
+    //check if the process is child
+    //if fork() returns 0,it is child
+    //else it returns the child PID
+    if (fork() == 0)
+    &#123;
+        char son[10];
+        //read from file descriptors p[0]
+        read(p[0],son,7);
+        if (strcmp(son,&quot;Trying&quot;) == 0)
+        &#123;
+            int pid = getpid();
+            printf(&quot;%d: received ping\n&quot;,pid);
+            write(p[1],&quot;Success&quot;,7);
+            //exit child process
+            exit(0);
+        &#125;
+    &#125;
+    else
+    &#123;
+        char father[10];
+        //write to file descriptors p[1]
+        write(p[1],&quot;Trying&quot;,7);
+        wait(0);
+        read(p[0],father,7);
+        if (strcmp(father,&quot;Success&quot;) == 0)
+        &#123;
+            int pid = getpid();
+            printf(&quot;%d : received pong\n&quot;,pid);
+
+        &#125;
+    &#125;
+    //exit parent process
+    exit(0);
+&#125;
 </code></pre>
 
                 
@@ -490,7 +572,7 @@ hello&#39; input.txt
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://zerrari.github.io/2021/04/08/sed/">https://zerrari.github.io/2021/04/08/sed/</a>
+                    <a href="https://zerrari.github.io/2021/04/10/mit6-S081/">https://zerrari.github.io/2021/04/10/mit6-S081/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -699,9 +781,10 @@ hello&#39; input.txt
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
                 <a href="/2021/04/10/mit6-S081/">
                     <div class="card-image">
@@ -719,9 +802,9 @@ hello&#39; input.txt
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-04-10
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-10
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -734,6 +817,7 @@ hello&#39; input.txt
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -752,13 +836,13 @@ hello&#39; input.txt
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/04/07/Regular-Expression/">
+                <a href="/2021/04/08/sed/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="Regular Expression">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="sed">
                         
-                        <span class="card-title">Regular Expression</span>
+                        <span class="card-title">sed</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -769,7 +853,7 @@ hello&#39; input.txt
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-07
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-08
                             </span>
                         <span class="publish-author">
                             
