@@ -412,7 +412,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-05-06
+                    2021-05-07
                 </div>
                 
 
@@ -433,76 +433,84 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Chapter-3"><a href="#Chapter-3" class="headerlink" title="Chapter 3"></a>Chapter 3</h1><h2 id="内置变量的初始化"><a href="#内置变量的初始化" class="headerlink" title="内置变量的初始化"></a>内置变量的初始化</h2><ul>
-<li>函数体外的变量被初始化为0</li>
-<li>函数体内的变量不进行自动初始化</li>
+                <h1 id="Chapter-4"><a href="#Chapter-4" class="headerlink" title="Chapter 4"></a>Chapter 4</h1><h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><ul>
+<li>数组的维数必须由常量表达式定义。</li>
+<li>此常量表达式只能包含整型字面值常量，枚举常量以及初始化的const常量。</li>
+<li>非const以及要到运行时才知道值的const常量不能用来定义数组的维数。</li>
 </ul>
-<h2 id="string"><a href="#string" class="headerlink" title="string"></a>string</h2><h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><pre><code>定义一个空字符串
-string x; 
-将x1初始化为x2的副本
-string x1(x2);
-将x3初始化为字符串副本
-string x3(&#39;abcd&#39;);
-将x4初始化为n个字符的副本
-string x4(n,&#39;c&#39;);
+<pre><code>const int bufsize = 512;
+int staffsize = 256;
+int array1[bufsize];
+int array2[staffsize];    error
 </code></pre>
-<h3 id="string变量的读写"><a href="#string变量的读写" class="headerlink" title="string变量的读写"></a>string变量的读写</h3><ul>
-<li>读取并忽略开头的空白字符（如空格，换行符和制表符）</li>
-<li>读取到下一个空白字符停止</li>
-</ul>
-<h4 id="读入未知数目的字符串"><a href="#读入未知数目的字符串" class="headerlink" title="读入未知数目的字符串"></a>读入未知数目的字符串</h4><pre><code>while (cin &gt;&gt; s)
-&#123;statement&#125;
+<p>显示初始化数组元素</p>
+<pre><code>int array[3];
+array[3] = &#123;1,2,3&#125;;
 </code></pre>
-<h4 id="getline"><a href="#getline" class="headerlink" title="getline"></a>getline</h4><ul>
-<li>不忽略换行符，即使读取到的第一个字符为换行符，也将他输出</li>
-</ul>
-<h3 id="string对象的基本操作"><a href="#string对象的基本操作" class="headerlink" title="string对象的基本操作"></a>string对象的基本操作</h3><pre><code>s.empty();
-s.size();
-s[n];
-s1+s2;
-s1 = s2;
-s1 == s2;
-</code></pre>
-<h4 id="和字符串字面值的连接"><a href="#和字符串字面值的连接" class="headerlink" title="和字符串字面值的连接"></a>和字符串字面值的连接</h4><pre><code>string s1(&quot;hello&quot;);
-string s2(&quot;world&quot;&#39;);
-string s3 = s1 + s2;
-string s4 = s1 + &quot;world&quot;;
-string s5 = &quot;hello&quot; + s2;
-string s6 = &quot;hello&quot; + &quot;,&quot;; error
-string s7 = &quot;hello&quot; + &quot; &quot; + s2; error
-</code></pre>
-<h2 id="vector"><a href="#vector" class="headerlink" title="vector"></a>vector</h2><p><em>vector</em>是同一种类型对象的集合。</p>
-<h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3><pre><code>vector&lt;T&gt; v1;
-vector&lt;T&gt; v1(v2);
-vector&lt;T&gt; v1(n,i);
-vector&lt;T&gt; v1(n); 根据类型初始化，如int为0，string为空字符串
-</code></pre>
-<h3 id="vector对象的操作"><a href="#vector对象的操作" class="headerlink" title="vector对象的操作"></a>vector对象的操作</h3><pre><code>v.empty();
-v.size();
-v.push_back(); 将一个新元素添加到vector的尾部
-v[n];
-v1 = v2;
-v1 == v2;
-</code></pre>
-<p>下标操作只能对已知元素进行操作。</p>
-<h2 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h2><p><code>vector&lt;int&gt;::iterator iter = v.begin();</code></p>
+<p>如果没有显式初始化，则按照普通变量进行初始化。</p>
 <ul>
-<li>begin 指向第一个元素</li>
-<li>end 指向末端元素的下一个</li>
+<li><p>在函数体外定义，数组的元素自动初始化为0</p>
+</li>
+<li><p>在函数体内定义，数组的元素不进行自动初始化</p>
+</li>
+<li><p>不管在哪定义，如果数组的元素为类类型，则调用默认构造函数进行初始化，否则必须进行显式初始化</p>
+<p>特殊的字符数组</p>
+</li>
 </ul>
-<p>用解引用来访问迭代器指向的元素<br><code>*iter</code></p>
-<p>用自增来迭代<br><code>iter++</code></p>
-<h3 id="迭代器的算术操作"><a href="#迭代器的算术操作" class="headerlink" title="迭代器的算术操作"></a>迭代器的算术操作</h3><ul>
-<li>iter + n</li>
-<li>iter - n</li>
-<li>iter1 -iter2 迭代器必须指向同一个容器中的元素</li>
-</ul>
-<h2 id="bitset"><a href="#bitset" class="headerlink" title="bitset"></a>bitset</h2><h3 id="初始化-1"><a href="#初始化-1" class="headerlink" title="初始化"></a>初始化</h3><pre><code>bitset&lt;n&gt; b;
-bitset&lt;n&gt; b(u); 
-bitset&lt;n&gt; b(s);
-bitset&lt;b&gt; b(s,pos,n);
+<p>用字符串字面值来初始化数组时，会添加一个额外的空字符来结束字符串。</p>
+<pre><code>char ch1[] = &#123;&#39;a&#39;,&#39;b&#39;,&#39;c&#39;&#125;;      len: 3
+char ch2[] = &#123;&#39;a&#39;,&#39;b&#39;,&#39;c&#39;,&#39;\0&#39;&#125;; len :4
+char ch3[] = &#123;&quot;abc&quot;&#125;;            len:4
 </code></pre>
-<p>用unsigned long和string来初始化bitset对象，高位不足置0，溢出舍弃，值得注意的是string来初始化要反向写入。</p>
+<h2 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h2><p>指针保存的是一个对象的地址。</p>
+<h3 id="指针的定义和初始化"><a href="#指针的定义和初始化" class="headerlink" title="指针的定义和初始化"></a>指针的定义和初始化</h3><pre><code>int *p1;
+string *p2;
+string *p1,p2;    p1 is a pointer to string,p2 is a string;
+</code></pre>
+<p><code>void*</code>可以保存任何类型的地址。</p>
+<h3 id="指针的操作"><a href="#指针的操作" class="headerlink" title="指针的操作"></a>指针的操作</h3><p>通过解引用来修改指针指向的值。</p>
+<pre><code>int val = 10;
+int *p1 = &amp;val;
+*p1 = 20;
+</code></pre>
+<p>指向指针的指针</p>
+<pre><code>int val = 10;
+int *p = &amp;val;
+int **ppi = &amp;p;   ppi points to a pointer;
+</code></pre>
+<h3 id="指针和const"><a href="#指针和const" class="headerlink" title="指针和const"></a>指针和const</h3><p>指针指向const类型的数据时，指针也必须是const类型的<br>不能试图通过指针来修改const类型的数据<br>可以修改const指针指向的非const对象</p>
+<pre><code>const int val = 10;
+const int *p = &amp;val;
+int *p = &amp;val;      error
+void *p = &amp;val;     error
+const void *p = &amp;val;
+</code></pre>
+<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><p>c风格字符串的使用</p>
+<pre><code>char *cp = &quot;some value&quot;;
+while (*cp)
+&#123;
+    //do something to *p
+    cp++;
+&#125;
+</code></pre>
+<p>字符串结束符NULL</p>
+<h2 id="创建动态数组"><a href="#创建动态数组" class="headerlink" title="创建动态数组"></a>创建动态数组</h2><h3 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h3><p><code>int *p = new int[10];</code></p>
+<p>可以在表达式后面加上一对圆括号来进行初始化<br><code>int *p = new int[10]();</code></p>
+<p>const对象一定要进行初始化<br><code>const int *p = new int[10]();</code></p>
+<p>new操作允许创建长度为零的动态数组。</p>
+<h3 id="释放"><a href="#释放" class="headerlink" title="释放"></a>释放</h3><p>释放p指针指向的数组<br><code>delete [] p</code></p>
+<h2 id="多维数组"><a href="#多维数组" class="headerlink" title="多维数组"></a>多维数组</h2><h3 id="初始化-1"><a href="#初始化-1" class="headerlink" title="初始化"></a>初始化</h3><pre><code>int array[2][2] = &#123;&#123;1,1&#125;,&#123;2,2&#125;&#125;;
+int array[2][2] = &#123;1,1,2,3&#125;;
+
+其他元素被初始化为0
+int array[2][2] = &#123;&#123;0&#125;,&#123;1&#125;&#125;;
+
+只初始化了第一行元素
+int array[2][2] = &#123;0,1&#125;;
+</code></pre>
+<h3 id="数组的指针"><a href="#数组的指针" class="headerlink" title="数组的指针"></a>数组的指针</h3><pre><code>int *p[4];   array of pointers to int
+int (*p)[4]; pointers to an array of 4 ints
+</code></pre>
 
                 
             </div>
@@ -529,7 +537,7 @@ bitset&lt;b&gt; b(s,pos,n);
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://zerrari.github.io/2021/05/06/Chapter3/">https://zerrari.github.io/2021/05/06/Chapter3/</a>
+                    <a href="https://zerrari.github.io/2021/05/07/Chapter4/">https://zerrari.github.io/2021/05/07/Chapter4/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -738,9 +746,60 @@ bitset&lt;b&gt; b(s,pos,n);
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
+            <div class="card">
+                <a href="/2021/05/07/Chapter4/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="C++ premier">
+                        
+                        <span class="card-title">C++ premier</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-07
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/cpp/" class="post-category">
+                                    cpp
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Learning/">
+                        <span class="chip bg-color">Learning</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2021/05/07/%E8%B0%83%E5%BA%A61/">
                     <div class="card-image">
@@ -758,9 +817,9 @@ bitset&lt;b&gt; b(s,pos,n);
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-05-07
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-07
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -780,43 +839,6 @@ bitset&lt;b&gt; b(s,pos,n);
                         <span class="chip bg-color">Learning</span>
                     </a>
                     
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                Next&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/04/30/xv6%E6%BA%90%E7%A0%81%E7%90%86%E8%A7%A3/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="xv6源码理解">
-                        
-                        <span class="card-title">xv6源码理解</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-30
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            Zerrari
-                            
-                        </span>
-                    </div>
                 </div>
                 
             </div>
