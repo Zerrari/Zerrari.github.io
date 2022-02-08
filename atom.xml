@@ -1,0 +1,498 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Zerrari</title>
+  
+  
+  <link href="https://zerrari.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://zerrari.github.io/"/>
+  <updated>2021-05-07T09:50:59.169Z</updated>
+  <id>https://zerrari.github.io/</id>
+  
+  <author>
+    <name>Zerrari</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>C++ premier</title>
+    <link href="https://zerrari.github.io/2021/05/07/Chapter4/"/>
+    <id>https://zerrari.github.io/2021/05/07/Chapter4/</id>
+    <published>2021-05-07T09:51:54.000Z</published>
+    <updated>2021-05-07T09:50:59.169Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Chapter-4"><a href="#Chapter-4" class="headerlink" title="Chapter 4"></a>Chapter 4</h1><h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><ul><li>数组的维数必须由常量表达式定义。</li><li>此常量表达式只能包含整型字面值常量，枚举常量以及初始化的const常量。</li><li>非const以及要到运行时才知道值的const常量不能用来定义数组的维数。</li></ul><pre><code>const int bufsize = 512;int staffsize = 256;int array1[bufsize];int array2[staffsize];    error</code></pre><p>显示初始化数组元素</p><pre><code>int array[3];array[3] = &#123;1,2,3&#125;;</code></pre><p>如果没有显式初始化，则按照普通变量进行初始化。</p><ul><li><p>在函数体外定义，数组的元素自动初始化为0</p></li><li><p>在函数体内定义，数组的元素不进行自动初始化</p></li><li><p>不管在哪定义，如果数组的元素为类类型，则调用默认构造函数进行初始化，否则必须进行显式初始化</p><p>特殊的字符数组</p></li></ul><p>用字符串字面值来初始化数组时，会添加一个额外的空字符来结束字符串。</p><pre><code>char ch1[] = &#123;&#39;a&#39;,&#39;b&#39;,&#39;c&#39;&#125;;      len: 3char ch2[] = &#123;&#39;a&#39;,&#39;b&#39;,&#39;c&#39;,&#39;\0&#39;&#125;; len :4char ch3[] = &#123;&quot;abc&quot;&#125;;            len:4</code></pre><h2 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h2><p>指针保存的是一个对象的地址。</p><h3 id="指针的定义和初始化"><a href="#指针的定义和初始化" class="headerlink" title="指针的定义和初始化"></a>指针的定义和初始化</h3><pre><code>int *p1;string *p2;string *p1,p2;    p1 is a pointer to string,p2 is a string;</code></pre><p><code>void*</code>可以保存任何类型的地址。</p><h3 id="指针的操作"><a href="#指针的操作" class="headerlink" title="指针的操作"></a>指针的操作</h3><p>通过解引用来修改指针指向的值。</p><pre><code>int val = 10;int *p1 = &amp;val;*p1 = 20;</code></pre><p>指向指针的指针</p><pre><code>int val = 10;int *p = &amp;val;int **ppi = &amp;p;   ppi points to a pointer;</code></pre><h3 id="指针和const"><a href="#指针和const" class="headerlink" title="指针和const"></a>指针和const</h3><p>指针指向const类型的数据时，指针也必须是const类型的<br>不能试图通过指针来修改const类型的数据<br>可以修改const指针指向的非const对象</p><pre><code>const int val = 10;const int *p = &amp;val;int *p = &amp;val;      errorvoid *p = &amp;val;     errorconst void *p = &amp;val;</code></pre><h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><p>c风格字符串的使用</p><pre><code>char *cp = &quot;some value&quot;;while (*cp)&#123;    //do something to *p    cp++;&#125;</code></pre><p>字符串结束符NULL</p><h2 id="创建动态数组"><a href="#创建动态数组" class="headerlink" title="创建动态数组"></a>创建动态数组</h2><h3 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h3><p><code>int *p = new int[10];</code></p><p>可以在表达式后面加上一对圆括号来进行初始化<br><code>int *p = new int[10]();</code></p><p>const对象一定要进行初始化<br><code>const int *p = new int[10]();</code></p><p>new操作允许创建长度为零的动态数组。</p><h3 id="释放"><a href="#释放" class="headerlink" title="释放"></a>释放</h3><p>释放p指针指向的数组<br><code>delete [] p</code></p><h2 id="多维数组"><a href="#多维数组" class="headerlink" title="多维数组"></a>多维数组</h2><h3 id="初始化-1"><a href="#初始化-1" class="headerlink" title="初始化"></a>初始化</h3><pre><code>int array[2][2] = &#123;&#123;1,1&#125;,&#123;2,2&#125;&#125;;int array[2][2] = &#123;1,1,2,3&#125;;其他元素被初始化为0int array[2][2] = &#123;&#123;0&#125;,&#123;1&#125;&#125;;只初始化了第一行元素int array[2][2] = &#123;0,1&#125;;</code></pre><h3 id="数组的指针"><a href="#数组的指针" class="headerlink" title="数组的指针"></a>数组的指针</h3><pre><code>int *p[4];   array of pointers to intint (*p)[4]; pointers to an array of 4 ints</code></pre>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;Chapter-4&quot;&gt;&lt;a href=&quot;#Chapter-4&quot; class=&quot;headerlink&quot; title=&quot;Chapter 4&quot;&gt;&lt;/a&gt;Chapter 4&lt;/h1&gt;&lt;h2 id=&quot;数组&quot;&gt;&lt;a href=&quot;#数组&quot; class=&quot;headerlink&quot; </summary>
+      
+    
+    
+    
+    <category term="cpp" scheme="https://zerrari.github.io/categories/cpp/"/>
+    
+    
+    <category term="Learning" scheme="https://zerrari.github.io/tags/Learning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>调度</title>
+    <link href="https://zerrari.github.io/2021/05/07/%E8%B0%83%E5%BA%A61/"/>
+    <id>https://zerrari.github.io/2021/05/07/%E8%B0%83%E5%BA%A61/</id>
+    <published>2021-05-07T09:50:54.000Z</published>
+    <updated>2021-05-07T09:49:34.824Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="单处理器调度"><a href="#单处理器调度" class="headerlink" title="单处理器调度"></a>单处理器调度</h1><h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><ul><li>长程调度<br>把后备队列里的作业调入内存，并为之建立进程。</li><li>中程调度<br>把进程在内存和外存中间转移</li><li>短程调度<br>完成进程的调度</li></ul><h2 id="调度"><a href="#调度" class="headerlink" title="调度"></a>调度</h2><h3 id="评价指标"><a href="#评价指标" class="headerlink" title="评价指标"></a>评价指标</h3><ul><li><p>周期时间<br>一个进程从初始化到结束，所用的时间，包括等待的时间。</p></li><li><p>cpu使用率<br>cpu处在忙状态的占比</p></li><li><p>吞吐量<br>单位时间完成的进程数量</p></li><li><p>等待时间<br>进程在就绪队列中的总时间</p></li><li><p>响应时间<br>从请求被提交到第一次被响应所花的时间</p></li></ul><h3 id="调度算法"><a href="#调度算法" class="headerlink" title="调度算法"></a>调度算法</h3><h4 id="先来先服务FCFS"><a href="#先来先服务FCFS" class="headerlink" title="先来先服务FCFS"></a>先来先服务FCFS</h4><p>该算法维护一个单一的就绪队列，进入时间早的位于队列头部，当所运行的进程阻塞时，运行队列的下一个进程。<br>当堵塞的进程就绪时，将其放入队列的尾部。</p><p>优点：易于理解，便于应用</p><h4 id="最短作业优先"><a href="#最短作业优先" class="headerlink" title="最短作业优先"></a>最短作业优先</h4><p>先运行所需要运行时间最短的进程。</p><p>缺点：可能会导致长作业饥饿</p><h4 id="最短剩余时间优先"><a href="#最短剩余时间优先" class="headerlink" title="最短剩余时间优先"></a>最短剩余时间优先</h4><p>最短作业优先的抢占版本，总是挑选剩余时间最短的进程运行。<br>当有新的进程进入时，将其与现在运行的进程比较，如果运行时间更短，就去运行新的进程。</p><h4 id="轮转调度"><a href="#轮转调度" class="headerlink" title="轮转调度"></a>轮转调度</h4><p>对每个进程运行相同的时间片，时间片用完后，执行下一个进程。</p><p>时间片太短，容易造成过多的上下文切换；<br>时间片太长，导致响应时间慢。</p><h4 id="优先级调度"><a href="#优先级调度" class="headerlink" title="优先级调度"></a>优先级调度</h4><p>不同的进程具有不同的优先级，先执行优先级高的进程。</p><p>两种方法防止高优先级进程无休止运行下去：</p><ul><li>在每个时钟中断后，降低所运行进程的优先级</li><li>给每一个进程赋予运行的最大时间片</li></ul><p>如果不对优先级进行调整，容易造成低优先级的进程饿死。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;单处理器调度&quot;&gt;&lt;a href=&quot;#单处理器调度&quot; class=&quot;headerlink&quot; title=&quot;单处理器调度&quot;&gt;&lt;/a&gt;单处理器调度&lt;/h1&gt;&lt;h2 id=&quot;分类&quot;&gt;&lt;a href=&quot;#分类&quot; class=&quot;headerlink&quot; title=&quot;分类&quot;&gt;&lt;</summary>
+      
+    
+    
+    
+    <category term="OS" scheme="https://zerrari.github.io/categories/OS/"/>
+    
+    
+    <category term="Learning" scheme="https://zerrari.github.io/tags/Learning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>C++ premier</title>
+    <link href="https://zerrari.github.io/2021/05/06/Chapter3/"/>
+    <id>https://zerrari.github.io/2021/05/06/Chapter3/</id>
+    <published>2021-05-06T12:51:54.000Z</published>
+    <updated>2021-05-06T12:51:52.903Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Chapter-3"><a href="#Chapter-3" class="headerlink" title="Chapter 3"></a>Chapter 3</h1><h2 id="内置变量的初始化"><a href="#内置变量的初始化" class="headerlink" title="内置变量的初始化"></a>内置变量的初始化</h2><ul><li>函数体外的变量被初始化为0</li><li>函数体内的变量不进行自动初始化</li></ul><h2 id="string"><a href="#string" class="headerlink" title="string"></a>string</h2><h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><pre><code>定义一个空字符串string x; 将x1初始化为x2的副本string x1(x2);将x3初始化为字符串副本string x3(&#39;abcd&#39;);将x4初始化为n个字符的副本string x4(n,&#39;c&#39;);</code></pre><h3 id="string变量的读写"><a href="#string变量的读写" class="headerlink" title="string变量的读写"></a>string变量的读写</h3><ul><li>读取并忽略开头的空白字符（如空格，换行符和制表符）</li><li>读取到下一个空白字符停止</li></ul><h4 id="读入未知数目的字符串"><a href="#读入未知数目的字符串" class="headerlink" title="读入未知数目的字符串"></a>读入未知数目的字符串</h4><pre><code>while (cin &gt;&gt; s)&#123;statement&#125;</code></pre><h4 id="getline"><a href="#getline" class="headerlink" title="getline"></a>getline</h4><ul><li>不忽略换行符，即使读取到的第一个字符为换行符，也将他输出</li></ul><h3 id="string对象的基本操作"><a href="#string对象的基本操作" class="headerlink" title="string对象的基本操作"></a>string对象的基本操作</h3><pre><code>s.empty();s.size();s[n];s1+s2;s1 = s2;s1 == s2;</code></pre><h4 id="和字符串字面值的连接"><a href="#和字符串字面值的连接" class="headerlink" title="和字符串字面值的连接"></a>和字符串字面值的连接</h4><pre><code>string s1(&quot;hello&quot;);string s2(&quot;world&quot;&#39;);string s3 = s1 + s2;string s4 = s1 + &quot;world&quot;;string s5 = &quot;hello&quot; + s2;string s6 = &quot;hello&quot; + &quot;,&quot;; errorstring s7 = &quot;hello&quot; + &quot; &quot; + s2; error</code></pre><h2 id="vector"><a href="#vector" class="headerlink" title="vector"></a>vector</h2><p><em>vector</em>是同一种类型对象的集合。</p><h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3><pre><code>vector&lt;T&gt; v1;vector&lt;T&gt; v1(v2);vector&lt;T&gt; v1(n,i);vector&lt;T&gt; v1(n); 根据类型初始化，如int为0，string为空字符串</code></pre><h3 id="vector对象的操作"><a href="#vector对象的操作" class="headerlink" title="vector对象的操作"></a>vector对象的操作</h3><pre><code>v.empty();v.size();v.push_back(); 将一个新元素添加到vector的尾部v[n];v1 = v2;v1 == v2;</code></pre><p>下标操作只能对已知元素进行操作。</p><h2 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h2><p><code>vector&lt;int&gt;::iterator iter = v.begin();</code></p><ul><li>begin 指向第一个元素</li><li>end 指向末端元素的下一个</li></ul><p>用解引用来访问迭代器指向的元素<br><code>*iter</code></p><p>用自增来迭代<br><code>iter++</code></p><h3 id="迭代器的算术操作"><a href="#迭代器的算术操作" class="headerlink" title="迭代器的算术操作"></a>迭代器的算术操作</h3><ul><li>iter + n</li><li>iter - n</li><li>iter1 -iter2 迭代器必须指向同一个容器中的元素</li></ul><h2 id="bitset"><a href="#bitset" class="headerlink" title="bitset"></a>bitset</h2><h3 id="初始化-1"><a href="#初始化-1" class="headerlink" title="初始化"></a>初始化</h3><pre><code>bitset&lt;n&gt; b;bitset&lt;n&gt; b(u); bitset&lt;n&gt; b(s);bitset&lt;b&gt; b(s,pos,n);</code></pre><p>用unsigned long和string来初始化bitset对象，高位不足置0，溢出舍弃，值得注意的是string来初始化要反向写入。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;Chapter-3&quot;&gt;&lt;a href=&quot;#Chapter-3&quot; class=&quot;headerlink&quot; title=&quot;Chapter 3&quot;&gt;&lt;/a&gt;Chapter 3&lt;/h1&gt;&lt;h2 id=&quot;内置变量的初始化&quot;&gt;&lt;a href=&quot;#内置变量的初始化&quot; class=&quot;</summary>
+      
+    
+    
+    
+    <category term="cpp" scheme="https://zerrari.github.io/categories/cpp/"/>
+    
+    
+    <category term="Learning" scheme="https://zerrari.github.io/tags/Learning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>xv6源码理解</title>
+    <link href="https://zerrari.github.io/2021/04/30/xv6%E6%BA%90%E7%A0%81%E7%90%86%E8%A7%A3/"/>
+    <id>https://zerrari.github.io/2021/04/30/xv6%E6%BA%90%E7%A0%81%E7%90%86%E8%A7%A3/</id>
+    <published>2021-04-30T04:25:08.000Z</published>
+    <updated>2021-04-30T06:03:23.741Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="pagetable"><a href="#pagetable" class="headerlink" title="pagetable"></a>pagetable</h1><p>关于页表的代码在<code>vm.c</code>中，定义则存放在<code>risv.h</code></p><h2 id="页表结构"><a href="#页表结构" class="headerlink" title="页表结构"></a>页表结构</h2><p>xv6中的虚拟地址为64位，前25位不被用在地址翻译中，中间27位为页表的索引。xv6采用三级页表，9位对应一个页表条目的索引，该页表条目指向下一级页表，最后12位偏移（offset）。</p><p>由最后一级页表所对应的页表条目的44位物理页号加上12位偏移，组成56位物理地址。</p><p>每一级页表为4096字节，每一级页表有512个页表条目。每一个页表条目有54位。分别为44位的物理页号（phsical page number）和10位的标志位。比如，是否有效或者可读写。</p><h2 id="risv-h"><a href="#risv-h" class="headerlink" title="risv.h"></a>risv.h</h2><pre><code>#define PGROUNDUP(sz)  (((sz)+PGSIZE-1) &amp; ~(PGSIZE-1))#define PGROUNDDOWN(a) (((a)) &amp; ~(PGSIZE-1))</code></pre><p>这两个宏定义，是在分配内存时保证内存字节对齐。<br>其中<code>PGSIZE</code>是对齐因子，即页表的大小，<code>sz</code>为申请的大小<br><code>PGROUNDUP</code>用来确定要分配内存的上界，<code>PGROUNDDOWN</code>来确定要分配内存的下界</p><p>可参考<a href="https://blog.csdn.net/weixin_33860553/article/details/92436192">分配内存对齐的内存空间</a> </p><pre><code>#define PGSHIFT             12#define PXMASK              0x1FF #define PXSHIFT(level)      (PGSHIFT+(9*(level)))#define PX(level, va)       ((((uint64) (va)) &gt;&gt; PXSHIFT(level)) &amp; PXMASK)</code></pre><p>以上宏定义是用来提取虚拟地址中的9位索引。<br><code>PXSHIFT</code>来计算所要求索引的位数，如level = 0，<code>PXSHIFT</code> = 12，<br>通过<code>PX</code>取得最后一级页表的索引。</p><pre><code>#define PA2PTE(pa) ((((uint64)pa) &gt;&gt; 12) &lt;&lt; 10)#define PTE2PA(pte) (((pte) &gt;&gt; 10) &lt;&lt; 12)#define PTE_FLAGS(pte) ((pte) &amp; 0x3FF)</code></pre><p><code>PA2PTE</code>将物理地址转换为页表条目。<br><code>PTE2PA</code>将页表条目转换为物理地址。<br><code>PTE_FLAGS</code>取得页表条目中的标志位。</p><h2 id="vm-c"><a href="#vm-c" class="headerlink" title="vm.c"></a>vm.c</h2>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;pagetable&quot;&gt;&lt;a href=&quot;#pagetable&quot; class=&quot;headerlink&quot; title=&quot;pagetable&quot;&gt;&lt;/a&gt;pagetable&lt;/h1&gt;&lt;p&gt;关于页表的代码在&lt;code&gt;vm.c&lt;/code&gt;中，定义则存放在&lt;code&gt;ris</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>字节对齐</title>
+    <link href="https://zerrari.github.io/2021/04/30/%E5%AD%97%E8%8A%82%E5%AF%B9%E9%BD%90/"/>
+    <id>https://zerrari.github.io/2021/04/30/%E5%AD%97%E8%8A%82%E5%AF%B9%E9%BD%90/</id>
+    <published>2021-04-30T01:17:30.000Z</published>
+    <updated>2021-04-30T02:22:06.491Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="字节对齐"><a href="#字节对齐" class="headerlink" title="字节对齐"></a>字节对齐</h1><h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>计算机访问内存内存地址的时候，都是对特定的内存地址进行访问，如果不进行内存对齐，可能需要访问两次内存，造成时间的消耗。</p><h2 id="规则"><a href="#规则" class="headerlink" title="规则"></a>规则</h2><ul><li>数据类型自身的对齐（如short型为2字节）</li><li>结构体的对齐，成员中自身对齐值最大的那个值</li><li>指定对齐值 #pargma pack (n)</li><li>数据成员和结构体的有效对齐值,自身对齐值和指定对齐值小的那个值</li></ul><p><strong>有效对齐N</strong> 就是指%N = 0</p><p>如何去判断一个结构体的所占字节数，首先我们要保证的是每个成员自己的对齐，比如，对于int类型，要求是4字节的对齐，其次，再是结构体的对齐，所依据的就是有效对齐值，选择自身对齐值和指定对齐值小的那个值。</p><p>对于指定对齐值，#pargma pack(n),<br>如果定义了，对于每一个数据类型的对齐值和结构体的对齐值，都会和n进行比较，把更小的作为当前的对齐值。</p><p>如果没有指定，就按照默认去判断所占的字节数。</p><p>为什么又要对于结构体整体进行对齐呢？</p><p>为了保证小一个存储的元素，能够字节对齐。</p><h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><pre><code>struct m&#123;int a;char b;short c;&#125;;struct n&#123;char b;int a;short c;&#125;;sizeof(struct m) = 8sizeof(struct n) = 12</code></pre><p>第一个例子：</p><p>假设从0地址开始摆放，可以看到第一个元素为int类型，4字节，满足0 % 4 = 0，所以所占空间为0~3;</p><p>第二个元素为char类型，1字节，满足4 % 1 = 0，所以所占空间为4~5；</p><p>第三个元素为short类型，2字节，满足6 % 2 = 0，所以所占空间为6~7；</p><p>结构体的对齐值为4字节，即成员中对齐值最大的，满足8 % 4 = 0。<br>所以总体占8字节.</p><p>第二个例子：</p><p>还是假设从0地址开始摆放，第一个元素为char类型，1字节，满足0 % 4 = 0，所以所占空间为0~3，</p><p>由于第二个元素为int类型，4字节，不满足1 % 4 = 0，所以填充三个字节的空闲字节，满足4 % 4 = 0，所以所占空间为4~7；</p><p>第三个元素为short类型，2字节，满足8 % 2 = 0，所以所占空间为8~9；</p><p>结构体的的对齐值为4字节，不满足10 % 4 = 0，所以填充两个空闲字节。<br>所以总体占12字节。</p><pre><code>#pargma pack(2)struct m&#123;int a;long b;char c;&#125;;sizeof(struct m) = 14</code></pre><pre><code>struct m&#123;int a;long b;char c;&#125;;sizeof(struct m) = 24</code></pre>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;字节对齐&quot;&gt;&lt;a href=&quot;#字节对齐&quot; class=&quot;headerlink&quot; title=&quot;字节对齐&quot;&gt;&lt;/a&gt;字节对齐&lt;/h1&gt;&lt;h2 id=&quot;原因&quot;&gt;&lt;a href=&quot;#原因&quot; class=&quot;headerlink&quot; title=&quot;原因&quot;&gt;&lt;/a&gt;原因&lt;/h</summary>
+      
+    
+    
+    
+    
+    <category term="OS" scheme="https://zerrari.github.io/tags/OS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LZMA Compress Algorithm</title>
+    <link href="https://zerrari.github.io/2021/04/22/LZMA-Compress-Algorithm/"/>
+    <id>https://zerrari.github.io/2021/04/22/LZMA-Compress-Algorithm/</id>
+    <published>2021-04-22T11:00:40.000Z</published>
+    <updated>2021-04-22T13:17:36.585Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="LZMA"><a href="#LZMA" class="headerlink" title="LZMA"></a>LZMA</h1><p>参加中兴压缩算法的时候，在python的库中，发现了三个压缩库，分别是zlib,bz2,gzip 以及就是lzma。最后，压缩效果最好的就是lzma算法。所以好好研究这个算法，当作是参加这次比赛的一个收获吧。</p><h2 id=""><a href="#" class="headerlink" title=""></a></h2>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;LZMA&quot;&gt;&lt;a href=&quot;#LZMA&quot; class=&quot;headerlink&quot; title=&quot;LZMA&quot;&gt;&lt;/a&gt;LZMA&lt;/h1&gt;&lt;p&gt;参加中兴压缩算法的时候，在python的库中，发现了三个压缩库，分别是zlib,bz2,gzip 以及就是lzma。最后，压</summary>
+      
+    
+    
+    
+    <category term="Compress" scheme="https://zerrari.github.io/categories/Compress/"/>
+    
+    
+    <category term="Learning" scheme="https://zerrari.github.io/tags/Learning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>xv6-shell</title>
+    <link href="https://zerrari.github.io/2021/04/16/xv6-shell/"/>
+    <id>https://zerrari.github.io/2021/04/16/xv6-shell/</id>
+    <published>2021-04-16T10:52:46.000Z</published>
+    <updated>2021-04-16T10:54:08.642Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="shell-in-xv6"><a href="#shell-in-xv6" class="headerlink" title="shell in xv6"></a>shell in xv6</h1>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;shell-in-xv6&quot;&gt;&lt;a href=&quot;#shell-in-xv6&quot; class=&quot;headerlink&quot; title=&quot;shell in xv6&quot;&gt;&lt;/a&gt;shell in xv6&lt;/h1&gt;</summary>
+      
+    
+    
+    
+    <category term="OS" scheme="https://zerrari.github.io/categories/OS/"/>
+    
+    
+    <category term="Learning" scheme="https://zerrari.github.io/tags/Learning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>The key of vim</title>
+    <link href="https://zerrari.github.io/2021/04/16/The-key-of-vim/"/>
+    <id>https://zerrari.github.io/2021/04/16/The-key-of-vim/</id>
+    <published>2021-04-16T09:29:34.000Z</published>
+    <updated>2021-04-16T09:45:16.139Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Vim"><a href="#Vim" class="headerlink" title="Vim"></a>Vim</h1><h2 id="macro"><a href="#macro" class="headerlink" title="macro"></a>macro</h2><ol><li>Type <code>q[a-z]</code> to start record a macro.</li><li>Input your command.</li><li>Type <code>q</code> to restore the macro.</li><li>Type <code>[count]@[a-z]</code> to play back commands.</li></ol><h2 id="substitute"><a href="#substitute" class="headerlink" title="substitute"></a>substitute</h2><p><code>:%s/from/to/[flags]</code></p><p><code>%</code>means substitute every occurrence of every line.</p><p>You can also select lines in visual mode,and use substitute.</p><p>flags</p><ul><li><code>g</code> substitute every occurrence of a line</li><li><code>c</code> ask for confirmation before substituting</li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;Vim&quot;&gt;&lt;a href=&quot;#Vim&quot; class=&quot;headerlink&quot; title=&quot;Vim&quot;&gt;&lt;/a&gt;Vim&lt;/h1&gt;&lt;h2 id=&quot;macro&quot;&gt;&lt;a href=&quot;#macro&quot; class=&quot;headerlink&quot; title=&quot;macro&quot;&gt;&lt;/a&gt;</summary>
+      
+    
+    
+    
+    <category term="Vim" scheme="https://zerrari.github.io/categories/Vim/"/>
+    
+    
+    <category term="Linux" scheme="https://zerrari.github.io/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>primes lab</title>
+    <link href="https://zerrari.github.io/2021/04/11/primes-lab/"/>
+    <id>https://zerrari.github.io/2021/04/11/primes-lab/</id>
+    <published>2021-04-11T05:09:04.000Z</published>
+    <updated>2021-04-11T05:21:49.300Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="primes-lab"><a href="#primes-lab" class="headerlink" title="primes lab"></a>primes lab</h1><p>本次实验要求通过管道之间的通信，来达到筛选出素数的目的。</p><p>通过管道的传输，将第一个值输出，并将后面的数字第一个值相除，如果能除尽，就丢弃。</p><p>通过递归调用，不断建立子进程，进行筛选。</p><h2 id="进程之间的变量"><a href="#进程之间的变量" class="headerlink" title="进程之间的变量"></a>进程之间的变量</h2><p>子进程产生后，复制父进程变量的值，但由于两者是不同进程空间的，所以两个变量没有关系。</p><p>为了能将值从子进程传递给父进程，通过管道来将值进行传递。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;primes-lab&quot;&gt;&lt;a href=&quot;#primes-lab&quot; class=&quot;headerlink&quot; title=&quot;primes lab&quot;&gt;&lt;/a&gt;primes lab&lt;/h1&gt;&lt;p&gt;本次实验要求通过管道之间的通信，来达到筛选出素数的目的。&lt;/p&gt;
+&lt;p&gt;通过</summary>
+      
+    
+    
+    
+    <category term="OS" scheme="https://zerrari.github.io/categories/OS/"/>
+    
+    
+    <category term="Learning" scheme="https://zerrari.github.io/tags/Learning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>mit6.S081</title>
+    <link href="https://zerrari.github.io/2021/04/10/mit6-S081/"/>
+    <id>https://zerrari.github.io/2021/04/10/mit6-S081/</id>
+    <published>2021-04-10T02:25:25.000Z</published>
+    <updated>2021-04-10T10:00:50.276Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Chapter1"><a href="#Chapter1" class="headerlink" title="Chapter1"></a>Chapter1</h1><p>System Call</p><h2 id="process-and-memory"><a href="#process-and-memory" class="headerlink" title="process and memory"></a>process and memory</h2><p>A process creates new process with <code>fork</code> </p><ul><li>In the parent,fork returns child’s PID.</li><li>In the child,fork returns zero.</li></ul><p><code>wait</code></p><ul><li>wait for the child to exit</li></ul><p><code>exit</code></p><ul><li>cause the process stopping executing</li><li>return 0 to indicate success</li><li>return 1 to indecate failure</li></ul><h3 id="argc-argv"><a href="#argc-argv" class="headerlink" title="argc,argv"></a>argc,argv</h3><p>argc,the number of arguments including the cmd</p><pre><code>grep -n --color &#39;xxx&#39; input.txtargc = 5argv[0] = &quot;grep&quot;argv[1] = &quot;-n&quot;argv[2] = &quot;--color&quot;...</code></pre><h2 id="I-O-and-File-descriptors"><a href="#I-O-and-File-descriptors" class="headerlink" title="I/O and File descriptors"></a>I/O and File descriptors</h2><ul><li>0 standard input</li><li>1 standard output</li><li>2 standard error</li></ul><p>And if your open a new file,its file descriptor will be 3.</p><pre><code>read(fd,buf,n)read n bytes from file descriptor fd ,return the number of bytes read</code></pre><pre><code>write(fd,buf,n)write n bytes from buf to fdreturn the number of bytes write</code></pre><h2 id="pipes"><a href="#pipes" class="headerlink" title="pipes"></a>pipes</h2><p>A pipe is a pair of file descriptors,one for writing and one for reading.</p><h2 id="file-system"><a href="#file-system" class="headerlink" title="file system"></a>file system</h2><p>As an existing file, it has unique <strong>inode</strong> </p><p><code>link(&quot;a&quot;,&quot;b&quot;)</code></p><p><strong>link</strong> creates new file b,but it has the same inode with the a</p><h2 id="lab"><a href="#lab" class="headerlink" title="lab"></a>lab</h2><h3 id="sleep"><a href="#sleep" class="headerlink" title="sleep"></a>sleep</h3><pre><code>int main(int argc,char* argv[])&#123;  //check the number of arguments  if (argc &lt;= 1 || argc &gt; 2)  &#123;    printf(&quot;No argument\n&quot;);    // 1 stands for error    exit(1);  &#125;  int time = atoi(argv[1]);  if (time == 0)  &#123;    printf(&quot;Unvalid argument\n&quot;);    exit(1);  &#125;  else  &#123;    sleep(time);  &#125;  exit(0);&#125;</code></pre><h3 id="pingpong"><a href="#pingpong" class="headerlink" title="pingpong"></a>pingpong</h3><pre><code>int main(int argc,char *argv[])&#123;    //create array to store two file descriptors    int p[2];        //create pipe    pipe(p);    //check if the process is child    //if fork() returns 0,it is child    //else it returns the child PID    if (fork() == 0)    &#123;        char son[10];        //read from file descriptors p[0]        read(p[0],son,7);        if (strcmp(son,&quot;Trying&quot;) == 0)        &#123;            int pid = getpid();            printf(&quot;%d: received ping\n&quot;,pid);            write(p[1],&quot;Success&quot;,7);            //exit child process            exit(0);        &#125;    &#125;    else    &#123;        char father[10];        //write to file descriptors p[1]        write(p[1],&quot;Trying&quot;,7);        wait(0);        read(p[0],father,7);        if (strcmp(father,&quot;Success&quot;) == 0)        &#123;            int pid = getpid();            printf(&quot;%d : received pong\n&quot;,pid);        &#125;    &#125;    //exit parent process    exit(0);&#125;</code></pre>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;Chapter1&quot;&gt;&lt;a href=&quot;#Chapter1&quot; class=&quot;headerlink&quot; title=&quot;Chapter1&quot;&gt;&lt;/a&gt;Chapter1&lt;/h1&gt;&lt;p&gt;System Call&lt;/p&gt;
+&lt;h2 id=&quot;process-and-memory&quot;&gt;&lt;a</summary>
+      
+    
+    
+    
+    <category term="OS" scheme="https://zerrari.github.io/categories/OS/"/>
+    
+    
+    <category term="Learning" scheme="https://zerrari.github.io/tags/Learning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>sed</title>
+    <link href="https://zerrari.github.io/2021/04/08/sed/"/>
+    <id>https://zerrari.github.io/2021/04/08/sed/</id>
+    <published>2021-04-08T01:04:32.000Z</published>
+    <updated>2021-04-08T06:02:14.893Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="sed"><a href="#sed" class="headerlink" title="sed"></a>sed</h1><p><code>$ sed SCRIPTS INPUTFILES...</code></p><h2 id="command-line-option"><a href="#command-line-option" class="headerlink" title="command line option"></a>command line option</h2><p>不产生输出，除非存在<code>p</code>command</p><pre><code>$ sed -n$ sed --quiet$ sed --silent</code></pre><p>直接修改源文件</p><pre><code>$ sed -i &#39;s/my/z/g&#39; text</code></pre><h2 id="script"><a href="#script" class="headerlink" title="script"></a>script</h2><p>syntax</p><pre><code>[addr]X[options]X is a command</code></pre><p><code>$ sed &#39;30,35d&#39; input.txt d is a command 30,35 is addr</code><br>script内的命令用<code>;</code>隔开<br>多个脚本用<code>-e</code>说明</p><pre><code>$ sed &#39;30,35d ; s/hello/world&#39; input.txt$ sed -e &#39;30,35d&#39; -e &#39;s/hello/world&#39; input.txt</code></pre><p>s command<br><code>$ sed &#39;s/regexp/replacement/flags input.txt&#39;</code></p><p>s控制行的匹配<br>flags控制行内的匹配</p><p>在一到三行中匹配<br><code>$ sed &#39;1,3s/regexp/replacement/flags input.txt&#39;</code></p><p>匹配行内的第一个<br><code>$ sed &#39;s/regexp.replacement/1&#39; input.txt</code></p><p>delete<br><code>$ sed &#39;2d&#39; input.txt</code></p><p>print<br><code>$ sed &#39;2p&#39; input.txt</code></p><p>append<br><code>$ sed &#39;2a hello&#39; input.txt</code></p><pre><code>$ sed &#39;2a/hello&#39; input.txt</code></pre><p>insert</p><pre><code>$ sed &#39;2i/hello&#39; input.txt</code></pre>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;sed&quot;&gt;&lt;a href=&quot;#sed&quot; class=&quot;headerlink&quot; title=&quot;sed&quot;&gt;&lt;/a&gt;sed&lt;/h1&gt;&lt;p&gt;&lt;code&gt;$ sed SCRIPTS INPUTFILES...&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&quot;command-line-</summary>
+      
+    
+    
+    
+    <category term="Linux" scheme="https://zerrari.github.io/categories/Linux/"/>
+    
+    
+    <category term="Learning" scheme="https://zerrari.github.io/tags/Learning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Regular Expression</title>
+    <link href="https://zerrari.github.io/2021/04/07/Regular-Expression/"/>
+    <id>https://zerrari.github.io/2021/04/07/Regular-Expression/</id>
+    <published>2021-04-07T05:16:26.000Z</published>
+    <updated>2021-04-07T13:32:39.821Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="regular-expression"><a href="#regular-expression" class="headerlink" title="regular expression"></a>regular expression</h1><h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><p>字符类<br>| 字符      | 含义                                       |<br>|———–|——————————————–|<br>| .         | 匹配任意一个字符                           |<br>| [  ]      | 匹配括号内的任意一个字符                   |<br>| -         | 在[]内表示范围                             |<br>| ^         | 位于[]内的开头，表示匹配除括号内的字符以外 |<br>| [[:xxx:]] | 预定义的字符类 [[:alpha:]]                 |</p><p>数量限定符<br>| 字符  | 含义                                   |<br>|——-|—————————————-|<br>| ?     | 紧跟在它的单元匹配零次或一次           |<br>| +     | 紧跟在它的单元匹配一次或多次           |<br>| *    | 紧跟在它的单元匹配零次或多次           |<br>| {N}   | 紧跟在它的单元匹配N次                  |<br>| {N,}  | 紧跟在它的单元至少匹配N次              |<br>| {,M}  | 紧跟在它的单元至多匹配M次              |<br>| {N,M} | 紧跟在它的单元至少匹配N次，至多匹配M次 |</p><p>位置限定符<br>| 字符 | 含义                 |<br>|——|———————-|<br>| ^    | 限定行首             |<br>| $    | 限定行尾             |<br>| \&lt; | 匹配单词的开头       |<br>| \&gt; | 匹配单词的结尾       |<br>| \b   | 匹配单词开头或结尾   |<br>| \B   | 不匹配单词开头或结尾 | </p><h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><p>匹配IP地址</p><pre><code>egrep -n --color &#39;([0-9]\.)&#123;3&#125;[0-9]&#123;3&#125;&#39;</code></pre>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;regular-expression&quot;&gt;&lt;a href=&quot;#regular-expression&quot; class=&quot;headerlink&quot; title=&quot;regular expression&quot;&gt;&lt;/a&gt;regular expression&lt;/h1&gt;&lt;h2 id=&quot;语</summary>
+      
+    
+    
+    
+    <category term="Linux" scheme="https://zerrari.github.io/categories/Linux/"/>
+    
+    
+    <category term="Learning" scheme="https://zerrari.github.io/tags/Learning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>shell实战</title>
+    <link href="https://zerrari.github.io/2021/04/07/shell%E5%AE%9E%E6%88%98/"/>
+    <id>https://zerrari.github.io/2021/04/07/shell%E5%AE%9E%E6%88%98/</id>
+    <published>2021-04-07T04:19:18.000Z</published>
+    <updated>2021-04-07T05:07:37.642Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="shell"><a href="#shell" class="headerlink" title="shell"></a>shell</h1><p>本文的重点在于shell脚本的编写。</p><h2 id="调用shell脚本"><a href="#调用shell脚本" class="headerlink" title="调用shell脚本"></a>调用shell脚本</h2><p>方式一</p><pre><code>$ chmod +x test.sh$ ./test.sh</code></pre><p>方式二</p><pre><code>$ /bin/sh test.sh</code></pre><h2 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h2><h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>定义一个变量,变量名一般有大写字母构成，其中不能用空格分隔<br><code>$ VAR=value</code></p><p>一个变量仅存在于当前shell进程，用<code>export</code>可以将本地变量变为环境变量<br><code>$ export VAR=value</code></p><p>删除已定义的变量<br><code>$ unset VAR</code></p><p>取变量名时，要用<code>$</code><br><code>$ echo $VAR</code><br><code>$ echo $&#123;var&#125;abc</code></p><h4 id="文件名代换"><a href="#文件名代换" class="headerlink" title="文件名代换"></a>文件名代换</h4><p>wildcard</p><ul><li>?  匹配一个任意字符</li><li><ul><li> 匹配零个或多个任意字符</li></ul></li><li>[] 匹配括号内的任意字符</li></ul><p>命令代换</p><pre><code>$ DATE=`date`$ echo $DATE</code></pre><p>或是用$()来表示</p><pre><code>$ DATE=$(date)</code></pre><p>算术代换<br><code>$(())</code>将其中的shell变量取值转换成整数</p><pre><code>$ VAR=45$ echo $(($VAR+3))</code></pre><h3 id="条件测试"><a href="#条件测试" class="headerlink" title="条件测试"></a>条件测试</h3><p>是否存在一个目录<br><code>[ -d DIR ]</code></p><p>是否存在一个文件<br><code>[ -f FILE ]</code></p><p>如果<code>STRING</code>的长度为零则为真<br><code>[ -z STRING ]</code></p><p><code>[ -n STRING ]</code></p><p><code>[ STRING1 = STRING2 ]</code></p><p><code>[ arg1 op arg2 ]</code></p><p>op</p><ul><li>-eq 等于</li><li>-ne 不等于</li><li>-lt 小于</li><li>-le 小于等于</li><li>-gt 大于</li><li>-ge 大于等于</li></ul><p>与或非</p><pre><code>[ expr1 -a expr2][ expr1 -o expr2 ][ ! expr ]</code></pre><h4 id="if"><a href="#if" class="headerlink" title="if"></a>if</h4><pre><code>if [ &quot;$YES_OR_NO&quot; = &quot;yes&quot; ]; then  echo &quot;Good morning!&quot;elif [ &quot;$YES_OR_NO&quot; = &quot;no&quot; ]; then  echo &quot;Good afternoon!&quot;else  echo &quot;Sorry, $YES_OR_NO not recognized. Enter yes or no.&quot;fi</code></pre><h4 id="case"><a href="#case" class="headerlink" title="case"></a>case</h4><pre><code>case &quot;$YES_OR_NO&quot; inyes|y|Yes|YES)  echo &quot;Good Morning!&quot;;;[nN]*)  echo &quot;Good Afternoon!&quot;;;*)  echo &quot;Sorry, $YES_OR_NO not recognized. Enter yes or no.&quot;;;esac</code></pre><h4 id="for"><a href="#for" class="headerlink" title="for"></a>for</h4><pre><code>for NAME in John,Mike; do    echo $NAMEdone</code></pre><h4 id="while"><a href="#while" class="headerlink" title="while"></a>while</h4><pre><code>while [ &quot;$TRY&quot; != &quot;secret&quot; ]; do  echo &quot;Sorry, try again&quot;done</code></pre><h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><p>调用时不用加括号</p><pre><code>foo()&#123;    echo &quot;hello world&quot;&#125;</code></pre><h3 id="调试方法"><a href="#调试方法" class="headerlink" title="调试方法"></a>调试方法</h3><ul><li>-n 读一遍命令，但不执行，用来检查语法错误</li><li>-x 跟踪执行信息，将每一条命令和输出打印出来</li></ul><p>在命令行使用参数<br><code>$ sh -x ./test.sh</code></p><p>在脚本文件的第一行声明<br>`#! /bin/sh -x </p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;shell&quot;&gt;&lt;a href=&quot;#shell&quot; class=&quot;headerlink&quot; title=&quot;shell&quot;&gt;&lt;/a&gt;shell&lt;/h1&gt;&lt;p&gt;本文的重点在于shell脚本的编写。&lt;/p&gt;
+&lt;h2 id=&quot;调用shell脚本&quot;&gt;&lt;a href=&quot;#调用shel</summary>
+      
+    
+    
+    
+    <category term="Linux" scheme="https://zerrari.github.io/categories/Linux/"/>
+    
+    
+    <category term="Learning" scheme="https://zerrari.github.io/tags/Learning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>awk</title>
+    <link href="https://zerrari.github.io/2021/04/01/awk/"/>
+    <id>https://zerrari.github.io/2021/04/01/awk/</id>
+    <published>2021-04-01T10:17:54.000Z</published>
+    <updated>2021-04-08T09:56:30.371Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="awk"><a href="#awk" class="headerlink" title="awk"></a>awk</h1><h2 id=""><a href="#" class="headerlink" title=""></a></h2><p><code>awk [options] &#39;pattern action&#39; file</code></p><p>常见的action<code>print</code></p><p>打印文件的第五列<br><code>awk &#39;&#123;print $5&#125;&#39; txt</code></p><p><code>$0</code> 表示整行<br><code>$NF</code>表示最后一列</p><p>使用逗号来分隔，输出多列<br><code>awk &#39;&#123;print $1,$2&#125;&#39; txt</code></p><p>可以添加自己的字段<br><code>awk &#39;&#123;print $1,&quot;string&quot;&#125; txt&#39;</code></p><p><code>BEGIN</code>在处理文本前要执行的动作<br><code>awk &#39;BEGIN&#123;print $1&#125;&#39; txt</code></p><p><code>END</code>在处理文本后要执行的动作</p><h2 id="分隔符"><a href="#分隔符" class="headerlink" title="分隔符"></a>分隔符</h2><p>指定<code>#</code>为输入分隔符<br><code>awk -F# &#39;&#123;print $1&#125; txt&#39;</code></p><p><code>awk -v FS=&#39;#&#39; &#39;&#123;print $1&#125; txt&#39;</code></p><p>指定<code>#为输出分隔符</code><br><code>awk -v OFS=&#39;#&#39; &#39;&#123;print $1&#125; txt&#39;</code></p><h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p><code>NR</code>行号</p><p><code>NF</code>列号</p><p>输出带有行号<br><code>awk &#39;&#123;print NR,$0&#125; txt&#39;</code></p><p><code>FNR</code>多个文件的行号<br><code>awk &#39;&#123;print FNR,$0&#125; txt1,txt2&#39;</code></p><p><code>RS</code>输入行分隔符<br>将空格作为行分隔符<br><code>awk -v RS=&#39; &#39; &#39;&#123;print $0&#125;&#39; txt</code></p><p><code>FILENAME</code>文件名<br><code>awk &#39;&#123;print FILENAME,$0&#125; txt&#39;</code></p><p><code>ARGC</code>参数的数量</p><p><code>ARGV</code>参数的值<br><code>awk &#39;&#123;print ARGC,ARGV[0],ARGV[1]&#125;&#39; txt</code></p><h3 id="自定义变量"><a href="#自定义变量" class="headerlink" title="自定义变量"></a>自定义变量</h3><p><code>awk -v var=&quot;var&quot; &#39;&#123;print var,$0&#125;&#39; txt</code></p><p><code>awk &#39;&#123;var=&quot;myVar&quot;;print var,$0&#125;&#39; txt</code></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;awk&quot;&gt;&lt;a href=&quot;#awk&quot; class=&quot;headerlink&quot; title=&quot;awk&quot;&gt;&lt;/a&gt;awk&lt;/h1&gt;&lt;h2 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;a</summary>
+      
+    
+    
+    
+    <category term="Linux" scheme="https://zerrari.github.io/categories/Linux/"/>
+    
+    
+    <category term="Learning" scheme="https://zerrari.github.io/tags/Learning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>a linux command in a day</title>
+    <link href="https://zerrari.github.io/2021/03/30/a-linux-command-in-a-day/"/>
+    <id>https://zerrari.github.io/2021/03/30/a-linux-command-in-a-day/</id>
+    <published>2021-03-30T01:40:13.000Z</published>
+    <updated>2021-03-30T02:16:46.614Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h1><p><code>grep [option...] [pattern] [file...]</code></p><h2 id="匹配控制"><a href="#匹配控制" class="headerlink" title="匹配控制"></a>匹配控制</h2><p>忽略大小写搜索</p><pre><code>-i--ignore-case</code></pre><p>不忽略大小写搜索<br><code>--no-ignore-case</code></p><p>反转搜索，输出没有匹配的文件</p><pre><code>-v--invert-match</code></pre><h2 id="输出控制"><a href="#输出控制" class="headerlink" title="输出控制"></a>输出控制</h2><p>输出匹配的数目</p><pre><code>-c--count</code></pre><p>高亮匹配的字符</p><pre><code>--color</code></pre><p>列出匹配的文件</p><pre><code>-l--files-with-match</code></pre><p>列出不匹配的文件</p><pre><code>-L--files-without-match</code></pre><p>指定数目匹配<br>匹配到该数目即停止</p><pre><code>-m count</code></pre><p>仅输出匹配的部分，如果匹配的是一个单词，就输出一个匹配的单词</p><pre><code>-o--only-matching</code></pre><p>不输出任何匹配信息，包括错误</p><pre><code>-q--quiet--silent</code></pre><p>输出匹配行所在行号</p><pre><code>-n--number</code></pre><p>输出匹配行所在的文件名</p><pre><code>-H--with-filename</code></pre><pre><code>-h--no-filename</code></pre><h2 id="输出上下文"><a href="#输出上下文" class="headerlink" title="输出上下文"></a>输出上下文</h2><p>输出匹配行之前的行</p><pre><code>-A num--after-context=num</code></pre><p>输出匹配行之后的行</p><pre><code>-B num--before-context=num</code></pre><p>输出之前和之后的匹配行</p><pre><code>-C num--context=num</code></pre>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;grep&quot;&gt;&lt;a href=&quot;#grep&quot; class=&quot;headerlink&quot; title=&quot;grep&quot;&gt;&lt;/a&gt;grep&lt;/h1&gt;&lt;p&gt;&lt;code&gt;grep [option...] [pattern] [file...]&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&quot;</summary>
+      
+    
+    
+    
+    <category term="Linux" scheme="https://zerrari.github.io/categories/Linux/"/>
+    
+    
+    <category term="Learning" scheme="https://zerrari.github.io/tags/Learning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>virtual memory</title>
+    <link href="https://zerrari.github.io/2021/03/28/virtual-memory/"/>
+    <id>https://zerrari.github.io/2021/03/28/virtual-memory/</id>
+    <published>2021-03-28T09:51:34.000Z</published>
+    <updated>2021-03-28T10:59:02.296Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="虚拟内存"><a href="#虚拟内存" class="headerlink" title="虚拟内存"></a>虚拟内存</h1><h2 id="地址的虚拟化和转换"><a href="#地址的虚拟化和转换" class="headerlink" title="地址的虚拟化和转换"></a>地址的虚拟化和转换</h2><p>为每一个进程开辟出一个地址空间，地址空间的大小可以大于物理内存的大小。</p><h3 id="地址的转换（基于硬件）"><a href="#地址的转换（基于硬件）" class="headerlink" title="地址的转换（基于硬件）"></a>地址的转换（基于硬件）</h3><p>通过基值寄存器和限制寄存器，来进行程序对内存访问的重定位。<br>将虚拟地址加上基值寄存器所存储的值，即是物理地址的值。<br>通过限制寄存器来防止这个进程对其他进程的物理内存进行操作。</p><h3 id="分段"><a href="#分段" class="headerlink" title="分段"></a>分段</h3><p>将栈段，堆段和代码段分段独立地放置在物理内存中，给每一段分配基值寄存器和限制寄存器。<br>节省了栈和堆之间的空闲空间所占有的物理内存。</p><h2 id="空闲空间的管理"><a href="#空闲空间的管理" class="headerlink" title="空闲空间的管理"></a>空闲空间的管理</h2><p>操作系统会用一张链表来记录空闲空间的分布，一个值表明当前空闲块的大小，另外一个为指向下一个空闲块的指针。</p><h3 id="分裂和合并"><a href="#分裂和合并" class="headerlink" title="分裂和合并"></a>分裂和合并</h3><p>当系统需要内存分配空间的时候，空闲块会分裂出合适大小的内存块供系统使用。</p><p>当存在相邻的空闲块时，会进行合并，以提高内存的使用率。</p><h3 id="空闲块的算法"><a href="#空闲块的算法" class="headerlink" title="空闲块的算法"></a>空闲块的算法</h3><p>malloc会分配比要求更大的内存，在已分配的内存上附加一个头块，头块包含分配的内存大小以及一个魔数</p><h4 id="最优适配"><a href="#最优适配" class="headerlink" title="最优适配"></a>最优适配</h4><p>寻找空闲块中最大的空闲块，来进行内存分配。</p><p>需要遍历整个列表。</p><h4 id="最快适配"><a href="#最快适配" class="headerlink" title="最快适配"></a>最快适配</h4><p>寻找第一个有足够空间的内存块，来进行分配。</p><p>速度快，容易在内存头部造成很多外部碎片。</p><h4 id="最坏适配"><a href="#最坏适配" class="headerlink" title="最坏适配"></a>最坏适配</h4><p>寻找最小的能够分配的内存块，来进行分配。</p><p>同样要遍历整个列表。</p><h4 id="下次匹配"><a href="#下次匹配" class="headerlink" title="下次匹配"></a>下次匹配</h4><p>从上一次结束的位置开始查找，将分配扩散到整个列表中去。</p><h2 id="分页"><a href="#分页" class="headerlink" title="分页"></a>分页</h2><p>将虚拟内存和物理内存分页管理<br>物理内存每一页又叫页帧。<br>虚拟内存每一页的大小和物理内存每一页的大小相同。<br>虚拟内存的地址前一部分是虚拟页表号，后一部分是在该页上的偏移。<br>每个进程拥有一张页表，上面是虚拟页表到页帧的对应关系。</p><p>页表是一个数据结构，可以是链表，也可以是树（比如后面的多级页表）。<br>页表的每一项是页表条目，上面有虚拟页表号，和页帧号，还可能有保护位，表示是否可读写；脏位，换入内存，是否被修改过；有效位，表明当前的页帧是在内存中，还是在硬盘上。</p><hr><p>问题</p><ul><li>页表很大</li><li>需要访问两次内存，一次是进入内存查询页表，获得物理帧号，再从内存中将该物理页中需要的数据或代码取出来，加载到寄存器中去。</li></ul><h4 id="TLB"><a href="#TLB" class="headerlink" title="TLB"></a>TLB</h4><p>TLB放置在MMU中，维护着一部分页表条目，当进行内存访问时，先进入TLB寻找，成功，则访问物理内存中对应的页帧；不成功，再到页表中去寻找，找到，将该条目替换到TLB中，重新开始过程。</p><p>因为局部性原理，TLB能提高很多的效率。</p><h4 id="多级页表"><a href="#多级页表" class="headerlink" title="多级页表"></a>多级页表</h4><p>节省了页表的产生空间,<br>如果一级页表中的某个页表条目为空，该条目的二级页表不存在</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;虚拟内存&quot;&gt;&lt;a href=&quot;#虚拟内存&quot; class=&quot;headerlink&quot; title=&quot;虚拟内存&quot;&gt;&lt;/a&gt;虚拟内存&lt;/h1&gt;&lt;h2 id=&quot;地址的虚拟化和转换&quot;&gt;&lt;a href=&quot;#地址的虚拟化和转换&quot; class=&quot;headerlink&quot; title=</summary>
+      
+    
+    
+    
+    <category term="OS" scheme="https://zerrari.github.io/categories/OS/"/>
+    
+    
+    <category term="Learning" scheme="https://zerrari.github.io/tags/Learning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Search</title>
+    <link href="https://zerrari.github.io/2021/03/25/Search/"/>
+    <id>https://zerrari.github.io/2021/03/25/Search/</id>
+    <published>2021-03-25T10:49:37.000Z</published>
+    <updated>2021-03-25T11:28:39.158Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Search"><a href="#Search" class="headerlink" title="Search"></a>Search</h1><h2 id="Sequential-Search"><a href="#Sequential-Search" class="headerlink" title="Sequential Search"></a>Sequential Search</h2><p>顺序表查找</p><p>从第一个元素开始查找，直到找到目标为止。</p><h2 id="Sequential-Search-1"><a href="#Sequential-Search-1" class="headerlink" title="Sequential Search"></a>Sequential Search</h2><p>顺序表查找</p><p>从第一个元素开始查找，直到找到目标为止。</p><pre><code>int Sequential_Search(int *a,int n,int key)&#123;        int i;        for (i = 0;i &lt; n;i++)        &#123;                if (a[i] == key)                        return i;        &#125;        return 0;&#125;</code></pre><p>增加哨兵来优化算法</p><p>不用每次都要和n比较大小，返回为0时，即不存在该元素。</p><pre><code>int Sequential_Search_Better(int *a,int n,int key)&#123;        int i;        a[0] = key;        i = n;        while (a[i] != key)                i--;        return i;&#125;</code></pre><p>时间复杂度：O(n)</p><h2 id="Binary-Search"><a href="#Binary-Search" class="headerlink" title="Binary Search"></a>Binary Search</h2><p>二分查找</p><p>每次从剩下元素的中间部分开始比较，直到找到目标。</p><pre><code>int binary_search(int *a,int n,int key)&#123;        int mid,right,left;        left = 1;        right = n;        while (left &lt;= right)        &#123;                mid = (left + right) / 2;                if (a[mid] == key)                        return mid;                else if (a[mid] &lt; key)                        left = mid + 1;                else                        right = mid -1;        &#125;        return 0;&#125;</code></pre><p>改变权值，即变成插值查找<br><code>mid = low + (high - low) * (key - a[low]) / (a[high] - a[low])</code></p><p>斐波那契查找</p><pre><code>int Fibonacci_search(int* a,int n,int key)&#123;    int left,right,mid,i,k;    left = 0;    right = n;    while (n &gt; F(k) - 1)            k++;    for (i = n;i &lt; F(k) - 1;i++)            a[i] = a[n];    while (left &lt;= right)    &#123;            mid = left + F(k-1) - 1;            if (a[mid] &lt; key)            &#123;                    left = mid + 1;                    k = k-2;            &#125;            else if(a[mid] &gt; key)            &#123;                    right = mid - 1;                    k = k-1;            &#125;            else            &#123;                    if (k &lt;= n)                            return mid;                    else                            return n;            &#125;                &#125;    return 0;&#125;</code></pre><p>时间复杂度：O(logn)</p><h2 id="Binary-Sort-Tree"><a href="#Binary-Sort-Tree" class="headerlink" title="Binary Sort Tree"></a>Binary Sort Tree</h2><p>结点的左儿子小于结点的右儿子<br>用递归来进行查找</p><pre><code>_Bool insert_BST(BiTree *T,int key)&#123;        BiTree s,p;        if (!search_BST(*T, key, NULL, &amp;p) )        &#123;                s = (BiTree)malloc(sizeof(BitNode));                s-&gt;data = key;                s-&gt;lchild = NULL;                s-&gt;rchild = NULL;                if (p == NULL)                        *T = s;                else if (key &lt; p-&gt;data)                &#123;                        p-&gt;lchild = s;                &#125;                else                        p-&gt;rchild = s;                return 1;        &#125;        else                return 0;&#125;</code></pre><h2 id="Hashmap-Search"><a href="#Hashmap-Search" class="headerlink" title="Hashmap Search"></a>Hashmap Search</h2><p>存储位置和关键字之间确立一种对应关系。</p><h3 id="函数构造要求"><a href="#函数构造要求" class="headerlink" title="函数构造要求"></a>函数构造要求</h3><ul><li>计算简单</li><li>散列地址分布均匀</li></ul><h3 id="处理散列冲突"><a href="#处理散列冲突" class="headerlink" title="处理散列冲突"></a>处理散列冲突</h3><p>有时候不同的元素的散列函数值相等，形成了冲突，需要解决这种冲突。</p><ul><li>开发定址法</li></ul><p>一旦产生了冲突，就去寻找下一个空的地址。</p><p>如运用<strong>除数取余法</strong> 来作为散列函数时，可以将冲突的元素加d后，再散列得到地址。</p><p>如果位移量d是随机计算得到的，称之为随机探测法。</p><ul><li>再散列函数法</li></ul><p>事先准备多个散列函数，如果出现冲突，用下一个函数散列求地址。</p><ul><li>链地址法</li></ul><p>将所有关键字为同一词的元素储存在一个单链表中。</p><ul><li>公共溢出区法</li></ul><p>将产生冲突的元素，存放在溢出区中。</p><p>当溢出区元素较少时，查找效率较高。</p><h3 id="性能分析"><a href="#性能分析" class="headerlink" title="性能分析"></a>性能分析</h3><ul><li>散列函数是否均匀</li><li>处理冲突的方法</li><li>散列表的装填因子（表中的记录个数和表的长度的比值）</li></ul><p>不产生冲突的情况下，时间复杂度为O(1)。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;Search&quot;&gt;&lt;a href=&quot;#Search&quot; class=&quot;headerlink&quot; title=&quot;Search&quot;&gt;&lt;/a&gt;Search&lt;/h1&gt;&lt;h2 id=&quot;Sequential-Search&quot;&gt;&lt;a href=&quot;#Sequential-Search&quot; c</summary>
+      
+    
+    
+    
+    <category term="Algorithm" scheme="https://zerrari.github.io/categories/Algorithm/"/>
+    
+    
+    <category term="Learning" scheme="https://zerrari.github.io/tags/Learning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>http</title>
+    <link href="https://zerrari.github.io/2021/03/25/http/"/>
+    <id>https://zerrari.github.io/2021/03/25/http/</id>
+    <published>2021-03-25T05:31:56.000Z</published>
+    <updated>2021-03-29T09:36:39.385Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h1><h2 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h2><p><strong>统一资源定位符</strong><br><a href="https://zerrari.github.io/categories/">https://zerrari.github.io/categories/</a><br>方案://服务器位置/路径</p><ul><li>URL的第一部分是URL方案，告知客户端如何访问资源（http）。</li><li>URL的第二部分指的是服务器的位置。</li><li>URL的第三部分是资源路径。</li></ul><h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><p>scheme://user:password@host:port/path;params?query#frag</p><ul><li>scheme: 访问服务器的协议</li><li>user: 访问某些资源需要的用户名</li><li>password: 访问某些资源需要的密码</li><li>host: 服务器的主机名或IP地址</li><li>port: 服务器正在监听的端口号，默认为80</li><li>path: 资源的本地名</li><li>params: 输入参数</li><li>query: 查询参数</li><li>frag: 一部分资源的名字</li></ul><h3 id="URL编码"><a href="#URL编码" class="headerlink" title="URL编码"></a>URL编码</h3><p>%00~%8f</p><ul><li>%30/<del>%39 0/</del>9</li><li>%41/<del>%5a A/</del>Z</li><li>%61/<del>%7a a/</del>z</li><li>%25     %</li><li>%20     space</li></ul><h2 id="HTTP报文"><a href="#HTTP报文" class="headerlink" title="HTTP报文"></a>HTTP报文</h2><h3 id="报文流"><a href="#报文流" class="headerlink" title="报文流"></a>报文流</h3><p>不管是请求报文还是响应报文，都向下游流动。</p><h3 id="组成部分"><a href="#组成部分" class="headerlink" title="组成部分"></a>组成部分</h3><ul><li>起始行</li><li>首部</li><li>主体</li></ul><p>请求报文</p><pre><code>&lt;method&gt; &lt;request-url&gt; &lt;version&gt;&lt;headers&gt;&lt;entity-body&gt;GET /specials/xxx.gif HTTP/1.1HSOT: www.xxxxx.com</code></pre><p>响应报文</p><pre><code>&lt;version&gt; &lt;status&gt; &lt;reason-phrase&gt;&lt;headers&gt;&lt;entity-body&gt;HTTP/1.1 200 OKContent-Type: xxx.gifContent-Length: 12</code></pre>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;HTTP&quot;&gt;&lt;a href=&quot;#HTTP&quot; class=&quot;headerlink&quot; title=&quot;HTTP&quot;&gt;&lt;/a&gt;HTTP&lt;/h1&gt;&lt;h2 id=&quot;URL&quot;&gt;&lt;a href=&quot;#URL&quot; class=&quot;headerlink&quot; title=&quot;URL&quot;&gt;&lt;/a&gt;UR</summary>
+      
+    
+    
+    
+    <category term="Network" scheme="https://zerrari.github.io/categories/Network/"/>
+    
+    
+    <category term="Learning" scheme="https://zerrari.github.io/tags/Learning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Makefile</title>
+    <link href="https://zerrari.github.io/2021/03/22/Makefile/"/>
+    <id>https://zerrari.github.io/2021/03/22/Makefile/</id>
+    <published>2021-03-22T08:32:00.000Z</published>
+    <updated>2021-03-22T12:44:59.995Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Makefile"><a href="#Makefile" class="headerlink" title="Makefile"></a>Makefile</h1><h2 id="intro"><a href="#intro" class="headerlink" title="intro"></a>intro</h2><p>编译文件的工具，可以有效组织大规模的源文件。</p><h2 id="规则"><a href="#规则" class="headerlink" title="规则"></a>规则</h2><pre><code>target... : prerequisites...    command...</code></pre><p><strong>command</strong> 前要用Tab键缩进</p><p>首先从依赖中寻找是否有比目标文件更新的文件，或者如果目标文件不存在，则运行下面的命令，并生成目标文件。</p><pre><code>.PHONY : cleanclean :    -rm edit $(objects)</code></pre><p><code>.PHONY</code>表示<code>clean</code>是一个伪目标，并不会生成这个文件，只有显式执行<code>make clean</code>,才会执行命令。</p><h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>变量的声明<br><code>objects = program.o foo.o utils.o</code><br>变量的使用<br><code>program : $(objects)</code></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;Makefile&quot;&gt;&lt;a href=&quot;#Makefile&quot; class=&quot;headerlink&quot; title=&quot;Makefile&quot;&gt;&lt;/a&gt;Makefile&lt;/h1&gt;&lt;h2 id=&quot;intro&quot;&gt;&lt;a href=&quot;#intro&quot; class=&quot;headerlink</summary>
+      
+    
+    
+    
+    <category term="Makefile" scheme="https://zerrari.github.io/categories/Makefile/"/>
+    
+    
+    <category term="Learning" scheme="https://zerrari.github.io/tags/Learning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Tree</title>
+    <link href="https://zerrari.github.io/2021/03/16/Tree/"/>
+    <id>https://zerrari.github.io/2021/03/16/Tree/</id>
+    <published>2021-03-16T12:07:17.000Z</published>
+    <updated>2021-03-22T08:35:03.688Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="树"><a href="#树" class="headerlink" title="树"></a>树</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>树是结点的有限集。</p><p><strong>度</strong> 结点拥有的子树的树目。</p><p>度为零的结点称为叶子结点或终端结点。<br>度不为零的结点称为分支结点或非终端结点。</p><p>树的度是各结点度的最大值。</p><p>树中结点的最大层次称为树的深度或高度。</p><p>森林是互不相交树的集合。</p><h2 id="树的存储结构"><a href="#树的存储结构" class="headerlink" title="树的存储结构"></a>树的存储结构</h2><h3 id="双亲表示法"><a href="#双亲表示法" class="headerlink" title="双亲表示法"></a>双亲表示法</h3><table><thead><tr><th>Data</th><th>Parent</th></tr></thead></table><p><strong>Data</strong> 表示数据域</p><p><strong>Parent</strong> 表示指针域，指向双亲</p><p><img src="../images/Tree-parent.png" alt="双亲表示法"></p><h3 id="孩子表示法"><a href="#孩子表示法" class="headerlink" title="孩子表示法"></a>孩子表示法</h3><p><img src="../images/tree-child.png" alt="孩子表示法"> </p><p>两种结点结构</p><hr><p>孩子链表的孩子结点<br>|child|next|<br>|—–|—-|</p><p><strong>next</strong> 指向下一个孩子结点</p><p><strong>child</strong> 保存某个结点在表头数组中的下标</p><hr><p>表头数组<br>|data|firstchild|<br>|—-|———-|</p><p><strong>data</strong> 保存数据<br><strong>firstchild</strong> 保存第一个孩子的头指针</p><hr><h3 id="孩子兄弟表示法"><a href="#孩子兄弟表示法" class="headerlink" title="孩子兄弟表示法"></a>孩子兄弟表示法</h3><table><thead><tr><th>data</th><th>firstchild</th><th>rightsib</th></tr></thead></table><p><strong>rightsib</strong> 存储右兄弟指针</p><h2 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h2><p>除了叶子结点以外，每个结点的子树的个数不超过2.</p><h3 id="二叉树的分类"><a href="#二叉树的分类" class="headerlink" title="二叉树的分类"></a>二叉树的分类</h3><ul><li>斜树</li><li>完全二叉树</li><li>满二叉树</li></ul><h3 id="二叉树的存储结构"><a href="#二叉树的存储结构" class="headerlink" title="二叉树的存储结构"></a>二叉树的存储结构</h3><pre><code>typedef struct BitTree&#123;        ElementType data;        struct BitTree *rchild ,*lchild;&#125;BitTree;</code></pre><h3 id="二叉树的遍历"><a href="#二叉树的遍历" class="headerlink" title="二叉树的遍历"></a>二叉树的遍历</h3><p><img src="../images/Traverse.png" alt="Traverse"> </p><h4 id="前序遍历"><a href="#前序遍历" class="headerlink" title="前序遍历"></a>前序遍历</h4><p>若二叉树为空，则空操作返回；否则先访问根结点，前序遍历左子树，再遍历右子树。</p><pre><code>void PreOrderTraverse(BitTree T)&#123;        if (&amp;T == NULL)                return;        printf(&quot;%c&quot;,T.data);        PreOrderTraverse(T.lchild);        PreOrderTraverse(T.rchild);&#125;</code></pre><p>ABDHKECFIGJ</p><h4 id="中序遍历"><a href="#中序遍历" class="headerlink" title="中序遍历"></a>中序遍历</h4><p>若二叉树为空，则空操作返回；否则从根结点开始，中序遍历左子树，然后访问根结点，再中序遍历右子树。</p><pre><code>void InOrderTraverse(BitTree T)&#123;        if (&amp;T == NULL)                return;        InOrderTraverse(T.lchild);        printf(T.data);        InOrderTraverse(T.rchild);&#125;</code></pre><p>HKDBEAIFCGJ</p><h4 id="后序遍历"><a href="#后序遍历" class="headerlink" title="后序遍历"></a>后序遍历</h4><p>若二叉树为空，则空操作返回；否则从左到右先访问左右子树，再访问根结点。</p><pre><code>void PostOrderTraverse(BitTree T)&#123;        if (&amp;T == NULL)                return;        PostOrderTraverse(T.lchild);        PostOrderTraverse(T.rchild);        printf(T.data);&#125;</code></pre><p>KHDEBIFJGCA</p><h3 id="二叉树的建立"><a href="#二叉树的建立" class="headerlink" title="二叉树的建立"></a>二叉树的建立</h3>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;树&quot;&gt;&lt;a href=&quot;#树&quot; class=&quot;headerlink&quot; title=&quot;树&quot;&gt;&lt;/a&gt;树&lt;/h1&gt;&lt;h2 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot; title=&quot;定义&quot;&gt;&lt;/a&gt;定义&lt;/h2&gt;&lt;p&gt;树是结点的有限</summary>
+      
+    
+    
+    
+    <category term="Data Structure" scheme="https://zerrari.github.io/categories/Data-Structure/"/>
+    
+    
+    <category term="Learning" scheme="https://zerrari.github.io/tags/Learning/"/>
+    
+  </entry>
+  
+</feed>
